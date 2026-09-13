@@ -232,8 +232,11 @@ table.t td .val{color:var(--accent-d20);font-weight:700}
 .arch-app{background:var(--accent-l90);border-color:var(--accent-l80);color:var(--accent-d40)}
 .arch-eng{background:var(--pl-l90);border-color:var(--pl-l80);color:var(--pl-d40)}
 .arch-base{background:var(--primary-l95);border-color:var(--primary-l80);color:var(--primary)}
+.arch-market{background:var(--white);border-color:var(--accent);color:var(--accent-d40)}
 .arch-sec{background:var(--white);border:1.5px dashed var(--alert);color:var(--alert-d20);
   text-align:center;font-weight:700}
+.arch-band{text-align:center;font-size:12.5px;font-weight:700;letter-spacing:2px;
+  color:var(--accent-d40);padding:2px 0 0}
 
 /* 方案块 */
 .sol-block{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line-soft);

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """天元官网生成器：完整企业官网（航天蓝浅色配色体系）
-内容来源：天元 DISOps 官网截图文字 + 《产品详情V1》+《企业官网页面结构清单》
+内容来源：天元 DISOps 官网截图文字 + 《产品详情V1.2》+《引擎V1.2》+《企业官网页面结构清单》
 改站方式：直接改本脚本后重新运行 python3 build.py
 """
 import os, re, json
@@ -242,8 +242,11 @@ table.t td .val{color:var(--accent-d20);font-weight:700}
 .arch-app{background:var(--accent-l90);border-color:var(--accent-l80);color:var(--accent-d40)}
 .arch-eng{background:var(--pl-l90);border-color:var(--pl-l80);color:var(--pl-d40)}
 .arch-base{background:var(--primary-l95);border-color:var(--primary-l80);color:var(--primary)}
+.arch-market{background:var(--white);border-color:var(--accent);color:var(--accent-d40)}
 .arch-sec{background:var(--white);border:1.5px dashed var(--alert);color:var(--alert-d20);
   text-align:center;font-weight:700}
+.arch-band{text-align:center;font-size:12.5px;font-weight:700;letter-spacing:2px;
+  color:var(--accent-d40);padding:2px 0 0}
 
 /* 方案块 */
 .sol-block{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line-soft);
@@ -778,23 +781,23 @@ INDEX_BODY = """
     <div class="grid g3">
       <div class="card">
         <div class="num">01</div>
-        <h3>天基信息服务运营</h3>
-        <p>提供天基历史与实时数据和信息服务，补齐行业天基信息服务短板，降低专业技术要求与时间成本。</p>
-        <div class="tags"><span class="tag">天元·灵观</span></div>
-        <a class="more" href="product-detail.html#perception">了解详情 →</a>
+        <h3>空天地数据融合引擎</h3>
+        <p>以空天地一体化数据源为核心，快速获取、治理与融合卫星遥感、无人机、物联网等多源数据，并通过星地链路、5G/专网、边缘组网自适应切换保障传输，让天基数据直达业务。</p>
+        <div class="tags"><span class="tag">天元·灵观</span><span class="tag">天元·灵数</span><span class="tag">空天地一体化网络</span></div>
+        <a class="more" href="product-detail.html#fusion">了解详情 →</a>
       </div>
       <div class="card">
         <div class="num">02</div>
-        <h3>认知计算与决策</h3>
-        <p>提供大小模型协同的AI模型应用框架，实现业务语义理解、发展态势预测与模拟。基于Harness智能体框架，实现意图理解与动态任务编排，解决人机智能协同应用问题。</p>
-        <div class="tags"><span class="tag">天元·灵数</span><span class="tag">天元·灵语</span><span class="tag">天元·灵炼</span><span class="tag">天元认知计算</span></div>
+        <h3>认知计算与决策引擎</h3>
+        <p>以本体建模读懂业务，以模型工厂和智能体工厂持续生产模型与智能体，并由认知计算引擎统一调度数据、模型、智能体与 Skill，形成从数据到决策的流程闭环。</p>
+        <div class="tags"><span class="tag">天元·灵语</span><span class="tag">天元·灵炼</span><span class="tag">天元·灵智</span><span class="tag">认知计算引擎</span></div>
         <a class="more" href="product-detail.html#brain">了解详情 →</a>
       </div>
       <div class="card">
         <div class="num">03</div>
-        <h3>无人智能管控</h3>
-        <p>面向无人智能装备集成化需求，解决多厂商、多类型、多协议无人智能装备管控和规范化应用问题。</p>
-        <div class="tags"><span class="tag">天元·灵动</span><span class="tag">智慧杆</span><span class="tag">钢铁战士</span></div>
+        <h3>具身智能行动执行引擎</h3>
+        <p>面向无人机、无人车、机器狗等多类具身设备，实现统一调度与链路自适应下发，结合视觉增强完成厘米级精准作业，打通从决策到行动的最后一公里。</p>
+        <div class="tags"><span class="tag">天元·灵动</span></div>
         <a class="more" href="product-detail.html#action">了解详情 →</a>
       </div>
     </div>
@@ -910,7 +913,7 @@ INDEX_BODY = """
       </a>
       <a class="news-item" href="news.html">
         <div>
-          <h3>天元·灵语语义理解能力持续升级<span class="placeholder-note">示例内容</span></h3>
+          <h3>天元·灵语本体建模能力持续升级<span class="placeholder-note">示例内容</span></h3>
           <p>自动本体建模、Skill级业务操作，支持200+ AI动作，业务人员无需编程即可调用AI能力……</p>
         </div>
         <time>2026-08-15</time>
@@ -939,25 +942,26 @@ INDEX_BODY = """
 PRODUCTS = [
     # (名称, 层级分类, 一句话, 锚点)
     ("天元·智算底座", "base", "国产化、高性能的算力与数据存储支持，算力池化与统一资源管理，确保底层稳固。", "infra"),
-    ("天元·灵观", "sense", "便捷获取卫星数据，AI简化任务需求，星地协同智能指挥，覆盖高、低轨卫星及44个全球地面站。", "perception"),
-    ("天元·灵数", "sense", "智能数据治理，多源数据融合（卫星遥感、无人机、物联网），50+自动化管道。", "perception"),
-    ("通信保障", "sense", "通信全流程保障，星地链路、5G/专网、边缘组网等多种通信方式自适应切换。", "perception"),
-    ("领域语义（本体）", "brain", "行业知识建模、时空本体建模、图谱推理与因果分析，构建行业专属知识大脑。", "brain"),
-    ("天元·灵语", "brain", "自动本体建模，Skill级业务操作，支持200+ AI动作，业务人员无需编程即可调用AI能力。", "brain"),
-    ("天元·灵炼", "brain", "数据在线AI标注，大模型后训练，支持增量训练与联邦学习，模型迭代周期从“月级”缩短至“周级”。", "brain"),
-    ("认知计算引擎", "brain", "用户意图精准识别、多智能体任务编排、自我检视与进化，统一编排灵语、灵炼及领域语义能力。", "brain"),
-    ("天元·灵智", "action", "无人设备统一调度，链路自适应下发，多设备协同效率提升，调度响应≤1s。", "action"),
-    ("天元·灵动", "action", "覆盖无人车、无人机、机器狗等多类设备，视觉增强，作业精度提升至厘米级。", "action"),
+    ("天元·灵观", "fusion", "天基数据获取，便捷获取卫星数据，AI简化任务需求，星地协同智能指挥，覆盖高、低轨卫星及44个全球地面站。", "fusion"),
+    ("天元·灵数", "fusion", "数据治理与融合，智能数据治理，多源数据融合（卫星遥感、无人机、物联网），50+自动化管道。", "fusion"),
+    ("空天地一体化网络", "fusion", "通信全流程保障，星地链路、5G/专网、边缘组网等多种通信方式自适应切换。", "fusion"),
+    ("天元·灵语", "brain", "本体建模，自动本体建模，Skill级业务操作，支持200+ AI动作，业务人员无需编程即可调用AI能力。", "brain"),
+    ("天元·灵炼", "brain", "模型工厂，数据在线AI标注，大模型后训练，增量训练与联邦学习，模型迭代周期从“月级”缩短至“周级”。", "brain"),
+    ("天元·灵智", "brain", "智能体工厂，提供智能体开发、编排与运行能力，支持多智能体任务编排与自我进化。", "brain"),
+    ("认知计算引擎", "brain", "智能体编排框架，自动调度数据、模型、智能体与Skill，实现信息服务的流程闭环。", "brain"),
+    ("天元·灵动", "action", "具身智能调度，覆盖无人机、无人车、机器狗等多类具身设备，统一调度与精准作业。", "action"),
+    ("天元·灵集", "market", "数智能力集散与流通平台，包含数智资产广场、智能体及技能广场。", "market"),
+    ("天元·信息服务助手", "market", "行业信息服务的统一入口，提供通用智能问答、记忆、多轮对话等问答能力，可通过认知计算引擎在线体验与交互数智市集各类资产。", "market"),
     ("全栈安全合规", "sec", "身份与访问控制、数据安全与隐私、AI安全治理、行为审计与溯源，横向贯穿所有层级。", "security"),
 ]
-CATS = [("all", "全部"), ("base", "智算底座"), ("sense", "数据感知"), ("brain", "认知决策"), ("action", "行动管控"), ("sec", "安全合规")]
+CATS = [("all", "全部"), ("base", "智算底座"), ("fusion", "数据融合"), ("brain", "认知决策"), ("action", "行动执行"), ("market", "数智市集"), ("sec", "安全合规")]
 
 PRODUCTS_BODY = """
 <header class="banner page-banner">
   <div class="banner-in">
     <span class="badge">产品与能力</span>
     <h1>一站式场景化数智平台</h1>
-    <p class="lead">1 个底座 + 3 大核心引擎 + 1 个安全体系 + N 个行业应用，构建从卫星原始数据获取到行动指令下达的全链路闭环系统。</p>
+    <p class="lead">1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用，构建从空天地数据融合到认知决策、再到行动执行的全链路闭环智能系统。</p>
     <div class="btns"><a class="btn btn-a btn-lg" href="contact.html">申请演示</a></div>
   </div>
 </header>
@@ -974,7 +978,7 @@ PRODUCTS_BODY = """
     '<div class="card pcard" data-cat="%s"><span class="layer%s">%s</span>'
     '<h3>%s</h3><p>%s</p>'
     '<a class="more" href="product-detail.html#%s">查看详情 →</a></div>'
-    % (c, " a" if c in ("brain", "action") else "", dict(CATS)[c], name, desc, anchor)
+    % (c, " a" if c in ("brain", "market") else "", dict(CATS)[c], name, desc, anchor)
     for name, c, desc, anchor in PRODUCTS) + """
     </div>
     <p style="text-align:center;color:var(--mute);font-size:13px;margin-top:28px">
@@ -991,7 +995,7 @@ DETAIL_BODY = """
   <div class="banner-in">
     <span class="badge">产品详情</span>
     <h1>天元平台</h1>
-    <p class="lead">基于“空天地一体化”数据，融合人工智能与智能体技术，实现从卫星原始数据获取到行动指令下达的全链路闭环系统，为客户提供“感、通、算、用”一体化的数智化解决方案。</p>
+    <p class="lead">融合人工智能与智能体技术，实现从空天地数据融合到认知决策、再到行动执行的全链路闭环智能系统，为客户提供“感、通、算、用”一体化的数智化解决方案。</p>
     <div class="btns">
       <a class="btn btn-a btn-lg" href="contact.html">试用 / 咨询</a>
       <a class="btn btn-o btn-lg" href="solutions.html">查看行业方案</a>
@@ -1018,7 +1022,7 @@ DETAIL_BODY = """
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">体系架构</span>
-      <h2>1 个底座 + 3 大核心引擎 + 1 个安全体系 + N 个行业应用</h2>
+      <h2>1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用</h2>
     </div>
     <div class="arch">
       <div class="arch-row" style="grid-template-columns:repeat(5,1fr)">
@@ -1028,10 +1032,16 @@ DETAIL_BODY = """
         <div class="arch-box arch-app"><b>开源情报</b>智能问数与态势呈现</div>
         <div class="arch-box arch-app"><b>更多行业</b>能源 · 低空 · 林草 · 电网</div>
       </div>
+      <div class="arch-row" style="grid-template-columns:1fr">
+        <div class="arch-box arch-market"><b>数智市集 · 天元·灵集</b>数智资产广场 / 智能体及技能广场 / 天元·信息服务助手</div>
+      </div>
+      <div class="arch-row" style="grid-template-columns:1fr">
+        <div class="arch-band">三大核心引擎</div>
+      </div>
       <div class="arch-row" style="grid-template-columns:1fr 1fr 1fr">
-        <div class="arch-box arch-eng"><b>行动管控层 · 天元·行动</b>灵智·决策调度 / 灵动·终端执行，无人装备智能管控</div>
-        <div class="arch-box arch-eng"><b>认知决策层 · 天元·大脑</b>领域语义 / 灵语 / 灵炼 / 认知计算引擎</div>
-        <div class="arch-box arch-eng"><b>数据感知层 · 天元·感知</b>灵观·数据获取 / 灵数·数据治理 / 通信保障</div>
+        <div class="arch-box arch-eng"><b>空天地数据融合引擎</b>天元·灵观 / 天元·灵数 / 空天地一体化网络</div>
+        <div class="arch-box arch-eng"><b>认知计算与决策引擎</b>天元·灵语 / 天元·灵炼 / 天元·灵智 / 认知计算引擎</div>
+        <div class="arch-box arch-eng"><b>具身智能行动执行引擎</b>天元·灵动</div>
       </div>
       <div class="arch-row" style="grid-template-columns:1fr">
         <div class="arch-box arch-base"><b>基础设施层 · 天元·智算底座</b>智算集群 / 高速互联 / 边云协同，国产化全栈适配</div>
@@ -1048,7 +1058,7 @@ DETAIL_BODY = """
     <div class="sec-head"><span class="kicker">核心功能</span><h2>分层能力详解</h2></div>
 
     <div class="anchor-sec" id="infra">
-      <h3><span class="hash">◆</span>基础设施层：天元·智算底座</h3>
+      <h3><span class="hash">◆</span>基础设施层：边云协同与智算底座</h3>
       <p class="sub">核心价值：提供国产化、高性能的算力与数据存储支持，确保底层稳固。</p>
       <div class="table-wrap"><table class="t">
         <tr><th>模块</th><th>内容要点</th><th>客户价值</th></tr>
@@ -1056,43 +1066,50 @@ DETAIL_BODY = """
         <tr><td>高速互联</td><td>RDMA高速互联网络，分布式并行存储</td><td>训练效率提升50%，存储吞吐达TB级</td></tr>
         <tr><td>边云协同</td><td>支持云端训练与边缘端推理的无缝协同</td><td>边缘推理延迟≤50ms，带宽成本降低40%</td></tr>
       </table></div>
-      <p style="font-size:12.5px;color:var(--mute);margin-top:8px">注：客户价值指标来自《产品详情V1》设计口径，正式对外发布前建议由产品部门复核基准与来源。</p>
+      <p style="font-size:12.5px;color:var(--mute);margin-top:8px">注：客户价值指标来自《产品详情V1.2》设计口径，正式对外发布前建议由产品部门复核基准与来源。</p>
     </div>
 
-    <div class="anchor-sec" id="perception">
-      <h3><span class="hash">◆</span>数据感知层：天元·感知</h3>
-      <p class="sub">核心价值：解决“数据从哪来”的问题，实现多源异构数据的快速获取与治理。</p>
+    <div class="anchor-sec" id="fusion">
+      <h3><span class="hash">◆</span>数据融合层：空天地数据融合</h3>
+      <p class="sub">核心价值：解决“数据从哪来”的问题，实现多源异构数据的快速获取、治理与融合。</p>
       <div class="table-wrap"><table class="t">
         <tr><th>模块</th><th>内容要点</th><th>客户价值</th></tr>
-        <tr><td>灵观·数据获取</td><td>便捷获取卫星数据，AI简化任务需求，星地协同智能指挥。覆盖高、低轨卫星及44个全球地面站</td><td>卫星数据获取周期从“天级”缩短至“小时级”</td></tr>
-        <tr><td>灵数·数据治理</td><td>智能数据治理，多源数据融合（卫星遥感、无人机、物联网），沉淀20+数据集，拥有50+自动化管道</td><td>数据治理人工干预减少60%，多源数据融合效率提升3倍</td></tr>
+        <tr><td>天元·灵观</td><td>天基数据获取。便捷获取卫星数据，AI简化任务需求，星地协同智能指挥。覆盖高、低轨卫星及44个全球地面站</td><td>卫星数据获取周期从“天级”缩短至“小时级”</td></tr>
+        <tr><td>天元·灵数</td><td>数据治理与融合。智能数据治理，多源数据融合（卫星遥感、无人机、物联网），沉淀20+数据集，拥有50+自动化管道</td><td>数据治理人工干预减少60%，多源数据融合效率提升3倍</td></tr>
       </table></div>
-      <h4 style="margin-top:18px;color:var(--primary)">通信保障</h4>
+      <h4 style="margin-top:18px;color:var(--primary)">空天地一体化网络</h4>
       <p style="font-size:14px;color:var(--mute);margin-top:6px">通信全流程保障，确保数据传输的高带宽与低延迟。支持星地链路、5G/专网、边缘组网等多种通信方式自适应切换。</p>
     </div>
 
     <div class="anchor-sec" id="brain">
-      <h3><span class="hash">◆</span>认知决策层：天元·大脑</h3>
-      <p class="sub">核心价值：解决“数据怎么用”的问题，通过AI让机器读懂业务，进行深度研判。</p>
-      <h4 style="color:var(--primary)">领域语义（本体）</h4>
-      <p style="font-size:14px;color:var(--mute);margin-top:6px;margin-bottom:14px">构建行业专属知识大脑。包含行业知识建模、时空本体建模、图谱推理与因果分析，让AI真正读懂业务逻辑。</p>
+      <h3><span class="hash">◆</span>认知决策层：认知计算与智能决策</h3>
+      <p class="sub">核心价值：解决“数据怎么用”的问题，通过AI让机器读懂业务，进行深度研判，并持续生产可复用的本体、模型与智能体。</p>
       <div class="table-wrap"><table class="t">
         <tr><th>模块</th><th>内容要点</th><th>客户价值</th></tr>
-        <tr><td>灵语·语义理解</td><td>自动本体建模，Skill级业务操作，支持200+ AI动作</td><td>业务人员无需编程即可调用AI能力</td></tr>
-        <tr><td>灵炼·模型训练</td><td>数据在线AI标注，大模型后训练，完成7项应用模型，支持增量训练与联邦学习</td><td>模型迭代周期从“月级”缩短至“周级”</td></tr>
+        <tr><td>天元·灵语</td><td>本体建模。自动本体建模，Skill级业务操作，支持200+ AI动作；构建行业知识建模、时空本体建模、图谱推理与因果分析</td><td>业务人员无需编程即可调用AI能力</td></tr>
+        <tr><td>天元·灵炼</td><td>模型工厂。数据在线AI标注，大模型后训练，完成7项应用模型，支持增量训练与联邦学习</td><td>模型迭代周期从“月级”缩短至“周级”</td></tr>
+        <tr><td>天元·灵智</td><td>智能体工厂。提供智能体开发、编排与运行能力，支持多智能体任务编排与自我进化</td><td>智能体开发效率提升，业务场景快速落地</td></tr>
+        <tr><td>认知计算引擎</td><td>智能体编排框架。能够自动调度数据、模型、智能体与Skill，实现信息服务的流程闭环</td><td>为上层应用提供统一的能力调度与编排支撑，实现端到端流程闭环</td></tr>
       </table></div>
-      <h4 style="margin-top:18px;color:var(--primary)">认知计算引擎</h4>
-      <p style="font-size:14px;color:var(--mute);margin-top:6px">具备用户意图精准识别、多智能体任务编排、自我检视与进化能力，是大脑的核心调度模块，统一编排灵语、灵炼及领域语义能力。</p>
     </div>
 
     <div class="anchor-sec" id="action">
-      <h3><span class="hash">◆</span>行动管控层：天元·行动</h3>
+      <h3><span class="hash">◆</span>行动执行层：具身智能 AI 调度</h3>
       <p class="sub">核心价值：解决“指令怎么执行”的问题，实现无人设备的智能化调度与管控。</p>
       <div class="table-wrap"><table class="t">
         <tr><th>模块</th><th>内容要点</th><th>客户价值</th></tr>
-        <tr><td>灵智·决策调度</td><td>无人设备统一调度，链路自适应下发</td><td>多设备协同效率提升50%，调度响应≤1s</td></tr>
-        <tr><td>灵动·终端执行</td><td>覆盖无人车、无人机、机器狗等多类设备。具备视觉增强（业内领先），支持小、中、大覆盖半径（作业面积5m²-100km²）的精准作业</td><td>作业精度提升至厘米级，人力成本降低70%</td></tr>
+        <tr><td>天元·灵动</td><td>具身智能调度。覆盖无人机、无人车、机器狗等多类具身设备；统一调度，链路自适应下发；具备视觉增强，支持小、中、大覆盖半径（作业面积5m²–100km²）的精准作业</td><td>多设备协同效率提升50%，调度响应≤1s；作业精度提升至厘米级，人力成本降低70%</td></tr>
       </table></div>
+    </div>
+
+    <div class="anchor-sec" id="market">
+      <h3><span class="hash">◆</span>数智市集：天元·灵集</h3>
+      <p class="sub">核心价值：作为数智能力的集散与流通平台，连接能力供给与业务消费。</p>
+      <div class="grid g3" style="margin-top:8px">
+        <div class="card"><h3>数智资产广场</h3><p>汇聚数据集、本体、算法、模型等数字资产，支持上架、检索与复用。</p></div>
+        <div class="card"><h3>智能体及技能广场</h3><p>汇聚智能体、Skill、Workflow等，支持按需调用。</p></div>
+        <div class="card"><h3>天元·信息服务助手</h3><p>行业信息服务的统一入口，提供通用智能问答、记忆、多轮对话等问答能力，可通过认知计算引擎在线对数智市集中的各类资产进行体验与交互。</p></div>
+      </div>
     </div>
 
     <div class="anchor-sec" id="security">
@@ -1133,9 +1150,10 @@ DETAIL_BODY = """
 <div class="side-toc" aria-label="页面目录">
   <b>本页目录</b>
   <a href="#infra">智算底座</a>
-  <a href="#perception">数据感知</a>
+  <a href="#fusion">数据融合</a>
   <a href="#brain">认知决策</a>
-  <a href="#action">行动管控</a>
+  <a href="#action">行动执行</a>
+  <a href="#market">数智市集</a>
   <a href="#security">安全体系</a>
 </div>
 <div class="float-cta"><a class="btn btn-p" href="contact.html">快速咨询</a></div>
@@ -1570,7 +1588,7 @@ NEWS_BODY = """
         <time>2026-08-28</time>
       </a>
       <a class="news-item" href="news.html">
-        <div><h3>天元·灵语语义理解能力持续升级<span class="placeholder-note">示例内容</span></h3>
+        <div><h3>天元·灵语本体建模能力持续升级<span class="placeholder-note">示例内容</span></h3>
         <p>自动本体建模，Skill级业务操作，支持200+ AI动作，业务人员无需编程即可调用AI能力。<span class="tag" style="margin-left:8px">产品进展</span></p></div>
         <time>2026-08-15</time>
       </a>
@@ -1638,8 +1656,8 @@ CAREERS_BODY = """
 # ============================================================ 搜索页
 SEARCH_INDEX = [
     {"title": "首页", "url": "index.html", "type": "页面", "from": "天元官网", "desc": "让数智技术真正落地行业。天元（DISOps）一站式信息服务平台，构建数据-认知-决策-行动价值闭环。", "tags": "平台 感通算用"},
-    {"title": "产品与能力", "url": "products.html", "type": "页面", "from": "天元官网", "desc": "1个底座+3大核心引擎+1个安全体系+N个行业应用：智算底座、灵观、灵数、灵语、灵炼、认知计算引擎、灵智、灵动。", "tags": "产品 引擎 组件"},
-    {"title": "天元平台产品详情", "url": "product-detail.html", "type": "页面", "from": "天元官网", "desc": "空天地一体化数据、全链路闭环、国产化全栈适配、智能体驱动；分层能力详解与客户价值。", "tags": "产品详情 架构 灵观 灵语 灵动"},
+    {"title": "产品与能力", "url": "products.html", "type": "页面", "from": "天元官网", "desc": "1个底座+3大核心引擎+1个数智市集+1个安全体系+N个行业应用：智算底座、灵观、灵数、空天地一体化网络、灵语、灵炼、灵智、认知计算引擎、灵动、灵集、天元·信息服务助手。", "tags": "产品 引擎 组件 数智市集"},
+    {"title": "天元平台产品详情", "url": "product-detail.html", "type": "页面", "from": "天元官网", "desc": "空天地一体化数据、全链路闭环、国产化全栈适配、智能体驱动；三大核心引擎与数智市集分层能力详解与客户价值。", "tags": "产品详情 架构 灵观 灵数 灵语 灵炼 灵智 灵动 灵集"},
     {"title": "开源情报分析解决方案", "url": "solutions.html#intel", "type": "解决方案", "from": "解决方案", "desc": "认知计算+多源数据=智能问数与态势空间呈现，碎片化信息聚合为一张态势图。", "tags": "情报 AIS 态势"},
     {"title": "海洋石油污染解决方案", "url": "solutions.html#oil", "type": "解决方案", "from": "解决方案", "desc": "油膜识别、起始点反演、船舶特征分析，输出嫌疑船舶排序及证据链。", "tags": "海洋 油膜 溯源"},
     {"title": "应急信息服务解决方案", "url": "solutions.html#emergency", "type": "解决方案", "from": "解决方案", "desc": "自然语言交互拉取灾前灾后影像，建筑物损毁、水体淹没范围对比分析。", "tags": "应急 灾害 影像"},
@@ -1819,9 +1837,9 @@ if __name__ == "__main__":
     page("index.html", "首页 | 让数智技术真正落地行业",
          "天元（DISOps）是面向数智技术场景化闭环的一站式信息服务平台，构建“数据-认知-决策-行动”价值闭环。", "index.html", INDEX_BODY)
     page("products.html", "产品与能力",
-         "1个底座+3大核心引擎+1个安全体系+N个行业应用：智算底座、感知、大脑、行动、安全合规。", "products.html", PRODUCTS_BODY)
+         "1个底座+3大核心引擎+1个数智市集+1个安全体系+N个行业应用：智算底座、数据融合、认知决策、行动执行、数智市集、安全合规。", "products.html", PRODUCTS_BODY)
     page("product-detail.html", "天元平台产品详情",
-         "基于空天地一体化数据，从卫星原始数据获取到行动指令下达的全链路闭环系统。", "products.html", DETAIL_BODY)
+         "基于空天地一体化数据，实现从数据融合到认知决策、再到行动执行的全链路闭环智能系统。", "products.html", DETAIL_BODY)
     page("solutions.html", "行业解决方案",
          "开源情报分析、海洋石油污染、应急信息服务、智慧边防应用等行业解决方案。", "solutions.html", SOLUTIONS_BODY)
     page("cases.html", "客户案例",
