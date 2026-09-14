@@ -1,166 +1,235 @@
-/* 天元官网全局脚本 */
+/* 天元官网 · 全局交互（无依赖） */
 (function(){
-'use strict';
-/* 导航滚动阴影 */
-var nav=document.querySelector('.nav');
-window.addEventListener('scroll',function(){
-  if(nav) nav.classList.toggle('scrolled',window.scrollY>8);
-},{passive:true});
+  'use strict';
+  var $  = function(s,c){return (c||document).querySelector(s);};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* 移动端抽屉 */
-var drawer=document.querySelector('.drawer');
-var mask=document.querySelector('.drawer-mask');
-function openDrawer(){if(drawer){drawer.classList.add('open');if(mask)mask.classList.add('show');}}
-function closeDrawer(){
-  if(drawer){drawer.classList.remove('open');
-    var subs=drawer.querySelectorAll('.sub-m');for(var i=0;i<subs.length;i++)subs[i].style.display='none';}
-  if(mask)mask.classList.remove('show');
-}
-var hb=document.querySelector('.hamburger');if(hb)hb.addEventListener('click',openDrawer);
-var dc=document.querySelector('.drawer-close');if(dc)dc.addEventListener('click',closeDrawer);
-if(mask)mask.addEventListener('click',closeDrawer);
-/* 抽屉内二级菜单 + 返回上级 */
-var hasSubs=document.querySelectorAll('.drawer .has-sub>a');
-for(var i=0;i<hasSubs.length;i++)(function(a){
-  a.addEventListener('click',function(e){
-    e.preventDefault();
-    var m=a.parentNode.querySelector('.sub-m');
-    if(m)m.style.display=(m.style.display==='none'||!m.style.display)?'block':'none';
-  });
-})(hasSubs[i]);
-var back=document.querySelector('.drawer-back');
-if(back)back.addEventListener('click',function(){
-  var subs=document.querySelectorAll('.drawer .sub-m');
-  for(var j=0;j<subs.length;j++)subs[j].style.display='none';
-});
-
-/* 产品筛选 */
-var fbtns=document.querySelectorAll('.fbtn');
-for(var k=0;k<fbtns.length;k++)(function(btn){
-  btn.addEventListener('click',function(){
-    for(var m=0;m<fbtns.length;m++)fbtns[m].classList.remove('on');
-    btn.classList.add('on');
-    var cat=btn.getAttribute('data-f');
-    var cards=document.querySelectorAll('[data-cat]');
-    for(var n=0;n<cards.length;n++){
-      cards[n].style.display=(cat==='all'||cards[n].getAttribute('data-cat')===cat)?'':'none';
-    }
-  });
-})(fbtns[k]);
-
-/* FAQ 折叠 */
-var faqQs=document.querySelectorAll('.faq-q');
-for(var f=0;f<faqQs.length;f++)(function(q){
-  q.addEventListener('click',function(){q.parentNode.classList.toggle('open');});
-})(faqQs[f]);
-
-/* 联系表单校验 */
-var form=document.getElementById('contact-form');
-if(form){
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var ok=true;
-    var name=document.getElementById('f-name'), phone=document.getElementById('f-phone');
-    function mark(input,bad){var row=input.closest('.row');if(row)row.classList.toggle('bad',bad);}
-    mark(name,!name.value.trim()); if(!name.value.trim())ok=false;
-    var pv=phone.value.trim();
-    var phoneOk=/^1[3-9]\d{9}$/.test(pv)||/^(0\d{2,3}-?)?\d{7,8}$/.test(pv);
-    mark(phone,!phoneOk); if(!phoneOk)ok=false;
-    if(ok){form.style.display='none';
-      var done=document.getElementById('form-ok');if(done)done.style.display='block';}
-  });
-}
-
-/* Cookie 提示（偏好记录于本地，不做服务端记录） */
-var cookieBar=document.getElementById('cookie-bar');
-try{
-  if(cookieBar&&!localStorage.getItem('ty-cookie-consent'))cookieBar.classList.add('show');
-}catch(err){}
-var cbtn=document.getElementById('cookie-accept');
-if(cbtn)cbtn.addEventListener('click',function(){
-  try{localStorage.setItem('ty-cookie-consent','essential');}catch(err){}
-  cookieBar.classList.remove('show');
-});
-
-/* 页脚年份 */
-var yr=document.getElementById('yr');if(yr)yr.textContent=new Date().getFullYear();
-
-/* 搜索页逻辑 */
-var searchForm=document.getElementById('search-form');
-if(searchForm&&window.TY_SEARCH_INDEX){
-  var input=document.getElementById('search-input');
-  var results=document.getElementById('search-results');
-  var historyBox=document.getElementById('search-history');
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-  function hi(text,kw){
-    if(!kw)return esc(text);
-    try{return esc(text).replace(new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),function(m){return '<mark>'+m+'</mark>';});}
-    catch(err){return esc(text);}
+  /* 1. 导航吸顶缩小 */
+  var nav = $('.nav');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('sm', y > 60);
+    var tp = $('.totop'); if(tp) tp.classList.toggle('on', y > 420);
   }
-  function renderHistory(){
-    if(!historyBox)return;
-    var h=[];try{h=JSON.parse(localStorage.getItem('ty-search-history')||'[]');}catch(err){}
-    if(!h.length){historyBox.style.display='none';return;}
-    historyBox.style.display='flex';
-    var html='<span>最近搜索：</span>';
-    for(var i=0;i<h.length;i++)html+='<span class="tag" data-h="'+esc(h[i])+'">'+esc(h[i])+'</span>';
-    html+='<span class="tag" id="clear-history" style="cursor:pointer;border-color:var(--surface-d20);color:var(--mute)">清除记录</span>';
-    historyBox.innerHTML=html;
-    var tags=historyBox.querySelectorAll('[data-h]');
-    for(var t=0;t<tags.length;t++)(function(el){
-      el.addEventListener('click',function(){input.value=el.getAttribute('data-h');doSearch();});
-    })(tags[t]);
-    var ch=document.getElementById('clear-history');
-    if(ch)ch.addEventListener('click',function(){
-      try{localStorage.removeItem('ty-search-history');}catch(err){}
-      renderHistory();
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* 2. 移动端抽屉（含关闭与层级返回） */
+  var ham = $('.hamburger'), drawer = $('.drawer'), dclose = $('.drawer-close');
+  function openDrawer(){ drawer.classList.add('on'); ham.classList.add('on');
+    document.body.style.overflow='hidden'; }
+  function closeDrawer(){ drawer.classList.remove('on'); ham.classList.remove('on');
+    document.body.style.overflow=''; $$('.sub-m',drawer).forEach(function(s){s.style.display='none';}); }
+  if(ham) ham.addEventListener('click', function(){
+    drawer.classList.contains('on') ? closeDrawer() : openDrawer(); });
+  if(dclose) dclose.addEventListener('click', closeDrawer);
+  // 二级展开 + 返回
+  $$('.drawer .has-sub > a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var sub = a.nextElementSibling;
+      if(sub && sub.classList.contains('sub-m')){
+        $$('.sub-m',drawer).forEach(function(s){ if(s!==sub) s.style.display='none'; });
+        sub.style.display = sub.style.display==='block' ? 'none' : 'block';
+        var btn = $('.drawer-back',drawer); if(btn) btn.style.display='block';
+      }
     });
+  });
+  var back = $('.drawer-back', drawer||document);
+  if(back) back.addEventListener('click', function(){
+    $$('.sub-m',drawer).forEach(function(s){s.style.display='none';});
+    back.style.display='none';
+  });
+
+  /* 3. 滚动进场动画 */
+  var rvs = $$('.rv');
+  if(REDUCED || !('IntersectionObserver' in window)){
+    rvs.forEach(function(e){ e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    rvs.forEach(function(e){ io.observe(e); });
   }
-  function saveHistory(kw){
-    try{
-      var h=JSON.parse(localStorage.getItem('ty-search-history')||'[]');
-      h=h.filter(function(x){return x!==kw;});h.unshift(kw);h=h.slice(0,10);
-      localStorage.setItem('ty-search-history',JSON.stringify(h));
-    }catch(err){}
-  }
-  function doSearch(){
-    var kw=(input.value||'').trim();
-    if(kw)saveHistory(kw);
-    renderHistory();
-    var html='';
-    if(!kw){
-      html='<div class="empty-state"><b>请输入关键词</b><p>支持按标题、摘要、标签检索全站内容</p></div>';
-    }else{
-      var hits=[];
-      for(var i=0;i<window.TY_SEARCH_INDEX.length;i++){
-        var it=window.TY_SEARCH_INDEX[i];
-        if((it.title+it.desc+it.tags).toLowerCase().indexOf(kw.toLowerCase())>-1)hits.push(it);
-      }
-      if(hits.length){
-        for(var j=0;j<hits.length;j++){
-          var r=hits[j];
-          html+='<div class="sr"><h3><a href="'+r.url+'">'+hi(r.title,kw)+'</a></h3>'
-            +'<div class="from">'+r.type+' · '+esc(r.from)+'</div>'
-            +'<p>'+hi(r.desc,kw)+'</p></div>';
-        }
-        html='<p style="font-size:13px;color:var(--mute);margin-bottom:8px">共找到 '+hits.length+' 条结果</p>'+html;
-      }else{
-        html='<div class="empty-state"><b>未找到与“'+esc(kw)+'”相关的内容</b>'
-          +'<p>试试这些热门内容：</p></div>'
-          +hotList();
-      }
+
+  /* 4. 标签页 */
+  $$('.tabs').forEach(function(bar){
+    var scope = bar.closest('section') || document;
+    $$('.tab', bar).forEach(function(t){
+      t.addEventListener('click', function(){
+        $$('.tab', bar).forEach(function(x){x.classList.remove('on');});
+        t.classList.add('on');
+        $$('.pane', scope).forEach(function(p){
+          p.classList.toggle('on', p.dataset.p === t.dataset.t);
+        });
+      });
+    });
+  });
+
+  /* 5. FAQ 折叠 */
+  $$('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){ q.parentElement.classList.toggle('on'); });
+  });
+
+  /* 6. 筛选器（多选 + 已选条件 + 清除全部） */
+  var fbars = $$('.filter-bar');
+  fbars.forEach(function(bar){
+    var group = bar.dataset.group;
+    var selBox = $('[data-selected="'+group+'"]');
+    function render(){
+      if(!selBox) return;
+      var on = $$('.chip.on', bar);
+      var html = '<span>已选条件：</span>';
+      if(!on.length) html += '<span class="sc" style="background:#fff;border-color:var(--line)">全部</span>';
+      on.forEach(function(c){
+        html += '<span class="sc">'+c.textContent+' <b data-k="'+c.dataset.k+'" style="cursor:pointer;color:var(--alert)">×</b></span>';
+      });
+      html += '<button class="clear-all" type="button">清除全部</button>';
+      selBox.innerHTML = html;
+      $$('.sc b', selBox).forEach(function(b){
+        b.addEventListener('click', function(){
+          var c = $('.chip[data-k="'+b.dataset.k+'"]', bar);
+          if(c){ c.classList.remove('on'); render(); }
+        });
+      });
+      $('.clear-all', selBox).addEventListener('click', function(){
+        $$('.chip', bar).forEach(function(c){c.classList.remove('on');}); render();
+      });
+      applyFilter(group);
     }
-    results.innerHTML=html;
+    $$('.chip', bar).forEach(function(c){
+      c.addEventListener('click', function(){ c.classList.toggle('on'); render(); });
+    });
+    render();
+  });
+
+  /* 筛选结果过滤（卡片 data-f 含标签，空格分隔） */
+  function applyFilter(group){
+    var cards = $$('[data-fl="'+group+'"]');
+    if(!cards.length) return;
+    var bar = $('.filter-bar[data-group="'+group+'"]');
+    var keys = $$('.chip.on', bar).map(function(c){return c.dataset.k;});
+    var shown = 0;
+    cards.forEach(function(cd){
+      var tags = (cd.dataset.f||'').split(/\s+/);
+      var ok = !keys.length || keys.some(function(k){return tags.indexOf(k)>=0;});
+      cd.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    var empty = $('[data-empty="'+group+'"]');
+    if(empty) empty.style.display = shown ? 'none' : '';
   }
-  function hotList(){
-    var hot=[['产品与能力','products.html'],['行业解决方案','solutions.html#intel'],
-      ['智慧边防应用','solutions.html#border'],['联系我们','contact.html']];
-    var s='';
-    for(var i=0;i<hot.length;i++)s+='<p style="margin:4px 0"><a href="'+hot[i][1]+'">'+hot[i][0]+' →</a></p>';
-    return s+'</div>';
+
+  /* 7. 表单实时验证 */
+  $$('form[data-validate]').forEach(function(f){
+    var rules = {'tel':/^1[3-9]\d{9}$/, 'email':/^[^\s@]+@[^\s@]+\.[^\s@]+$/};
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var bad = false, first = null;
+      $$('[data-rule]', f).forEach(function(el){
+        var row = el.closest('.frow'); var v = el.value.trim();
+        var r = el.dataset.rule; var ok = true;
+        if(r === 'req') ok = v.length > 0;
+        else if(rules[r]) ok = rules[r].test(v);
+        if(!ok){ row.classList.add('bad'); bad = true; if(!first) first = el; }
+        else row.classList.remove('bad');
+      });
+      if(bad){ if(first) first.focus(); return; }
+      var ok2 = $('.form-ok', f);
+      if(ok2){ ok2.style.display='block'; ok2.scrollIntoView({behavior: REDUCED?'auto':'smooth', block:'center'}); }
+      f.reset();
+    });
+    $$('[data-rule]', f).forEach(function(el){
+      el.addEventListener('input', function(){ el.closest('.frow').classList.remove('bad'); });
+    });
+  });
+
+  /* 8. Cookie 同意（localStorage 记忆） */
+  var ck = $('.cookie');
+  if(ck){
+    try{ if(!localStorage.getItem('ty_cookie')) ck.classList.add('on'); }catch(e){ ck.classList.add('on'); }
+    $('.ck-a', ck).addEventListener('click', function(){
+      try{ localStorage.setItem('ty_cookie','all'); }catch(e){} ck.classList.remove('on'); });
+    $('.ck-n', ck).addEventListener('click', function(){
+      try{ localStorage.setItem('ty_cookie','min'); }catch(e){} ck.classList.remove('on'); });
   }
-  searchForm.addEventListener('submit',function(e){e.preventDefault();doSearch();});
-  renderHistory();
-  doSearch();
-}
+
+  /* 9. 返回顶部 */
+  var tp = $('.totop');
+  if(tp) tp.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: REDUCED?'auto':'smooth'}); });
+
+  /* 10. 数字滚动 */
+  $$('[data-count]').forEach(function(el){
+    var end = parseInt(el.dataset.count, 10); if(isNaN(end)) return;
+    if(REDUCED){ el.textContent = end; return; }
+    var s = 0, step = Math.max(1, Math.ceil(end/26));
+    var t = setInterval(function(){
+      s += step; if(s >= end){ s = end; clearInterval(t); }
+      el.textContent = s;
+    }, 40);
+  });
+
+  /* 11. 搜索历史（localStorage，最近10条，30天过期） */
+  var box = $('#searchInput');
+  if(box){
+    var KEY = 'ty_hist';
+    function load(){
+      try{
+        var d = JSON.parse(localStorage.getItem(KEY) || '[]');
+        var now = Date.now();
+        return d.filter(function(x){ return now - x.t < 30*24*3600*1000; });
+      }catch(e){ return []; }
+    }
+    function save(k){
+      var d = load().filter(function(x){ return x.k !== k; });
+      d.unshift({k:k, t:Date.now()}); d = d.slice(0,10);
+      try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e){}
+      renderHist();
+    }
+    function renderHist(){
+      var hb = $('#histBox'); if(!hb) return;
+      var d = load(); if(!d.length){ hb.style.display='none'; return; }
+      hb.style.display='';
+      $('#histList').innerHTML = d.map(function(x){
+        return '<button class="chip" data-k="'+x.k.replace(/"/g,'')+'">'+x.k+'</button>'; }).join('');
+      $$('#histList .chip').forEach(function(b){
+        b.addEventListener('click', function(){ box.value = b.dataset.k; doSearch(); });
+      });
+    }
+    var clr = $('#clearHist');
+    if(clr) clr.addEventListener('click', function(){
+      try{ localStorage.removeItem(KEY); }catch(e){} renderHist(); });
+    function doSearch(){
+      var k = box.value.trim(); if(!k) return;
+      save(k);
+      var res = $('#resBox'); if(!res) return;
+      var hits = (window.SITE_INDEX||[]).filter(function(i){
+        return (i.t+i.d+i.k).toLowerCase().indexOf(k.toLowerCase()) >= 0; });
+      $('#resCount').textContent = hits.length;
+      $('#resWord').textContent = k;
+      $('#resList').innerHTML = hits.length ? hits.map(function(i){
+        return '<a href="'+i.u+'"><div class="nc"><h3>'+hl(i.t,k)+'</h3><p>'+hl(i.d,k)+
+               '</p></div><div class="nt"><span>'+i.k+'</span></div></a>'; }).join('')
+        : '';
+      res.style.display='';
+      $('#emptyBox').style.display = hits.length ? 'none' : '';
+    }
+    function hl(s,k){
+      if(!k) return s;
+      return String(s).replace(new RegExp('('+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),
+        '<mark style="background:#CCECFB;color:#0F3D75;padding:0 2px">$1</mark>');
+    }
+    $('#searchBtn').addEventListener('click', doSearch);
+    box.addEventListener('keydown', function(e){ if(e.key==='Enter') doSearch(); });
+    renderHist();
+    if(location.hash.indexOf('q=') > -1){
+      box.value = decodeURIComponent(location.hash.split('q=')[1]); doSearch();
+    }
+    // 排序
+    var sortSel = $('#sortSel');
+    if(sortSel) sortSel.addEventListener('change', doSearch);
+  }
 })();

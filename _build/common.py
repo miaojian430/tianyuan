@@ -1,19 +1,55 @@
-<!DOCTYPE html>
+# -*- coding: utf-8 -*-
+"""天元官网 · 共享组件（导航 / 页脚 / 抽屉 / Cookie）"""
+
+NAV = [
+    ("index",     "首页",        "index.html", []),
+    ("products",  "产品与能力",  "products.html", [
+        ("体系总纲", "products.html#arch"),
+        ("三大核心引擎", "products.html#engine"),
+        ("天元 · 智算底座", "products.html#infra"),
+        ("天元 · 灵集（数智市集）", "products.html#market"),
+        ("全栈安全合规", "products.html#security"),
+    ]),
+    ("solutions", "解决方案",    "solutions.html", [
+        ("应急管理", "solutions.html#emergency"),
+        ("自然资源监测", "solutions.html#resource"),
+        ("智慧农业", "solutions.html#agri"),
+        ("交通物流", "solutions.html#logistics"),
+    ]),
+    ("cases",     "客户案例",    "cases.html", [
+        ("案例总览", "cases.html"),
+        ("标杆案例", "case-detail.html"),
+    ]),
+    ("about",     "关于我们",    "about.html", [
+        ("研究院简介", "about.html#intro"),
+        ("发展历程", "about.html#history"),
+        ("资质荣誉", "about.html#honor"),
+    ]),
+    ("contact",   "联系我们",    "contact.html", []),
+]
+
+
+def head(title, desc, extra=""):
+    return """<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>系统维护中（500） | 天元平台</title>
-<meta name="description" content="系统正在紧急维护中，预计稍后恢复。">
-<meta property="og:title" content="系统维护中（500） | 天元平台">
-<meta property="og:description" content="系统正在紧急维护中，预计稍后恢复。">
+<title>%s</title>
+<meta name="description" content="%s">
+<meta property="og:title" content="%s">
+<meta property="og:description" content="%s">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
-
+%s
 </head>
 <body>
-<div class="topbar">
+""" % (title, desc, title, desc, extra)
+
+
+def topbar():
+    return """<div class="topbar">
   <div class="topbar-in">
     <span class="org">中国航天科技集团卫星应用创新研究院</span>
     <div class="topbar-right">
@@ -24,13 +60,26 @@
     </div>
   </div>
 </div>
-<nav class="nav">
+"""
+
+
+def navbar(active):
+    items = []
+    for key, label, url, subs in NAV:
+        on = " on" if key == active else ""
+        if subs:
+            sub = '<div class="sub">' + "".join(
+                '<a href="%s">%s</a>' % (u, t) for t, u in subs) + '</div>'
+            items.append('<li class="%s"><a href="%s">%s</a>%s</li>' % (on.strip(), url, label, sub))
+        else:
+            items.append('<li class="%s"><a href="%s">%s</a></li>' % (on.strip(), url, label))
+    return """<nav class="nav">
   <div class="nav-in">
     <a class="logo" href="index.html">
       <div class="logo-m"></div>
       <div><div class="logo-t">天元</div><div class="logo-s">TIANYUAN</div></div>
     </a>
-    <ul class="menu"><li class="on"><a href="index.html">首页</a></li><li class=""><a href="products.html">产品与能力</a><div class="sub"><a href="products.html#arch">体系总纲</a><a href="products.html#engine">三大核心引擎</a><a href="products.html#infra">天元 · 智算底座</a><a href="products.html#market">天元 · 灵集（数智市集）</a><a href="products.html#security">全栈安全合规</a></div></li><li class=""><a href="solutions.html">解决方案</a><div class="sub"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class=""><a href="cases.html">客户案例</a><div class="sub"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class=""><a href="about.html">关于我们</a><div class="sub"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li class=""><a href="contact.html">联系我们</a></li></ul>
+    <ul class="menu">%s</ul>
     <div class="nav-right">
       <a class="icon-btn" href="search.html" title="搜索" aria-label="搜索">&#128269;</a>
       <a class="btn btn-p" href="contact.html">申请演示</a>
@@ -38,37 +87,33 @@
     </div>
   </div>
 </nav>
-<div class="drawer">
+""" % "".join(items)
+
+
+def drawer(active):
+    li = []
+    for key, label, url, subs in NAV:
+        on = " on" if key == active else ""
+        if subs:
+            m = "".join('<a href="%s">%s</a>' % (u, t) for t, u in subs)
+            li.append('<li class="has-sub"><a href="%s" class="%s">%s &#8250;</a>'
+                      '<div class="sub-m" style="display:none">%s</div></li>'
+                      % (url, on.strip(), label, m))
+        else:
+            li.append('<li><a href="%s" class="%s">%s</a></li>' % (url, on.strip(), label))
+    return """<div class="drawer">
   <div class="drawer-h"><b>导航菜单</b><button class="drawer-close" aria-label="关闭菜单">&times;</button></div>
-  <ul><li><a href="index.html" class="on">首页</a></li><li class="has-sub"><a href="products.html" class="">产品与能力 &#8250;</a><div class="sub-m" style="display:none"><a href="products.html#arch">体系总纲</a><a href="products.html#engine">三大核心引擎</a><a href="products.html#infra">天元 · 智算底座</a><a href="products.html#market">天元 · 灵集（数智市集）</a><a href="products.html#security">全栈安全合规</a></div></li><li class="has-sub"><a href="solutions.html" class="">解决方案 &#8250;</a><div class="sub-m" style="display:none"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class="has-sub"><a href="cases.html" class="">客户案例 &#8250;</a><div class="sub-m" style="display:none"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class="has-sub"><a href="about.html" class="">关于我们 &#8250;</a><div class="sub-m" style="display:none"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li><a href="contact.html" class="">联系我们</a></li></ul>
+  <ul>%s</ul>
   <div class="drawer-f">
     <button class="drawer-back" type="button">&#8249; 返回上一级</button>
     <a class="btn btn-p btn-w" href="contact.html">申请演示</a>
   </div>
 </div>
+""" % "".join(li)
 
-<div class="banner pad" style="text-align:center"><div class="banner-in">
-  <div style="font-size:88px;font-weight:700;color:#00A0E9;line-height:1">500</div>
-  <h1 style="margin-top:14px">系统正在紧急维护中</h1>
-  <p class="lead" style="margin:14px auto 0">预计稍后恢复，请耐心等待。
-    给您带来不便，我们深表歉意。</p>
-  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px">
-    <a class="btn btn-p btn-lg" href="index.html">返回首页</a>
-    <a class="btn btn-o btn-lg" href="contact.html">联系我们</a></div>
-</div></div>
-<section class="sec"><div class="wrap">
-  <div class="form rv">
-    <h3 style="color:#0F3D75;margin-bottom:12px">其他联系方式</h3>
-    <p style="font-size:14px;color:#5C6670;line-height:2">
-      技术支持：<a href="mailto:【待补充】" style="color:#00608C">【待补充】</a><br>
-      服务电话：<a href="tel:【待补充】" style="color:#00608C">【待补充】</a><br>
-      工作时间：工作日 9:00–17:30
-    </p>
-    <div class="info" style="margin-top:18px"><b>实现建议：</b>预计恢复时间优先采用后台动态配置；
-      无配置时展示本页静态兜底文案，避免出现空白或报错代码。</div>
-  </div>
-</div></section>
-<footer class="ft">
+
+def footer():
+    return """<footer class="ft">
   <div class="wrap">
     <div class="ft-g">
       <div>
@@ -131,7 +176,11 @@
     </div>
   </div>
 </footer>
-<div class="cookie">
+"""
+
+
+def cookie():
+    return """<div class="cookie">
   <div class="cookie-in">
     <div>我们使用 Cookie 以保障网站正常运行并改善浏览体验。继续使用即表示您同意我们的
       <a href="legal.html#cookie">Cookie 声明</a>与<a href="legal.html">隐私政策</a>。</div>
@@ -141,8 +190,18 @@
     </div>
   </div>
 </div>
-<button class="totop" aria-label="返回顶部">&#8593;</button>
-<script src="assets/main.js"></script>
+"""
 
+
+def scripts(extra=""):
+    return """<button class="totop" aria-label="返回顶部">&#8593;</button>
+<script src="assets/main.js"></script>
+%s
 </body>
 </html>
+""" % extra
+
+
+def page(title, desc, active, body, extra_head="", extra_js=""):
+    return (head(title, desc, extra_head) + topbar() + navbar(active) + drawer(active)
+            + body + footer() + cookie() + scripts(extra_js))

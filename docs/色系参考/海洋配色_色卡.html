@@ -1,34 +1,200 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
 <title>海洋配色体系 · 色卡</title><style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F4F7FA;
+body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F6F6F6;
   color:#1A1A1A;padding:36px;line-height:1.7}
 .wrap{max-width:1280px;margin:0 auto}
 h1{font-size:26px;color:#033F63;margin-bottom:6px}
 .sub{color:#6B7A80;font-size:13px;margin-bottom:10px}
-.note-top{background:#E6F4FA;border-left:3px solid #00A6C0;padding:11px 16px;font-size:12.5px;
+.note-top{background:#F0FAFB;border-left:3px solid #00A6C0;padding:11px 16px;font-size:12.5px;
   color:#0A2436;border-radius:4px;margin-bottom:26px}
 .grp{background:#fff;border-radius:8px;padding:20px 22px;margin-bottom:20px;
   box-shadow:0 1px 3px rgba(3,63,99,.08);border-top:3px solid #00A6C0}
 .gname{font-size:17px;color:#033F63;font-weight:700;margin-bottom:14px;
-  padding-bottom:8px;border-bottom:1px solid #D8E2EA}
+  padding-bottom:8px;border-bottom:1px solid #D2DCE3}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.sw{width:112px;border-radius:6px;overflow:hidden;border:1px solid #D8E2EA;flex:0 0 auto}
+.sw{width:112px;border-radius:6px;overflow:hidden;border:1px solid #D2DCE3;flex:0 0 auto}
 .chip{height:58px;display:flex;align-items:flex-end;justify-content:center;
   padding-bottom:4px;font-size:9.5px;letter-spacing:.2px}
 .meta{padding:6px;background:#fff;text-align:center}
 .meta b{display:block;font-size:11px;color:#033F63;font-family:Consolas,monospace}
 .meta span{display:block;font-size:10px;color:#6B7A80;line-height:1.45;margin-top:2px}
-.blk{border:1px solid #E2E9EF;border-radius:6px;padding:12px 14px;margin-bottom:10px;background:#FAFCFD}
+.blk{border:1px solid #E3EAEE;border-radius:6px;padding:12px 14px;margin-bottom:10px;background:#FAFCFD}
 .bname{font-size:14.5px;font-weight:700;color:#1A1A1A;margin-bottom:3px}
 .bname code{font-family:Consolas,monospace;font-size:13px;color:#033F63;margin-left:8px}
 .buse{font-size:12px;color:#6B7A80;margin-bottom:9px}
-.lbl{font-size:10.5px;color:#8A96A0;margin-bottom:4px;letter-spacing:.5px}
-.tip{background:#EEF6FA;border-left:3px solid #2E86C1;padding:12px 16px;font-size:12.5px;
+.lbl{font-size:10.5px;color:#9A9A9A;margin-bottom:4px;letter-spacing:.5px}
+.tip{background:#F5FBFC;border-left:3px solid #2E86C1;padding:12px 16px;font-size:12.5px;
   color:#1A1A1A;border-radius:4px;margin-top:6px;line-height:1.85}
 .tip b{color:#033F63}
-code{background:#EDF2F6;padding:1px 5px;border-radius:3px;font-family:Consolas,monospace;font-size:12px}
+code{background:#EDEDED;padding:1px 5px;border-radius:3px;font-family:Consolas,monospace;font-size:12px}
+
+/* ===== 推荐方案区块（插入色卡页顶部） ===== */
+.sp{background:#fff;border-radius:8px;padding:28px 26px 30px;margin-bottom:22px;
+  box-shadow:0 1px 3px rgba(3,63,99,.08);border-top:4px solid #033F63}
+.sp-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.sp-h h2{font-size:20px;color:#033F63;font-weight:700;margin:0}
+.sp-tag{background:#033F63;color:#fff;font-size:11.5px;font-weight:700;
+  padding:4px 11px;border-radius:3px;letter-spacing:1px}
+.sp-lead{font-size:13px;color:#5A666D;line-height:1.9;margin-bottom:22px;max-width:980px}
+.sp-tbl{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:24px}
+.sp-tbl th{background:#E6ECEF;color:#033F63;font-weight:700;font-size:12.5px;text-align:left;
+  padding:10px 14px;border:1px solid #CDD9E0;white-space:nowrap}
+.sp-tbl td{padding:12px 14px;border:1px solid #CDD9E0;color:#5A666D;vertical-align:middle}
+.sp-tbl tr:hover td{background:#F2F5F7}
+.sp-tbl code{font-family:Consolas,monospace;font-size:13px;color:#033F63;
+  background:#E6ECEF;padding:2px 7px;border-radius:3px}
+.sp-dot{display:inline-block;width:11px;height:11px;border-radius:50%;
+  margin-right:5px;vertical-align:middle;border:1px solid rgba(0,0,0,.12)}
+.sp-bar{display:inline-flex;gap:4px;width:132px;vertical-align:middle}
+.sp-bar i{flex:1;height:17px;border-radius:3px;border:1px solid rgba(0,0,0,.07)}
+.sp-sec{font-size:15px;color:#033F63;font-weight:700;margin:26px 0 12px;
+  padding-left:10px;border-left:3px solid #E8C05A}
+.sp-note{background:#F2F5F7;border-left:3px solid #4A90D9;border-radius:4px;padding:11px 16px;
+  font-size:12.5px;color:#1A1A1A;line-height:1.9;margin-bottom:9px}
+.sp-note b{color:#033F63}
+.sp-tbl2{width:100%;border-collapse:collapse;font-size:13px}
+.sp-tbl2 th,.sp-tbl2 td{border:1px solid #CDD9E0;padding:11px 14px;text-align:left}
+.sp-tbl2 th{background:#E6ECEF;color:#033F63;font-weight:700;font-size:12.5px;width:52px}
+.sp-tbl2 td{color:#5A666D;line-height:1.8}
+.sp-ratio{display:flex;border-radius:6px;overflow:hidden;margin-bottom:8px}
+.sp-ratio div{padding:14px 12px;font-size:13px;text-align:center;white-space:nowrap}
+.sp-scale{display:flex;justify-content:space-between;font-size:11.5px;color:#5A666D;
+  font-family:Consolas,monospace;gap:8px;flex-wrap:wrap;padding:0 2px}
+.sp-depth{display:flex;border-radius:6px;overflow:hidden;margin-bottom:8px}
+.sp-depth div{flex:1;padding:11px 6px;text-align:center;font-size:11.5px}
+@media(max-width:700px){.sp-bar{width:80px}}
 </style></head><body><div class="wrap">
+
+<div class="sp">
+  <div class="sp-h">
+    <span class="sp-tag">推荐方案</span>
+    <h2>深海靛蓝 + 浮游金（智慧海洋官网主色）</h2>
+  </div>
+  <p class="sp-lead">商业化智慧海洋产品站的推荐配色。
+    <b style="color:#033F63">主色不用"最像海"的浅蓝，而用深海靛蓝</b> ——
+    浅蓝（海面波光、浅海青绿）撑不起导航栏，且偏旅游度假感；
+    深海靛蓝来自海水深度骨干（1000–4000m 无光层），稳重、专业、有纵深感。
+    本区块用于<b>网页框架</b>，下方完整色卡中的深度色、航标色、温度梯度用于<b>数据可视化</b>。</p>
+
+  <table class="sp-tbl">
+    <thead><tr><th>角色</th><th>色名</th><th>HEX</th><th>用途</th><th>色阶</th></tr></thead>
+    <tbody>
+        <tr>
+          <td><b style="color:#033F63">主色</b></td>
+          <td><span class="sp-dot" style="background:#033F63"></span>深海靛蓝</td>
+          <td><code>#033F63</code></td>
+          <td>导航、页脚、标题、主按钮</td>
+          <td><span class="sp-bar"><i style="background:#B3C5D0"></i><i style="background:#033F63"></i><i style="background:#022F4A"></i></span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#033F63">主色浅</b></td>
+          <td><span class="sp-dot" style="background:#00688F"></span>弱光层蓝</td>
+          <td><code>#00688F</code></td>
+          <td>二级导航、图表主序列</td>
+          <td><span class="sp-bar"><i style="background:#B2D2DD"></i><i style="background:#00688F"></i><i style="background:#004E6B"></i></span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#033F63">辅助</b></td>
+          <td><span class="sp-dot" style="background:#4A90D9"></span>等深线蓝</td>
+          <td><code>#4A90D9</code></td>
+          <td>链接、数据图表、焦点环</td>
+          <td><span class="sp-bar"><i style="background:#C9DEF4"></i><i style="background:#4A90D9"></i><i style="background:#386CA3"></i></span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#033F63">点缀</b></td>
+          <td><span class="sp-dot" style="background:#E8C05A"></span>浮游金</td>
+          <td><code>#E8C05A</code></td>
+          <td>CTA 按钮、核心数字</td>
+          <td><span class="sp-bar"><i style="background:#F8ECCE"></i><i style="background:#E8C05A"></i><i style="background:#AE9044"></i></span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#033F63">深底</b></td>
+          <td><span class="sp-dot" style="background:#041622"></span>深海底色</td>
+          <td><code>#041622</code></td>
+          <td>数据大屏、海图区块</td>
+          <td><span class="sp-bar"><i style="background:#B4B9BD"></i><i style="background:#041622"></i><i style="background:#03101A"></i></span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#033F63">高亮</b></td>
+          <td><span class="sp-dot" style="background:#00E5FF"></span>声呐青</td>
+          <td><code>#00E5FF</code></td>
+          <td>图表焦点、当前目标</td>
+          <td><span class="sp-bar"><i style="background:#B2F7FF"></i><i style="background:#00E5FF"></i><i style="background:#00ACBF"></i></span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#033F63">安全</b></td>
+          <td><span class="sp-dot" style="background:#2A9D8F"></span>浅海青绿</td>
+          <td><code>#2A9D8F</code></td>
+          <td>正常状态、安全区</td>
+          <td><span class="sp-bar"><i style="background:#BFE2DD"></i><i style="background:#2A9D8F"></i><i style="background:#20766B"></i></span></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <div class="sp-sec">为什么不用"最像海"的浅蓝做主色</div>
+  <div class="sp-note"><b>1. 浅蓝撑不起导航栏。</b>
+    海面波光 <code>#7FD4E8</code>、浅海青绿 <code>#2A9D8F</code> 明度过高，
+    白字看不清，做页脚也没有分量。</div>
+  <div class="sp-note"><b>2. 浅蓝偏"旅游度假"感。</b>
+    海岛游、海洋馆、水上乐园都是这个调性。你是卫星 + AI 的科技公司，不是旅行社。</div>
+  <div class="sp-note"><b>3. 深海靛蓝有纵深感。</b>
+    取自深度骨干的无光层，既有体系归属感，又能压住场面 —— 与应急选用「火焰蓝」是同一逻辑：
+    <b>用行业的权威色，而非行业的表面色</b>。</div>
+
+  <div class="sp-sec">海洋特有的两个坑</div>
+  <div class="sp-note"><b>坑一：全站一个蓝会太平。</b>
+    蓝绿色系饱和度区间窄，不分层就是一片糊。解决办法：借用深度骨干七档拉开明度层次，
+    再用<b>浮游金</b>这一个暖色打破单调。
+    <br><b>为什么点缀色选金不选黄：</b>航标黄 <code>#FFD200</code> 太刺眼，
+    浮游金 <code>#E8C05A</code> 更柔和，还带"阳光、沙滩、渔获"的联想。</div>
+  <div class="sp-note"><b>坑二：数值型与有序型数据，配色逻辑完全不同。</b>
+    水深是<b>有序量</b>，用同色系深浅（下方骨干七档）；
+    温度 / 盐度 / 流速是<b>数值量</b>，才用双色梯度（<code>#2E6FB7</code> → <code>#E85D3D</code>），
+    且必须给完整色标。<b>把温度的蓝红渐变拿去当页面装饰，会污染语义</b> ——
+    读者会以为红色代表"高温"或"危险"。</div>
+
+  <div class="sp-sec">海水深度骨干（用于拉开页面层次）</div>
+  <div class="sp-depth"><div style="background:#7FD4E8;color:#1A1A1A">海面</div><div style="background:#00A6C0;color:#1A1A1A">0–200m</div><div style="background:#2A9D8F;color:#1A1A1A">大陆架</div><div style="background:#00688F;color:#FFFFFF">200–1000m</div><div style="background:#033F63;color:#FFFFFF">1000–4000m</div><div style="background:#012A36;color:#FFFFFF">4000–6000m</div><div style="background:#001219;color:#FFFFFF">6000m+</div>
+  </div>
+  <div class="sp-scale"><span>海面</span><span>透光层</span><span>浅海</span>
+    <span>弱光层</span><span>深海</span><span>深渊</span><span>海沟</span></div>
+
+  <div class="sp-sec">两条不能破的规矩</div>
+  <table class="sp-tbl2">
+    <tr><th>1</th><td><b>IALA 左红右绿不能互换。</b>
+      我国采用 A 区规则：左侧标红 <code>#D92B2B</code>、右侧标绿 <code>#1E9E5A</code>。
+      这是<b>航行安全</b>问题，不是审美问题。</td></tr>
+    <tr><th>2</th><td><b>航标色只在表达航标时出现。</b>
+      左舷红、右舷绿、航标黄均不作装饰色 —— 与应急的「红色使用纪律」是同一条原则：
+      <b>语义色的威力来自稀缺</b>。</td></tr>
+  </table>
+
+  <div class="sp-sec">60 – 30 – 10 配比</div>
+  <div class="sp-ratio">
+    <div style="flex:6;background:#F2F5F7;color:#1A1A1A">60%　留白与浅底</div>
+    <div style="flex:3;background:#033F63;color:#fff">30%　深海靛蓝 + 弱光层蓝</div>
+    <div style="flex:1;background:#E8C05A;color:#1A1A1A">10%　浮游金 + 航标色</div>
+  </div>
+  <div class="sp-scale"><span>#FFFFFF / #F2F5F7</span><span>#033F63 / #00688F</span><span>#E8C05A</span></div>
+
+  <div class="sp-sec">备选方案</div>
+  <table class="sp-tbl">
+    <thead><tr><th>方案</th><th>主色 + 点缀</th><th>适用场景</th></tr></thead>
+    <tbody>
+        <tr><td><b>方案 A（推荐）</b></td><td><span class="sp-dot" style="background:#033F63"></span>
+          <span class="sp-dot" style="background:#E8C05A"></span>深海靛蓝 + 浮游金</td><td>商业化智慧海洋产品站，稳重专业、有纵深感</td></tr>
+        <tr><td><b>方案 B</b></td><td><span class="sp-dot" style="background:#1B3A5F"></span>
+          <span class="sp-dot" style="background:#FFD200"></span>航海藏青 + 航标黄</td><td>偏海事、船舶、港口管理，行业感更强</td></tr>
+        <tr><td><b>方案 C</b></td><td><span class="sp-dot" style="background:#0F3D75"></span>
+          <span class="sp-dot" style="background:#00A0E9"></span>沿用航天蓝</td><td>挂在天元平台之下时，与农业/应急站同逻辑</td></tr>
+    </tbody>
+  </table>
+  <div class="sp-note"><b>衔接建议：</b>若该站挂在天元平台之下，
+    建议页面框架沿用天元品牌色，仅在海图与数据可视化内部使用本方案 ——
+    与农业站、应急站保持同一处理逻辑。</div>
+</div>
+
 <h1>海洋配色体系 · 完整色卡</h1>
 <div class="sub">7 大类 45 支主色，每支含 9 浅阶 + 本色 + 4 深阶；对比度按 WCAG 计算并标注建议文字色</div>
 <div class="note-top"><b>设计说明：</b>本体系以<b>海水深度分层</b>为骨干（第一组），

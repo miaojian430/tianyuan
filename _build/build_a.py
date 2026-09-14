@@ -1,52 +1,46 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>天元 · 一站式场景化数智平台 | 首页</title>
-<meta name="description" content="天元平台基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到行动指令下达的全链路闭环。">
-<meta property="og:title" content="天元 · 一站式场景化数智平台 | 首页">
-<meta property="og:description" content="天元平台基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到行动指令下达的全链路闭环。">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/theme.css">
+# -*- coding: utf-8 -*-
+import io, sys
+sys.path.insert(0, '.')
+from common import page
+def w(n,s): io.open("../"+n,"w",encoding="utf-8").write(s); print("  ->",n)
 
-</head>
-<body>
-<div class="topbar">
-  <div class="topbar-in">
-    <span class="org">中国航天科技集团卫星应用创新研究院</span>
-    <div class="topbar-right">
-      <a href="search.html">站内搜索</a>
-      <a href="careers.html">加入我们</a>
-      <a href="news.html">新闻动态</a>
-      <a href="#" class="lang" title="语言切换">中文 / EN</a>
+ARCH = """
+<section class="sec alt">
+  <div class="wrap">
+    <div class="sec-h rv"><div class="k">ARCHITECTURE</div><h2>1 + 3 + 1 + N　产品体系</h2>
+      <p>1 个底座 + 3 大核心引擎 + 1 个安全体系 + N 个行业应用，
+        实现从卫星原始数据获取到行动指令下达的全链路闭环。</p></div>
+    <div class="rv" style="background:#fff;border:1px solid #BEC3C8;border-radius:8px;padding:26px 22px">
+      <div style="background:#EEF4FA;border:1px solid #BEC3C8;border-radius:6px;padding:16px;
+        text-align:center;margin-bottom:9px">
+        <b style="color:#0F3D75;font-size:15px">N 个行业应用</b><br>
+        <span style="font-size:12.5px;color:#5C6670">应急管理 · 自然资源 · 智慧农业 · 交通物流 · 城市治理</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:9px">
+        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
+          <b style="color:#0F3D75;font-size:13.5px">空天地数据融合引擎</b><br>
+          <span style="font-size:11.5px;color:#5C6670">数据从哪来</span></div>
+        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
+          <b style="color:#0F3D75;font-size:13.5px">认知计算与决策引擎</b><br>
+          <span style="font-size:11.5px;color:#5C6670">数据怎么用</span></div>
+        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
+          <b style="color:#0F3D75;font-size:13.5px">具身智能行动执行引擎</b><br>
+          <span style="font-size:11.5px;color:#5C6670">指令怎么执行</span></div>
+      </div>
+      <div style="background:#0F3D75;color:#fff;border-radius:6px;padding:16px;text-align:center;margin-bottom:9px">
+        <b>天元 · 智算底座</b><br>
+        <span style="font-size:12.5px;color:#CFDCEA">国产化 · 高性能 · 算力与存储支撑</span></div>
+      <div style="background:#FAE7EA;border:1px solid #C8102E;border-radius:6px;padding:13px;text-align:center">
+        <b style="color:#C8102E;font-size:13.5px">全栈安全合规体系　横向贯穿所有层级</b><br>
+        <span style="font-size:12px;color:#5C6670">身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源</span></div>
     </div>
+    <div class="info rv"><b>说明：</b>安全体系不是独立层级，而是横向贯穿基础设施、
+      数据感知、认知决策、行动管控四层的支撑体系。</div>
   </div>
-</div>
-<nav class="nav">
-  <div class="nav-in">
-    <a class="logo" href="index.html">
-      <div class="logo-m"></div>
-      <div><div class="logo-t">天元</div><div class="logo-s">TIANYUAN</div></div>
-    </a>
-    <ul class="menu"><li class="on"><a href="index.html">首页</a></li><li class=""><a href="products.html">产品与能力</a><div class="sub"><a href="products.html#arch">体系总纲</a><a href="products.html#engine">三大核心引擎</a><a href="products.html#infra">天元 · 智算底座</a><a href="products.html#market">天元 · 灵集（数智市集）</a><a href="products.html#security">全栈安全合规</a></div></li><li class=""><a href="solutions.html">解决方案</a><div class="sub"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class=""><a href="cases.html">客户案例</a><div class="sub"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class=""><a href="about.html">关于我们</a><div class="sub"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li class=""><a href="contact.html">联系我们</a></li></ul>
-    <div class="nav-right">
-      <a class="icon-btn" href="search.html" title="搜索" aria-label="搜索">&#128269;</a>
-      <a class="btn btn-p" href="contact.html">申请演示</a>
-      <button class="hamburger" aria-label="打开菜单"><i></i><i></i><i></i></button>
-    </div>
-  </div>
-</nav>
-<div class="drawer">
-  <div class="drawer-h"><b>导航菜单</b><button class="drawer-close" aria-label="关闭菜单">&times;</button></div>
-  <ul><li><a href="index.html" class="on">首页</a></li><li class="has-sub"><a href="products.html" class="">产品与能力 &#8250;</a><div class="sub-m" style="display:none"><a href="products.html#arch">体系总纲</a><a href="products.html#engine">三大核心引擎</a><a href="products.html#infra">天元 · 智算底座</a><a href="products.html#market">天元 · 灵集（数智市集）</a><a href="products.html#security">全栈安全合规</a></div></li><li class="has-sub"><a href="solutions.html" class="">解决方案 &#8250;</a><div class="sub-m" style="display:none"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class="has-sub"><a href="cases.html" class="">客户案例 &#8250;</a><div class="sub-m" style="display:none"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class="has-sub"><a href="about.html" class="">关于我们 &#8250;</a><div class="sub-m" style="display:none"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li><a href="contact.html" class="">联系我们</a></li></ul>
-  <div class="drawer-f">
-    <button class="drawer-back" type="button">&#8249; 返回上一级</button>
-    <a class="btn btn-p btn-w" href="contact.html">申请演示</a>
-  </div>
-</div>
+</section>
+"""
 
+# ============ 首页 ============
+idx = """
 <header class="banner">
   <div class="banner-in" style="padding:96px 24px 88px">
     <span style="display:inline-block;background:#00A0E9;color:#1A1A1A;font-size:12.5px;
@@ -85,40 +79,7 @@
     </div>
   </div>
 </section>
-
-<section class="sec alt">
-  <div class="wrap">
-    <div class="sec-h rv"><div class="k">ARCHITECTURE</div><h2>1 + 3 + 1 + N　产品体系</h2>
-      <p>1 个底座 + 3 大核心引擎 + 1 个安全体系 + N 个行业应用，
-        实现从卫星原始数据获取到行动指令下达的全链路闭环。</p></div>
-    <div class="rv" style="background:#fff;border:1px solid #BEC3C8;border-radius:8px;padding:26px 22px">
-      <div style="background:#EEF4FA;border:1px solid #BEC3C8;border-radius:6px;padding:16px;
-        text-align:center;margin-bottom:9px">
-        <b style="color:#0F3D75;font-size:15px">N 个行业应用</b><br>
-        <span style="font-size:12.5px;color:#5C6670">应急管理 · 自然资源 · 智慧农业 · 交通物流 · 城市治理</span></div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:9px">
-        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
-          <b style="color:#0F3D75;font-size:13.5px">空天地数据融合引擎</b><br>
-          <span style="font-size:11.5px;color:#5C6670">数据从哪来</span></div>
-        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
-          <b style="color:#0F3D75;font-size:13.5px">认知计算与决策引擎</b><br>
-          <span style="font-size:11.5px;color:#5C6670">数据怎么用</span></div>
-        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
-          <b style="color:#0F3D75;font-size:13.5px">具身智能行动执行引擎</b><br>
-          <span style="font-size:11.5px;color:#5C6670">指令怎么执行</span></div>
-      </div>
-      <div style="background:#0F3D75;color:#fff;border-radius:6px;padding:16px;text-align:center;margin-bottom:9px">
-        <b>天元 · 智算底座</b><br>
-        <span style="font-size:12.5px;color:#CFDCEA">国产化 · 高性能 · 算力与存储支撑</span></div>
-      <div style="background:#FAE7EA;border:1px solid #C8102E;border-radius:6px;padding:13px;text-align:center">
-        <b style="color:#C8102E;font-size:13.5px">全栈安全合规体系　横向贯穿所有层级</b><br>
-        <span style="font-size:12px;color:#5C6670">身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源</span></div>
-    </div>
-    <div class="info rv"><b>说明：</b>安全体系不是独立层级，而是横向贯穿基础设施、
-      数据感知、认知决策、行动管控四层的支撑体系。</div>
-  </div>
-</section>
-
+""" + ARCH + """
 <!-- 三大核心引擎 -->
 <section class="sec">
   <div class="wrap">
@@ -272,81 +233,9 @@
     <a class="btn btn-p btn-lg" href="contact.html">获取行业解决方案</a>
   </div>
 </section>
-<footer class="ft">
-  <div class="wrap">
-    <div class="ft-g">
-      <div>
-        <h5>天元平台</h5>
-        <p class="ab">“感通算用”一体化综合信息服务平台<br>
-        依托天地一体化资源，面向行业智能升级<br>
-        提供一站式信息服务。<br>
-        中国航天科技集团卫星应用创新研究院</p>
-        <p class="ab" style="margin-top:10px">地址：【待补充】<br>邮编：【待补充】</p>
-      </div>
-      <div>
-        <h5>产品与能力</h5>
-        <ul>
-          <li><a href="product-detail.html">天元平台总览</a></li>
-          <li><a href="products.html#engine">空天地数据融合引擎</a></li>
-          <li><a href="products.html#engine">认知计算与决策引擎</a></li>
-          <li><a href="products.html#engine">具身智能行动执行引擎</a></li>
-          <li><a href="products.html#market">天元 · 灵集（数智市集）</a></li>
-          <li><a href="products.html#security">全栈安全合规</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>关于我们</h5>
-        <ul>
-          <li><a href="about.html">研究院简介</a></li>
-          <li><a href="about.html#history">发展历程</a></li>
-          <li><a href="about.html#honor">资质荣誉</a></li>
-          <li><a href="careers.html">加入我们</a></li>
-          <li><a href="news.html">新闻动态</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>联系与帮助</h5>
-        <p class="ct">
-          商务合作：<a href="tel:【待补充】">【待补充】</a><br>
-          技术支持：<a href="mailto:【待补充】">【待补充】</a><br>
-          媒体问询：<a href="mailto:【待补充】">【待补充】</a><br>
-          工作时间：工作日 9:00–17:30
-        </p>
-        <p class="ct" style="margin-top:10px">
-          <a href="search.html">站内搜索</a> ·
-          <a href="sitemap.html">网站地图</a>
-        </p>
-      </div>
-    </div>
-    <div class="ft-b">
-      <div class="links">
-        <a href="contact.html">联系我们</a>
-        <a href="legal.html">隐私政策</a>
-        <a href="legal.html#terms">服务条款</a>
-        <a href="legal.html#cookie">Cookie 声明</a>
-        <a href="sitemap.html">网站地图</a>
-        <a href="404.html">404 页示例</a>
-      </div>
-      <div class="icp">
-        中国航天科技集团卫星应用创新研究院　版权所有<br>
-        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">【ICP备案号待补充】</a>
-        　|　本页面为结构与配色演示稿，正式发布前请替换全部占位内容并完成合规审核。
-      </div>
-    </div>
-  </div>
-</footer>
-<div class="cookie">
-  <div class="cookie-in">
-    <div>我们使用 Cookie 以保障网站正常运行并改善浏览体验。继续使用即表示您同意我们的
-      <a href="legal.html#cookie">Cookie 声明</a>与<a href="legal.html">隐私政策</a>。</div>
-    <div class="cookie-btns">
-      <button class="ck-n" type="button">仅必要 Cookie</button>
-      <button class="ck-a" type="button">全部接受</button>
-    </div>
-  </div>
-</div>
-<button class="totop" aria-label="返回顶部">&#8593;</button>
-<script src="assets/main.js"></script>
+"""
+w("index.html", page("天元 · 一站式场景化数智平台 | 首页",
+  "天元平台基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到行动指令下达的全链路闭环。",
+  "index", idx))
 
-</body>
-</html>
+# 注：产品与能力页已迁移至 build_prod.py（依据《产品详情V1.2》+《引擎V1.2》重建）
