@@ -4,11 +4,13 @@
 NAV = [
     ("index",     "首页",        "index.html", []),
     ("products",  "产品与能力",  "products.html", [
-        ("体系总纲", "products.html#arch"),
-        ("三大核心引擎", "products.html#engine"),
-        ("天元 · 智算底座", "products.html#infra"),
-        ("天元 · 灵集（数智市集）", "products.html#market"),
-        ("全栈安全合规", "products.html#security"),
+        ("分层能力一览", "products.html#layers"),
+        ("基础设施层 · 智算底座", "products.html#infra"),
+        ("数据融合层 · 空天地数据融合引擎", "products.html#fusion"),
+        ("认知决策层 · 认知计算与决策引擎", "products.html#cognition"),
+        ("行动执行层 · 具身智能行动执行引擎", "products.html#embodied"),
+        ("数智市集 · 天元·灵集", "products.html#market"),
+        ("安全合规 · 全栈安全合规", "products.html#security"),
     ]),
     ("solutions", "解决方案",    "solutions.html", [
         ("应急管理", "solutions.html#emergency"),
@@ -127,10 +129,10 @@ def footer():
       <div>
         <h5>产品与能力</h5>
         <ul>
-          <li><a href="product-detail.html">天元平台总览</a></li>
-          <li><a href="products.html#engine">空天地数据融合引擎</a></li>
-          <li><a href="products.html#engine">认知计算与决策引擎</a></li>
-          <li><a href="products.html#engine">具身智能行动执行引擎</a></li>
+          <li><a href="products.html">天元平台总览</a></li>
+          <li><a href="products.html#fusion">空天地数据融合引擎</a></li>
+          <li><a href="products.html#cognition">认知计算与决策引擎</a></li>
+          <li><a href="products.html#embodied">具身智能行动执行引擎</a></li>
           <li><a href="products.html#market">天元 · 灵集（数智市集）</a></li>
           <li><a href="products.html#security">全栈安全合规</a></li>
         </ul>

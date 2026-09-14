@@ -78,6 +78,11 @@
   fbars.forEach(function(bar){
     var group = bar.dataset.group;
     var selBox = $('[data-selected="'+group+'"]');
+    /* URL 参数预选（如 products.html?f=fusion，从详情页回链时自动筛选该层产品） */
+    try{
+      var fp = new URLSearchParams(location.search).get('f');
+      if(fp){ $$('.chip[data-k="'+fp+'"]', bar).forEach(function(c){ c.classList.add('on'); }); }
+    }catch(e){}
     function render(){
       if(!selBox) return;
       var on = $$('.chip.on', bar);

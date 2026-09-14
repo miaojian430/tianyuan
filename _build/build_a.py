@@ -7,36 +7,87 @@ def w(n,s): io.open("../"+n,"w",encoding="utf-8").write(s); print("  ->",n)
 ARCH = """
 <section class="sec alt">
   <div class="wrap">
-    <div class="sec-h rv"><div class="k">ARCHITECTURE</div><h2>1 + 3 + 1 + N　产品体系</h2>
-      <p>1 个底座 + 3 大核心引擎 + 1 个安全体系 + N 个行业应用，
-        实现从卫星原始数据获取到行动指令下达的全链路闭环。</p></div>
-    <div class="rv" style="background:#fff;border:1px solid #BEC3C8;border-radius:8px;padding:26px 22px">
-      <div style="background:#EEF4FA;border:1px solid #BEC3C8;border-radius:6px;padding:16px;
-        text-align:center;margin-bottom:9px">
-        <b style="color:#0F3D75;font-size:15px">N 个行业应用</b><br>
-        <span style="font-size:12.5px;color:#5C6670">应急管理 · 自然资源 · 智慧农业 · 交通物流 · 城市治理</span></div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:9px">
-        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
-          <b style="color:#0F3D75;font-size:13.5px">空天地数据融合引擎</b><br>
-          <span style="font-size:11.5px;color:#5C6670">数据从哪来</span></div>
-        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
-          <b style="color:#0F3D75;font-size:13.5px">认知计算与决策引擎</b><br>
-          <span style="font-size:11.5px;color:#5C6670">数据怎么用</span></div>
-        <div style="background:#E8EEF5;border:1px solid #BEC3C8;border-radius:6px;padding:15px 8px;text-align:center">
-          <b style="color:#0F3D75;font-size:13.5px">具身智能行动执行引擎</b><br>
-          <span style="font-size:11.5px;color:#5C6670">指令怎么执行</span></div>
+    <div class="sec-h rv"><div class="k">ARCHITECTURE</div><h2>1 + 3 + 1 + 1 + N　产品体系</h2>
+      <p>1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用，
+        构建从卫星原始数据获取到行动指令下达的全链路闭环系统。</p></div>
+    <div class="arch rv">
+      <div class="arch-row">
+        <div class="arch-lb">应用层（N）</div>
+        <div class="arch-body">
+          <span class="arch-chip">应急减灾</span><span class="arch-chip">边防管控</span>
+          <span class="arch-chip">海洋应用</span><span class="arch-chip">开源情报</span>
+          <span class="arch-chip ghost">更多行业：能源 / 低空 / 林草 / 电网</span>
+        </div>
       </div>
-      <div style="background:#0F3D75;color:#fff;border-radius:6px;padding:16px;text-align:center;margin-bottom:9px">
-        <b>天元 · 智算底座</b><br>
-        <span style="font-size:12.5px;color:#CFDCEA">国产化 · 高性能 · 算力与存储支撑</span></div>
-      <div style="background:#FAE7EA;border:1px solid #C8102E;border-radius:6px;padding:13px;text-align:center">
-        <b style="color:#C8102E;font-size:13.5px">全栈安全合规体系　横向贯穿所有层级</b><br>
-        <span style="font-size:12px;color:#5C6670">身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源</span></div>
+      <div class="arch-row">
+        <div class="arch-lb">数智市集</div>
+        <div class="arch-body">
+          <a class="arch-chip" href="products.html#market">天元·灵集</a>
+          <span class="arch-chip ghost">数智资产广场 · 智能体及技能广场 · 天元·信息服务助手</span>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-lb">三大核心引擎</div>
+        <div class="arch-body arch-3">
+          <a class="arch-e" href="products.html#fusion">
+            <b>空天地数据融合引擎</b>
+            <span>天元·灵观 · 天元·灵数 · 空天地一体化网络</span></a>
+          <a class="arch-e" href="products.html#cognition">
+            <b>认知计算与决策引擎</b>
+            <span>天元·灵语 · 天元·灵炼 · 天元·灵智 · 认知计算引擎</span></a>
+          <a class="arch-e" href="products.html#embodied">
+            <b>具身智能行动执行引擎</b>
+            <span>天元·灵动</span></a>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-lb">基础设施层</div>
+        <div class="arch-body">
+          <a class="arch-chip" href="products.html#infra">天元·智算底座</a>
+          <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，国产化全栈适配</span>
+        </div>
+      </div>
+      <div class="arch-row arch-sec">
+        <div class="arch-lb">安全体系（横向）</div>
+        <div class="arch-body">
+          <a class="arch-chip" href="products.html#security">全栈安全合规体系</a>
+          <span class="arch-chip ghost">身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源</span>
+        </div>
+      </div>
     </div>
-    <div class="info rv"><b>说明：</b>安全体系不是独立层级，而是横向贯穿基础设施、
-      数据感知、认知决策、行动管控四层的支撑体系。</div>
+    <div class="info rv"><b>说明：</b>安全体系不是独立层级，而是横向贯穿应用层、数智市集、
+      三大核心引擎与基础设施层的支撑体系。点击各层可跳转至产品与能力页对应详解。</div>
   </div>
 </section>
+"""
+
+# 与 build_prod.py 保持一致的架构图样式（首页版本增加 chip 链接态）
+ARCH_CSS = """
+<style>
+.arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff}
+.arch-row{display:flex;border-bottom:1px solid #DCE9F5;align-items:stretch}
+.arch-row:last-child{border-bottom:0}
+.arch-lb{flex:0 0 150px;background:#0F3D75;color:#fff;font-size:13.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;padding:14px 10px;text-align:center}
+.arch-sec .arch-lb{background:#0C315E}
+.arch-body{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.arch-chip{background:#DCE9F5;color:#0F3D75;font-size:12.5px;font-weight:700;
+  padding:5px 12px;border-radius:3px;text-decoration:none}
+a.arch-chip:hover{background:#C7DCF2}
+.arch-chip.ghost{background:#fff;color:#5C6670;font-weight:400;
+  border:1px dashed #B4C7E7}
+.arch-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 16px}
+.arch-e{display:block;background:#F5F8FB;border:1px solid #B4C7E7;border-left:3px solid #00A0E9;
+  border-radius:6px;padding:13px 14px;transition:.2s;text-decoration:none}
+.arch-e:hover{background:#DCE9F5;transform:translateY(-2px)}
+.arch-e b{display:block;font-size:14px;color:#0F3D75;margin-bottom:4px}
+.arch-e span{display:block;font-size:11.5px;color:#5C6670;line-height:1.6}
+@media(max-width:860px){
+  .arch-row{flex-direction:column}
+  .arch-lb{flex:none;width:100%;padding:9px}
+  .arch-3{grid-template-columns:1fr}
+}
+</style>
 """
 
 # ============ 首页 ============
@@ -50,7 +101,7 @@ idx = """
     <p class="lead">基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到
       行动指令下达的全链路闭环，为客户提供“感、通、算、用”一体化的数智化解决方案。</p>
     <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px">
-      <a class="btn btn-p btn-lg" href="product-detail.html">了解平台能力</a>
+      <a class="btn btn-p btn-lg" href="products.html">了解平台能力</a>
       <a class="btn btn-o btn-lg" href="contact.html">预约演示</a>
     </div>
     <div class="spec">
@@ -86,7 +137,7 @@ idx = """
     <div class="sec-h rv"><div class="k">CORE ENGINES</div><h2>三大核心引擎</h2>
       <p>分别回答三个问题：数据从哪来、数据怎么用、指令怎么执行。</p></div>
     <div class="grid3">
-      <a class="pcard rv" href="products.html#engine">
+      <a class="pcard rv" href="products.html#fusion">
         <div class="ph" style="background:linear-gradient(135deg,#0F3D75,#1B5A9E)">
           <span class="ph-tag">数据从哪来</span>空天地数据融合引擎</div>
         <div class="pb"><h3>空天地数据融合引擎</h3>
@@ -96,7 +147,7 @@ idx = """
             <li>天元·灵观 · 天元·灵数 · 空天地一体化网络</li>
             <li>数据获取周期：天级 → 小时级</li></ul>
           <span class="more">查看详情 &#8594;</span></div></a>
-      <a class="pcard rv" href="products.html#engine">
+      <a class="pcard rv" href="products.html#cognition">
         <div class="ph" style="background:linear-gradient(135deg,#1B5A9E,#3F6491)">
           <span class="ph-tag">数据怎么用</span>认知计算与决策引擎</div>
         <div class="pb"><h3>认知计算与决策引擎</h3>
@@ -106,7 +157,7 @@ idx = """
             <li>天元·灵语 · 天元·灵炼 · 天元·灵智 · 认知计算引擎</li>
             <li>模型迭代：月级 → 周级</li></ul>
           <span class="more">查看详情 &#8594;</span></div></a>
-      <a class="pcard rv" href="products.html#engine">
+      <a class="pcard rv" href="products.html#embodied">
         <div class="ph" style="background:linear-gradient(135deg,#0C315E,#16487E)">
           <span class="ph-tag">指令怎么执行</span>具身智能行动执行引擎</div>
         <div class="pb"><h3>具身智能行动执行引擎</h3>
@@ -236,6 +287,6 @@ idx = """
 """
 w("index.html", page("天元 · 一站式场景化数智平台 | 首页",
   "天元平台基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到行动指令下达的全链路闭环。",
-  "index", idx))
+  "index", idx, extra_head=ARCH_CSS))
 
 # 注：产品与能力页已迁移至 build_prod.py（依据《产品详情V1.2》+《引擎V1.2》重建）

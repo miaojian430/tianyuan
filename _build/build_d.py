@@ -8,24 +8,25 @@ def w(n,s): io.open("../"+n,"w",encoding="utf-8").write(s); print("  ->",n)
 IDX = """
 <script>
 window.SITE_INDEX=[
- {t:"天元平台",d:"一站式场景化数智平台，感通算用一体化全链路闭环。",k:"产品",u:"product-detail.html"},
+ {t:"天元平台",d:"一站式场景化数智平台，感通算用一体化全链路闭环。",k:"产品",u:"products.html"},
  {t:"产品与能力",d:"1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用。",k:"产品",u:"products.html"},
- {t:"空天地数据融合引擎",d:"获取、治理与融合卫星遥感、无人机、物联网等多源数据，让天基数据直达业务。",k:"引擎",u:"products.html#engine"},
- {t:"认知计算与决策引擎",d:"本体建模读懂业务，模型工厂与智能体工厂持续生产，认知计算引擎统一调度。",k:"引擎",u:"products.html#engine"},
- {t:"具身智能行动执行引擎",d:"面向无人机、无人车、机器狗等多类具身设备，统一调度与厘米级精准作业。",k:"引擎",u:"products.html#engine"},
- {t:"天元·灵观",d:"天基数据获取，覆盖高、低轨卫星及 44 个全球地面站，获取周期天级→小时级。",k:"产品",u:"product-detail.html#fusion"},
- {t:"天元·灵数",d:"数据治理与融合，多源数据融合，20+ 数据集，50+ 自动化管道。",k:"产品",u:"product-detail.html#fusion"},
- {t:"空天地一体化网络",d:"通信全流程保障，星地链路、5G/专网、边缘组网自适应切换。",k:"产品",u:"product-detail.html#fusion"},
- {t:"天元·灵语",d:"本体建模，Skill 级业务操作，支持 200+ AI 动作。",k:"产品",u:"product-detail.html#cognition"},
- {t:"天元·灵炼",d:"模型工厂，数据在线 AI 标注，大模型后训练，模型迭代月级→周级。",k:"产品",u:"product-detail.html#cognition"},
- {t:"天元·灵智",d:"智能体工厂，支持多智能体任务编排与自我进化。",k:"产品",u:"product-detail.html#cognition"},
- {t:"认知计算引擎",d:"智能体编排框架，自动调度数据、模型、智能体与 Skill。",k:"产品",u:"product-detail.html#cognition"},
- {t:"天元·灵动",d:"具身智能调度，覆盖无人机、无人车、机器狗，作业精度厘米级。",k:"产品",u:"product-detail.html#embodied"},
+ {t:"空天地数据融合引擎",d:"获取、治理与融合卫星遥感、无人机、物联网等多源数据，让天基数据直达业务。",k:"引擎",u:"products.html#fusion"},
+ {t:"认知计算与决策引擎",d:"本体建模读懂业务，模型工厂与智能体工厂持续生产，认知计算引擎统一调度。",k:"引擎",u:"products.html#cognition"},
+ {t:"具身智能行动执行引擎",d:"面向无人机、无人车、机器狗等多类具身设备，统一调度与厘米级精准作业。",k:"引擎",u:"products.html#embodied"},
+ {t:"天元·灵观",d:"天基数据获取，覆盖高、低轨卫星及 44 个全球地面站，获取周期天级→小时级。",k:"产品",u:"products.html#fusion"},
+ {t:"天元·灵数",d:"数据治理与融合，多源数据融合，20+ 数据集，50+ 自动化管道。",k:"产品",u:"products.html#fusion"},
+ {t:"空天地一体化网络",d:"通信全流程保障，星地链路、5G/专网、边缘组网自适应切换。",k:"产品",u:"products.html#fusion"},
+ {t:"天元·灵语",d:"本体建模，Skill 级业务操作，支持 200+ AI 动作。",k:"产品",u:"products.html#cognition"},
+ {t:"天元·灵炼",d:"模型工厂，数据在线 AI 标注，大模型后训练，模型迭代月级→周级。",k:"产品",u:"products.html#cognition"},
+ {t:"天元·灵智",d:"智能体工厂，支持多智能体任务编排与自我进化。",k:"产品",u:"products.html#cognition"},
+ {t:"认知计算引擎",d:"智能体编排框架，自动调度数据、模型、智能体与 Skill。",k:"产品",u:"products.html#cognition"},
+ {t:"天元·灵动",d:"具身智能调度，覆盖无人机、无人车、机器狗，作业精度厘米级。",k:"产品",u:"products.html#embodied"},
  {t:"天元·灵集",d:"数智市集，数智资产广场 + 智能体及技能广场 + 天元·信息服务助手。",k:"产品",u:"products.html#market"},
- {t:"天元·智算底座",d:"智算集群 / 高速互联 / 边云协同，国产化全栈适配。",k:"产品",u:"product-detail.html#infra"},
- {t:"全栈安全合规",d:"身份与访问控制、数据安全与隐私、AI 安全治理、行为审计与溯源。",k:"产品",u:"product-detail.html#security"},
+ {t:"天元·智算底座",d:"智算集群 / 高速互联 / 边云协同，国产化全栈适配。",k:"产品",u:"products.html#infra"},
+ {t:"全栈安全合规",d:"身份与访问控制、数据安全与隐私、AI 安全治理、行为审计与溯源。",k:"产品",u:"products.html#security"},
  {t:"解决方案",d:"应急管理、自然资源监测、智慧农业、交通物流、城市治理。",k:"解决方案",u:"solutions.html"},
- {t:"客户案例",d:"按行业筛选的项目案例列表。",k:"案例",u:"cases.html"},
+ {t:"客户案例",d:"天元平台赋能各行业的实践成果，点击卡片查看案例详情。",k:"案例",u:"cases.html"},
+ {t:"智慧边防案例",d:"从“看得见”到“看得准”：四大核心能力 + 两大关键突破，误报降低 80%，有效报警率 95%+。",k:"案例",u:"case-detail.html"},
  {t:"关于我们",d:"研究院简介、发展历程与资质荣誉。",k:"关于",u:"about.html"},
  {t:"新闻动态",d:"平台进展、技术成果与行业合作资讯。",k:"动态",u:"news.html"},
  {t:"加入我们",d:"算法、研发、产品与市场岗位。",k:"招聘",u:"careers.html"},
@@ -81,7 +82,7 @@ sr = """
       <p style="font-size:14px;color:#5C6670;margin-bottom:20px">
         换个关键词试试，或直接浏览下面的热门内容。</p>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-s" href="product-detail.html">天元平台</a>
+        <a class="btn btn-s" href="products.html">天元平台</a>
         <a class="btn btn-s" href="solutions.html">解决方案</a>
         <a class="btn btn-s" href="cases.html">客户案例</a>
         <a class="btn btn-s" href="contact.html">联系我们</a></div>
@@ -111,8 +112,8 @@ e404 = """
   <div class="wrap">
     <div class="sec-h left rv"><div class="k">POPULAR</div><h2>热门页面</h2></div>
     <div class="grid3 rv">
-      <a class="card" href="product-detail.html"><div class="ico">天</div>
-        <h3>天元平台</h3><p>产品功能、技术架构与应用场景。</p></a>
+      <a class="card" href="products.html"><div class="ico">天</div>
+        <h3>天元平台</h3><p>产品与能力：分层能力与产品清单。</p></a>
       <a class="card" href="solutions.html"><div class="ico">解</div>
         <h3>解决方案</h3><p>按行业查找痛点与对应方案。</p></a>
       <a class="card" href="contact.html"><div class="ico">联</div>
@@ -259,7 +260,7 @@ sm = """
     <div class="card">
       <h3>P1 · 信任与深度信息</h3>
       <ul style="margin-top:10px">
-        <li style="padding:7px 0;border-bottom:1px solid #D6DCE1"><a href="product-detail.html">产品详情 · 天元平台</a></li>
+        <li style="padding:7px 0;border-bottom:1px solid #D6DCE1"><a href="products.html">产品与能力 · 天元平台</a></li>
         <li style="padding:7px 0;border-bottom:1px solid #D6DCE1"><a href="cases.html">案例总览</a></li>
         <li style="padding:7px 0;border-bottom:1px solid #D6DCE1"><a href="case-detail.html">案例详情</a></li>
         <li style="padding:7px 0"><a href="about.html">关于我们</a></li>

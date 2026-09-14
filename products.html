@@ -4,46 +4,87 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>产品与能力 | 天元平台</title>
-<meta name="description" content="天元平台产品体系：1 个底座 + 3 大核心引擎（空天地数据融合、认知计算与决策、具身智能行动执行）+ 1 个数智市集 + 1 个安全体系 + N 个行业应用。">
+<meta name="description" content="天元平台产品体系：12 项核心产品，覆盖智算底座、数据融合、认知决策、行动执行、数智市集、安全合规六大能力层级，提供从数据获取到行动执行的闭环能力。">
 <meta property="og:title" content="产品与能力 | 天元平台">
-<meta property="og:description" content="天元平台产品体系：1 个底座 + 3 大核心引擎（空天地数据融合、认知计算与决策、具身智能行动执行）+ 1 个数智市集 + 1 个安全体系 + N 个行业应用。">
+<meta property="og:description" content="天元平台产品体系：12 项核心产品，覆盖智算底座、数据融合、认知决策、行动执行、数智市集、安全合规六大能力层级，提供从数据获取到行动执行的闭环能力。">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
 
 <style>
-.arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff}
+/* 交互式架构图：五横行，层级可点 */
+.arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff;margin-bottom:18px}
 .arch-row{display:flex;border-bottom:1px solid #DCE9F5;align-items:stretch}
 .arch-row:last-child{border-bottom:0}
+.arch-row[data-f]{cursor:pointer}
 .arch-lb{flex:0 0 150px;background:#0F3D75;color:#fff;font-size:13.5px;font-weight:700;
   display:flex;align-items:center;justify-content:center;padding:14px 10px;text-align:center}
 .arch-sec .arch-lb{background:#0C315E}
 .arch-body{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .arch-chip{background:#DCE9F5;color:#0F3D75;font-size:12.5px;font-weight:700;
   padding:5px 12px;border-radius:3px}
-.arch-chip.ghost{background:#fff;color:#5C6670;font-weight:400;
-  border:1px dashed #B4C7E7}
+.arch-chip.ghost{background:#fff;color:#5C6670;font-weight:400;border:1px dashed #B4C7E7}
 .arch-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 16px}
 .arch-e{display:block;background:#F5F8FB;border:1px solid #B4C7E7;border-left:3px solid #00A0E9;
-  border-radius:6px;padding:13px 14px;transition:.2s}
+  border-radius:6px;padding:13px 14px;transition:.2s;text-decoration:none;cursor:pointer}
 .arch-e:hover{background:#DCE9F5;transform:translateY(-2px)}
 .arch-e b{display:block;font-size:14px;color:#0F3D75;margin-bottom:4px}
 .arch-e span{display:block;font-size:11.5px;color:#5C6670;line-height:1.6}
-.ecard{background:#fff;border:1px solid #B4C7E7;border-radius:10px;padding:24px 26px;margin-bottom:18px;
-  box-shadow:0 1px 3px rgba(15,61,117,.06)}
-.ecard-h{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;
-  padding-bottom:12px;border-bottom:1px solid #DCE9F5;margin-bottom:12px}
-.ecard-h h3{font-size:21px;color:#0F3D75;font-weight:700;margin:0}
-.e-tag{display:inline-block;background:#00A0E9;color:#1A1A1A;font-size:11.5px;font-weight:700;
-  padding:3px 10px;border-radius:3px;margin-bottom:7px}
-.e-more{font-size:13px;color:#00608C;font-weight:700;white-space:nowrap}
-.e-more:hover{color:#0F3D75;text-decoration:underline}
-.e-intro{font-size:14px;color:#5C6670;line-height:1.95;margin-bottom:18px}
-@media(max-width:860px){
-  .arch-row{flex-direction:column}
+/* 架构图选中态：与筛选器联动 */
+.arch-row.on .arch-lb{background:#00A0E9}
+.arch-row.on .arch-body{background:#F1F8FD}
+.arch-e.on{background:#DCE9F5;border-color:#00A0E9}
+/* 层级筛选器（单选，无“全部”） */
+.pfbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;
+  padding:14px 16px;background:#fff;border:1px solid #BEC3C8;border-radius:8px}
+.pfbar .lb{font-size:13px;color:#5C6670;font-weight:700;margin-right:4px}
+.pfchip{background:#fff;border:1px solid #BEC3C8;color:#33414E;font-size:13px;
+  padding:6px 14px;border-radius:16px;cursor:pointer;font-family:inherit;transition:.15s}
+.pfchip:hover{border-color:#00A0E9;color:#00608C}
+.pfchip.on{background:#0F3D75;border-color:#0F3D75;color:#fff;font-weight:700}
+/* 分层分组 */
+.pl-group{margin-top:26px}
+.pl-h{margin-bottom:14px}
+.pl-h h3{font-size:20px;color:#0F3D75;border-left:3px solid #00A0E9;padding-left:10px;margin:0}
+.pl-q{display:inline-block;font-size:11px;font-weight:700;color:#0A4A75;background:#CCECFB;
+  padding:2px 8px;border-radius:3px;margin-left:8px;vertical-align:2px}
+/* 产品卡：桌面 3 列 / 平板 2 列 / 手机 1 列 */
+.pcv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pcv{background:#fff;border:1px solid #B4C7E7;border-radius:10px;overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(15,61,117,.06);transition:box-shadow .2s}
+.pcv:hover{box-shadow:0 6px 18px rgba(15,61,117,.14)}
+.pcv.hl{outline:3px solid #00A0E9;outline-offset:2px}
+/* 媒体区：16:9，视频封面/产品图/场景图，右上角播放图标 */
+.pcv-media{position:relative;width:100%;padding-top:56.25%;background:#EEF4FA;overflow:hidden}
+.pcv-media video,.pcv-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.pcv-ph{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;
+  align-items:center;justify-content:center;color:#7C8894;
+  border-bottom:1px dashed #B4C7E7;transition:opacity .4s}
+.pcv-ph b{display:flex;align-items:center;justify-content:center;width:46px;height:46px;
+  border-radius:50%;background:#0F3D75;color:#fff;font-size:17px;opacity:.85}
+.pcv-ph small{font-size:11.5px}
+.pcv-media:not(.ld) .pcv-ph{opacity:.3}
+.pcv-play{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;
+  background:rgba(15,61,117,.72);color:#fff;display:flex;align-items:center;
+  justify-content:center;font-size:11px;pointer-events:none}
+.pcv-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.pcv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.pcv-tags span{background:#DCE9F5;color:#0F3D75;font-size:11px;font-weight:700;
+  padding:2px 8px;border-radius:3px}
+.pcv-body h3{font-size:17.5px;color:#0F3D75;margin:0 0 6px}
+.pcv-desc{font-size:13px;color:#33414E;line-height:1.8;margin:0 0 10px}
+.pcv-kpi{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0}
+.pcv-kpi li{font-size:11.5px;color:#0A4A75;background:#F1F7FC;border:1px solid #C9DCEF;
+  border-radius:3px;padding:2px 8px}
+.pcv-act{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.reg-link{color:#00608C;font-weight:700;text-decoration:none;white-space:nowrap}
+.reg-link:hover{color:#0F3D75;text-decoration:underline}
+@media(max-width:1024px){.pcv-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.arch-row{flex-direction:column}
   .arch-lb{flex:none;width:100%;padding:9px}
-  .arch-3{grid-template-columns:1fr}
-}
+  .arch-3{grid-template-columns:1fr}}
+@media(max-width:680px){.pcv-grid{grid-template-columns:1fr}
+  .pfbar .lb{width:100%;margin-bottom:2px}}
 </style>
 
 </head>
@@ -65,7 +106,7 @@
       <div class="logo-m"></div>
       <div><div class="logo-t">天元</div><div class="logo-s">TIANYUAN</div></div>
     </a>
-    <ul class="menu"><li class=""><a href="index.html">首页</a></li><li class="on"><a href="products.html">产品与能力</a><div class="sub"><a href="products.html#arch">体系总纲</a><a href="products.html#engine">三大核心引擎</a><a href="products.html#infra">天元 · 智算底座</a><a href="products.html#market">天元 · 灵集（数智市集）</a><a href="products.html#security">全栈安全合规</a></div></li><li class=""><a href="solutions.html">解决方案</a><div class="sub"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class=""><a href="cases.html">客户案例</a><div class="sub"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class=""><a href="about.html">关于我们</a><div class="sub"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li class=""><a href="contact.html">联系我们</a></li></ul>
+    <ul class="menu"><li class=""><a href="index.html">首页</a></li><li class="on"><a href="products.html">产品与能力</a><div class="sub"><a href="products.html#layers">分层能力一览</a><a href="products.html#infra">基础设施层 · 智算底座</a><a href="products.html#fusion">数据融合层 · 空天地数据融合引擎</a><a href="products.html#cognition">认知决策层 · 认知计算与决策引擎</a><a href="products.html#embodied">行动执行层 · 具身智能行动执行引擎</a><a href="products.html#market">数智市集 · 天元·灵集</a><a href="products.html#security">安全合规 · 全栈安全合规</a></div></li><li class=""><a href="solutions.html">解决方案</a><div class="sub"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class=""><a href="cases.html">客户案例</a><div class="sub"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class=""><a href="about.html">关于我们</a><div class="sub"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li class=""><a href="contact.html">联系我们</a></li></ul>
     <div class="nav-right">
       <a class="icon-btn" href="search.html" title="搜索" aria-label="搜索">&#128269;</a>
       <a class="btn btn-p" href="contact.html">申请演示</a>
@@ -75,33 +116,33 @@
 </nav>
 <div class="drawer">
   <div class="drawer-h"><b>导航菜单</b><button class="drawer-close" aria-label="关闭菜单">&times;</button></div>
-  <ul><li><a href="index.html" class="">首页</a></li><li class="has-sub"><a href="products.html" class="on">产品与能力 &#8250;</a><div class="sub-m" style="display:none"><a href="products.html#arch">体系总纲</a><a href="products.html#engine">三大核心引擎</a><a href="products.html#infra">天元 · 智算底座</a><a href="products.html#market">天元 · 灵集（数智市集）</a><a href="products.html#security">全栈安全合规</a></div></li><li class="has-sub"><a href="solutions.html" class="">解决方案 &#8250;</a><div class="sub-m" style="display:none"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class="has-sub"><a href="cases.html" class="">客户案例 &#8250;</a><div class="sub-m" style="display:none"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class="has-sub"><a href="about.html" class="">关于我们 &#8250;</a><div class="sub-m" style="display:none"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li><a href="contact.html" class="">联系我们</a></li></ul>
+  <ul><li><a href="index.html" class="">首页</a></li><li class="has-sub"><a href="products.html" class="on">产品与能力 &#8250;</a><div class="sub-m" style="display:none"><a href="products.html#layers">分层能力一览</a><a href="products.html#infra">基础设施层 · 智算底座</a><a href="products.html#fusion">数据融合层 · 空天地数据融合引擎</a><a href="products.html#cognition">认知决策层 · 认知计算与决策引擎</a><a href="products.html#embodied">行动执行层 · 具身智能行动执行引擎</a><a href="products.html#market">数智市集 · 天元·灵集</a><a href="products.html#security">安全合规 · 全栈安全合规</a></div></li><li class="has-sub"><a href="solutions.html" class="">解决方案 &#8250;</a><div class="sub-m" style="display:none"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class="has-sub"><a href="cases.html" class="">客户案例 &#8250;</a><div class="sub-m" style="display:none"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class="has-sub"><a href="about.html" class="">关于我们 &#8250;</a><div class="sub-m" style="display:none"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li><a href="contact.html" class="">联系我们</a></li></ul>
   <div class="drawer-f">
     <button class="drawer-back" type="button">&#8249; 返回上一级</button>
     <a class="btn btn-p btn-w" href="contact.html">申请演示</a>
   </div>
 </div>
 
-<div class="banner pad"><div class="banner-in">
+<div class="banner pad" id="top"><div class="banner-in">
   <span style="display:inline-block;background:#00A0E9;color:#1A1A1A;font-size:12px;font-weight:700;
-    padding:4px 12px;border-radius:3px;letter-spacing:1px;margin-bottom:12px">1 + 3 + 1 + 1 + N</span>
-  <h1>产品与能力</h1>
-  <p class="lead">1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用。<br>
-    构建从卫星原始数据获取到行动指令下达的全链路闭环系统。</p>
+    padding:4px 12px;border-radius:3px;letter-spacing:1px;margin-bottom:12px">数据融合 · 认知决策 · 行动执行</span>
+  <h1>行业数智化全链路产品体系</h1>
+  <p class="lead">12 项核心产品，覆盖智算底座、数据融合、认知决策、行动执行、数智市集、安全合规六大能力层级，<br>
+    提供从数据获取到行动执行的闭环能力。</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
-    <a class="btn btn-p btn-lg" href="#engine">了解三大引擎</a>
-    <a class="btn btn-o btn-lg" href="product-detail.html">平台完整详情</a>
+    <a class="btn btn-p btn-lg" href="#layers">查看产品能力</a>
+    <a class="btn btn-o btn-lg" href="contact.html">获取产品资料</a>
   </div>
 </div></div>
 <div class="wrap"><div class="crumb"><a href="index.html">首页</a> / 产品与能力</div></div>
 
-<!-- ===== 体系总纲 ===== -->
-<section class="sec" id="arch">
+<!-- ===== 分层能力一览：架构图 + 筛选器 + 产品卡 ===== -->
+<section class="sec" id="layers">
   <div class="wrap">
-    <div class="sec-h left rv"><div class="k">ARCHITECTURE</div><h2>体系总纲</h2>
-      <p>1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用</p></div>
+    <div class="sec-h left rv"><div class="k">CAPABILITIES</div><h2>分层能力一览</h2></div>
 
-    <div class="arch rv">
+
+    <div class="arch rv" data-arch>
       <div class="arch-row">
         <div class="arch-lb">应用层（N）</div>
         <div class="arch-body">
@@ -110,7 +151,7 @@
           <span class="arch-chip ghost">更多行业：能源 / 低空 / 林草 / 电网</span>
         </div>
       </div>
-      <div class="arch-row">
+      <div class="arch-row" data-f="market">
         <div class="arch-lb">数智市集</div>
         <div class="arch-body">
           <span class="arch-chip">天元·灵集</span>
@@ -120,196 +161,393 @@
       <div class="arch-row">
         <div class="arch-lb">三大核心引擎</div>
         <div class="arch-body arch-3">
-          <a class="arch-e" href="#engine">
+          <a class="arch-e" data-f="fusion" href="#fusion">
             <b>空天地数据融合引擎</b>
             <span>天元·灵观 · 天元·灵数 · 空天地一体化网络</span></a>
-          <a class="arch-e" href="#engine">
+          <a class="arch-e" data-f="cognition" href="#cognition">
             <b>认知计算与决策引擎</b>
             <span>天元·灵语 · 天元·灵炼 · 天元·灵智 · 认知计算引擎</span></a>
-          <a class="arch-e" href="#engine">
+          <a class="arch-e" data-f="embodied" href="#embodied">
             <b>具身智能行动执行引擎</b>
             <span>天元·灵动</span></a>
         </div>
       </div>
-      <div class="arch-row">
+      <div class="arch-row" data-f="infra">
         <div class="arch-lb">基础设施层</div>
         <div class="arch-body">
           <span class="arch-chip">天元·智算底座</span>
           <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，国产化全栈适配</span>
         </div>
       </div>
-      <div class="arch-row arch-sec">
-        <div class="arch-lb">安全体系（横向）</div>
+      <div class="arch-row arch-sec" data-f="security">
+        <div class="arch-lb">安全体系（横向贯穿）</div>
         <div class="arch-body">
           <span class="arch-chip">全栈安全合规体系</span>
           <span class="arch-chip ghost">身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ===== 三大核心引擎（引擎能力并入本页）===== -->
-<section class="sec alt" id="engine">
-  <div class="wrap">
-    <div class="sec-h left rv"><div class="k">CORE ENGINES</div><h2>三大核心引擎</h2>
-      <p>融合人工智能与智能体技术，实现从空天地数据融合到认知决策、再到行动执行的全链路闭环。</p></div>
+
+    <div class="pfbar rv" role="tablist" aria-label="按层级筛选">
+      <span class="lb">按层级筛选</span>
+      <button class="pfchip" type="button" data-k="infra">智算底座</button><button class="pfchip on" type="button" data-k="fusion">数据融合</button><button class="pfchip" type="button" data-k="cognition">认知决策</button><button class="pfchip" type="button" data-k="embodied">行动执行</button><button class="pfchip" type="button" data-k="market">数智市集</button><button class="pfchip" type="button" data-k="security">安全合规</button>
+    </div>
+
     
-    <div class="ecard rv">
-      <div class="ecard-h">
-        <div>
-          <span class="e-tag">数据从哪来</span>
-          <h3>空天地数据融合引擎</h3>
+    <div class="pl-group" data-group="infra" id="infra">
+      <div class="pl-h rv"><h3>基础设施层 · 天元·智算底座</h3></div>
+      <div class="pcv-grid">
+      <div class="pcv rv" id="infra-cluster">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
         </div>
-        <a class="e-more" href="product-detail.html#fusion">查看分层详情 &#8594;</a>
-      </div>
-      <p class="e-intro">以空天地一体化数据源为核心，快速获取、治理与融合卫星遥感、无人机、物联网等多源数据，并通过星地链路、5G/专网、边缘组网自适应切换保障传输，让天基数据直达业务。</p>
-      <div class="grid3"><div class="card" data-fl="prod" data-f="fusion"><h4>天元·灵观</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">天基数据获取</p><p>便捷获取卫星数据，AI 简化任务需求，星地协同智能指挥。覆盖高、低轨卫星及 44 个全球地面站</p><ul><li>卫星数据获取周期从“天级”缩短至“小时级”</li></ul></div><div class="card" data-fl="prod" data-f="fusion"><h4>天元·灵数</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">数据治理与融合</p><p>智能数据治理，多源数据融合（卫星遥感、无人机、物联网），沉淀 20+ 数据集，拥有 50+ 自动化管道</p><ul><li>数据治理人工干预减少 60%，多源数据融合效率提升 3 倍</li></ul></div><div class="card" data-fl="prod" data-f="fusion"><h4>空天地一体化网络</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">通信全流程保障</p><p>确保数据传输的高带宽与低延迟。支持星地链路、5G/专网、边缘组网等多种通信方式自适应切换</p><ul><li>保障数据链路稳定可靠</li></ul></div>
-      </div>
-    </div>
-    <div class="ecard rv">
-      <div class="ecard-h">
-        <div>
-          <span class="e-tag">数据怎么用</span>
-          <h3>认知计算与决策引擎</h3>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>基础支撑</span></div>
+          <h3>智算集群</h3>
+          <p class="pcv-desc">国产全栈适配，算力池化与统一资源管理，支持弹性扩容。</p>
+          <ul class="pcv-kpi"><li>算力利用率 +30%</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
         </div>
-        <a class="e-more" href="product-detail.html#cognition">查看分层详情 &#8594;</a>
       </div>
-      <p class="e-intro">以本体建模读懂业务，以模型工厂和智能体工厂持续生产模型与智能体，并由认知计算引擎统一调度数据、模型、智能体与 Skill，形成从数据到决策的流程闭环。</p>
-      <div class="grid3"><div class="card" data-fl="prod" data-f="cognition"><h4>天元·灵语</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">本体建模</p><p>自动本体建模，Skill 级业务操作，支持 200+ AI 动作；构建行业知识建模、时空本体建模、图谱推理与因果分析</p><ul><li>业务人员无需编程即可调用 AI 能力</li></ul></div><div class="card" data-fl="prod" data-f="cognition"><h4>天元·灵炼</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">模型工厂</p><p>数据在线 AI 标注，大模型后训练，完成 7 项应用模型，支持增量训练与联邦学习</p><ul><li>模型迭代周期从“月级”缩短至“周级”</li></ul></div><div class="card" data-fl="prod" data-f="cognition"><h4>天元·灵智</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">智能体工厂</p><p>提供智能体开发、编排与运行能力，支持多智能体任务编排与自我进化</p><ul><li>智能体开发效率提升，业务场景快速落地</li></ul></div><div class="card" data-fl="prod" data-f="cognition"><h4>认知计算引擎</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">智能体编排框架</p><p>能够自动调度数据、模型、智能体与 Skill，实现信息服务的流程闭环</p><ul><li>为上层应用提供统一的能力调度与编排支撑，实现端到端流程闭环</li></ul></div>
-      </div>
-    </div>
-    <div class="ecard rv">
-      <div class="ecard-h">
-        <div>
-          <span class="e-tag">指令怎么执行</span>
-          <h3>具身智能行动执行引擎</h3>
+
+      <div class="pcv rv" id="infra-network">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
         </div>
-        <a class="e-more" href="product-detail.html#embodied">查看分层详情 &#8594;</a>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>基础支撑</span></div>
+          <h3>高速互联</h3>
+          <p class="pcv-desc">RDMA 高速互联与分布式并行存储，训练效率提升 50%。</p>
+          <ul class="pcv-kpi"><li>TB 级存储吞吐</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
       </div>
-      <p class="e-intro">面向无人机、无人车、机器狗等多类具身设备，实现统一调度与链路自适应下发，结合视觉增强完成厘米级精准作业，打通从决策到行动的最后一公里。</p>
-      <div class="grid3"><div class="card" data-fl="prod" data-f="embodied"><h4>天元·灵动</h4><p style="font-size:12.5px;color:#00A0E9;margin:2px 0 7px;font-weight:700">具身智能调度</p><p>覆盖无人机、无人车、机器狗等多类具身设备；统一调度，链路自适应下发；具备视觉增强，支持小、中、大覆盖半径（作业面积 5m²–100km²）的精准作业</p><ul><li>多设备协同效率提升 50%，调度响应 ≤1s；作业精度提升至厘米级，人力成本降低 70%</li></ul></div>
+
+      <div class="pcv rv" id="infra-edge">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>基础支撑</span></div>
+          <h3>边云协同</h3>
+          <p class="pcv-desc">云端训练与边缘推理无缝协同，边缘延迟 ≤50ms。</p>
+          <ul class="pcv-kpi"><li>带宽成本降低 40%</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="pl-group" data-group="fusion" id="fusion">
+      <div class="pl-h rv"><h3>数据融合层 · 空天地数据融合引擎 <span class="pl-q">数据从哪来</span></h3></div>
+      <div class="pcv-grid">
+      <div class="pcv rv" id="fusion-lingguan">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>数据获取</span></div>
+          <h3>天元·灵观</h3>
+          <p class="pcv-desc">便捷获取卫星数据，覆盖高、低轨卫星及 44 个全球地面站，小时级获取。</p>
+          <ul class="pcv-kpi"><li>星地协同智能指挥</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
 
-<!-- ===== 分层能力（可筛选）===== -->
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-h left rv"><div class="k">CAPABILITIES</div><h2>分层能力一览</h2>
-      <p>按分类口径筛选，卡片对应各层具体产品。</p></div>
+      <div class="pcv rv" id="fusion-lingshu">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>数据治理</span></div>
+          <h3>天元·灵数</h3>
+          <p class="pcv-desc">多源数据治理与融合，50+ 自动化管道，人工干预减少 60%。</p>
+          <ul class="pcv-kpi"><li>20+ 数据集</li><li>融合效率 3 倍</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
 
-    <div class="filter-bar rv" data-group="prod">
-      <span class="lb">按分类筛选</span>
-      <button class="chip" data-k="infra" type="button">智算底座</button>
-      <button class="chip" data-k="fusion" type="button">数据融合</button>
-      <button class="chip" data-k="cognition" type="button">认知决策</button>
-      <button class="chip" data-k="embodied" type="button">行动执行</button>
-      <button class="chip" data-k="market" type="button">数智市集</button>
-      <button class="chip" data-k="security" type="button">安全合规</button>
+      <div class="pcv rv" id="fusion-network">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>通信保障</span></div>
+          <h3>空天地一体化网络</h3>
+          <p class="pcv-desc">星地链路、5G/专网、边缘组网自适应切换，保障高带宽低延迟。</p>
+          <ul class="pcv-kpi"><li>多链路自适应切换</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
-    <div class="selected" data-selected="prod"></div>
+    <div class="pl-group" data-group="cognition" id="cognition">
+      <div class="pl-h rv"><h3>认知决策层 · 认知计算与决策引擎 <span class="pl-q">数据怎么用</span></h3></div>
+      <div class="pcv-grid">
+      <div class="pcv rv" id="cognition-lingyu">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>本体建模</span></div>
+          <h3>天元·灵语</h3>
+          <p class="pcv-desc">自动本体建模，支持 200+ AI 动作，业务人员无需编程即可调用。</p>
+          <ul class="pcv-kpi"><li>Skill 级业务操作</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
 
-    <div id="infra" style="margin:14px 0">
-      <h2 style="font-size:20px;color:#0F3D75;border-left:3px solid #00A0E9;padding-left:10px">
-        基础设施层 · 天元 · 智算底座</h2>
-      <p style="font-size:13.5px;color:#5C6670;margin-top:6px">
-        提供国产化、高性能的算力与数据存储支持，确保底层稳固。</p>
+      <div class="pcv rv" id="cognition-linglian">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>模型工厂</span></div>
+          <h3>天元·灵炼</h3>
+          <p class="pcv-desc">数据标注、大模型后训练与联邦学习，模型迭代月级缩短至周级。</p>
+          <ul class="pcv-kpi"><li>7 项应用模型</li><li>增量训练</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcv rv" id="cognition-lingzhi">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>智能体工厂</span></div>
+          <h3>天元·灵智</h3>
+          <p class="pcv-desc">智能体开发、编排与运行，支持多智能体任务编排与自我进化。</p>
+          <ul class="pcv-kpi"><li>业务场景快速落地</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcv rv" id="cognition-engine">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>编排调度</span></div>
+          <h3>认知计算引擎</h3>
+          <p class="pcv-desc">自动调度数据、模型、智能体与 Skill，实现端到端流程闭环。</p>
+          <ul class="pcv-kpi"><li>统一能力调度编排</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
-    <div class="grid3 rv" style="margin-bottom:16px">
-      <div class="card" data-fl="prod" data-f="infra"><div class="ico">智算集群</div><h3>智算集群</h3><p>支持国产全栈适配，提供算力池化与统一资源管理</p><ul><li>算力资源利用率提升 30%+，支持弹性扩容</li></ul></div>
-      <div class="card" data-fl="prod" data-f="infra"><div class="ico">高速互联</div><h3>高速互联</h3><p>RDMA 高速互联网络，分布式并行存储</p><ul><li>训练效率提升 50%，存储吞吐达 TB 级</li></ul></div>
-      <div class="card" data-fl="prod" data-f="infra"><div class="ico">边云协同</div><h3>边云协同</h3><p>支持云端训练与边缘端推理的无缝协同</p><ul><li>边缘推理延迟 ≤50ms，带宽成本降低 40%</li></ul></div>
+    <div class="pl-group" data-group="embodied" id="embodied">
+      <div class="pl-h rv"><h3>行动执行层 · 具身智能行动执行引擎 <span class="pl-q">指令怎么执行</span></h3></div>
+      <div class="pcv-grid">
+      <div class="pcv rv" id="embodied-lingdong">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>具身智能调度</span></div>
+          <h3>天元·灵动</h3>
+          <p class="pcv-desc">统一调度无人机、无人车、机器狗，调度响应 ≤1s，作业精度厘米级。</p>
+          <ul class="pcv-kpi"><li>协同效率 +50%</li><li>人力成本 −70%</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="pl-group" data-group="market" id="market">
+      <div class="pl-h rv"><h3>数智市集 · 天元·灵集</h3></div>
+      <div class="pcv-grid">
+      <div class="pcv rv" id="market-assets">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>资产流通</span></div>
+          <h3>数智资产广场</h3>
+          <p class="pcv-desc">汇聚数据集、本体、算法、模型等数字资产，支持上架、检索与复用。</p>
+          <ul class="pcv-kpi"><li>数字资产一站式流通</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcv rv" id="market-agents">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>技能流通</span></div>
+          <h3>智能体及技能广场</h3>
+          <p class="pcv-desc">汇聚智能体、Skill、Workflow 等，支持按需调用。</p>
+          <ul class="pcv-kpi"><li>技能按需即取即用</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcv rv" id="market-assistant">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>信息服务</span></div>
+          <h3>天元·信息服务助手</h3>
+          <p class="pcv-desc">行业信息服务统一入口，提供智能问答、记忆、多轮对话等能力。</p>
+          <ul class="pcv-kpi"><li>数智资产在线交互</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="pl-group" data-group="security" id="security">
+      <div class="pl-h rv"><h3>安全支撑体系 · 全栈安全合规</h3></div>
+      <div class="pcv-grid">
+      <div class="pcv rv" id="security-iam">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>身份安全</span></div>
+          <h3>身份与访问控制</h3>
+          <p class="pcv-desc">统一身份，分级授权。</p>
+          <ul class="pcv-kpi"><li>身份 / 权限 / 访问统一管控</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcv rv" id="security-data">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>数据安全</span></div>
+          <h3>数据安全与隐私</h3>
+          <p class="pcv-desc">加密脱敏，数据不出域，密级流转。</p>
+          <ul class="pcv-kpi"><li>全生命周期数据保护</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcv rv" id="security-ai">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>AI 安全</span></div>
+          <h3>AI 安全治理</h3>
+          <p class="pcv-desc">抗注入，模型可信赖，对抗防护。</p>
+          <ul class="pcv-kpi"><li>全流程 AI 风险防控</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcv rv" id="security-audit">
+        <div class="pcv-media" data-media>
+          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
+          <span class="pcv-play">&#9654;</span>
+        </div>
+        <div class="pcv-body">
+          <div class="pcv-tags"><span>审计溯源</span></div>
+          <h3>行为审计与溯源</h3>
+          <p class="pcv-desc">全链路审计，操作可追溯。</p>
+          <ul class="pcv-kpi"><li>事件定位与回溯</li></ul>
+          <div class="pcv-act">
+            <a class="btn btn-s" href="contact.html">申请试用</a>
+            <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
+          </div>
+        </div>
+      </div>
+      </div>
     </div>
 
-    <div id="market" style="margin:34px 0 14px">
-      <h2 style="font-size:20px;color:#0F3D75;border-left:3px solid #00A0E9;padding-left:10px">
-        数智市集 · 天元 · 灵集</h2>
-      <p style="font-size:13.5px;color:#5C6670;margin-top:6px">
-        作为数智能力的集散与流通平台，连接能力供给与业务消费。</p>
-    </div>
-    <div class="grid3 rv" style="margin-bottom:16px">
-      <div class="card" data-fl="prod" data-f="market"><h3>数智资产广场</h3><p>汇聚数据集、本体、算法、模型等数字资产，支持上架、检索与复用。</p></div>
-      <div class="card" data-fl="prod" data-f="market"><h3>智能体及技能广场</h3><p>汇聚智能体、Skill、Workflow 等，支持按需调用。</p></div>
-      <div class="card" data-fl="prod" data-f="market"><h3>天元·信息服务助手</h3><p>行业信息服务的统一入口，提供通用智能问答、记忆、多轮对话等问答能力，可通过认知计算引擎在线对数智市集中的各类资产进行体验与交互。</p></div>
-    </div>
-
-    <div id="security" style="margin:34px 0 14px">
-      <h2 style="font-size:20px;color:#0F3D75;border-left:3px solid #00A0E9;padding-left:10px">
-        安全支撑体系 · 全栈安全合规</h2>
-      <p style="font-size:13.5px;color:#5C6670;margin-top:6px">
-        横向贯穿所有层级，提供全流程安全保障。</p>
-    </div>
-    <div class="grid4 rv">
-      <div class="card" data-fl="prod" data-f="security"><h4>身份与访问控制</h4><p>统一身份，分级授权。</p></div>
-      <div class="card" data-fl="prod" data-f="security"><h4>数据安全与隐私</h4><p>加密脱敏，数据不出域，密级流转。</p></div>
-      <div class="card" data-fl="prod" data-f="security"><h4>AI 安全治理</h4><p>抗注入，模型可信赖，对抗防护。</p></div>
-      <div class="card" data-fl="prod" data-f="security"><h4>行为审计与溯源</h4><p>全链路审计，操作可追溯。</p></div>
-    </div>
-
-    <div class="nlist rv" data-empty="prod" style="display:none;margin-top:20px">
+    <div class="pl-empty rv" data-empty style="display:none">
       <div style="padding:34px 24px;text-align:center;color:#5C6670">
         暂无符合条件的能力，请调整筛选条件，或
         <a href="contact.html" style="color:#00608C;text-decoration:underline">联系销售获取最新方案</a>。
-      </div></div>
-  </div>
-</section>
-
-<!-- ===== 产品注册表 ===== -->
-<section class="sec alt">
-  <div class="wrap">
-    <div class="sec-h left rv"><div class="k">PRODUCT REGISTRY</div><h2>产品注册表（能力清单）</h2>
-      <p>12 项产品，按层级归属；点击产品名可跳转至对应分层。</p></div>
-    <div class="tbl-wrap rv"><table class="tbl">
-      <thead><tr><th>产品名</th><th>层级</th><th>一句话说明</th></tr></thead>
-      <tbody>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·智算底座</td><td>基础设施层</td><td><a href="#infra" style="color:#5C6670">国产化、高性能的算力与数据存储支持，算力池化与统一资源管理，确保底层稳固。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·灵观</td><td>数据融合层</td><td><a href="#fusion" style="color:#5C6670">天基数据获取，便捷获取卫星数据，AI 简化任务需求，星地协同智能指挥，覆盖高、低轨卫星及 44 个全球地面站。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·灵数</td><td>数据融合层</td><td><a href="#fusion" style="color:#5C6670">数据治理与融合，智能数据治理，多源数据融合（卫星遥感、无人机、物联网），50+ 自动化管道。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">空天地一体化网络</td><td>数据融合层</td><td><a href="#fusion" style="color:#5C6670">通信全流程保障，星地链路、5G/专网、边缘组网等多种通信方式自适应切换。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·灵语</td><td>认知决策层</td><td><a href="#cognition" style="color:#5C6670">本体建模，自动本体建模，Skill 级业务操作，支持 200+ AI 动作，业务人员无需编程即可调用 AI 能力。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·灵炼</td><td>认知决策层</td><td><a href="#cognition" style="color:#5C6670">模型工厂，数据在线 AI 标注，大模型后训练，支持增量训练与联邦学习，模型迭代周期从“月级”缩短至“周级”。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·灵智</td><td>认知决策层</td><td><a href="#cognition" style="color:#5C6670">智能体工厂，提供智能体开发、编排与运行能力，支持多智能体任务编排与自我进化。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">认知计算引擎</td><td>认知决策层</td><td><a href="#cognition" style="color:#5C6670">智能体编排框架，自动调度数据、模型、智能体与 Skill，实现信息服务的流程闭环。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·灵动</td><td>行动执行层</td><td><a href="#embodied" style="color:#5C6670">具身智能调度，覆盖无人机、无人车、机器狗等多类具身设备，统一调度与精准作业。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·灵集</td><td>数智市集</td><td><a href="#market" style="color:#5C6670">数智能力集散与流通平台，包含数智资产广场、智能体及技能广场。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">天元·信息服务助手</td><td>数智市集</td><td><a href="#market" style="color:#5C6670">行业信息服务的统一入口，提供通用智能问答、记忆、多轮对话等问答能力，可通过认知计算引擎在线体验与交互数智市集各类资产。</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">全栈安全合规</td><td>安全合规</td><td><a href="#security" style="color:#5C6670">身份与访问控制、数据安全与隐私、AI 安全治理、行为审计与溯源，横向贯穿所有层级。</a></td></tr>
-      </tbody></table></div>
-    <div class="info rv"><b>分类口径：</b>
-      全部 / 智算底座 / 数据融合 / 认知决策 / 行动执行 / 数智市集 / 安全合规</div>
-  </div>
-</section>
-
-<!-- ===== 典型场景 ===== -->
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-h left rv"><div class="k">SCENARIOS</div><h2>典型应用场景</h2></div>
-    <div class="grid3 rv">
-      <div class="card"><h3>边防预警与研判处置</h3><p>多元信息融合的态势感知、预警发现、研判处置，无人装备协同闭环。</p><a class="more" href="solutions.html">查看解决方案 &#8594;</a></div>
-      <div class="card"><h3>海洋污染溯源分析</h3><p>油膜识别与起始点反演，输出嫌疑船舶排序及证据链。</p><a class="more" href="solutions.html">查看解决方案 &#8594;</a></div>
-      <div class="card"><h3>灾害应急对比分析</h3><p>自然语言拉取灾前灾后影像，建筑物损毁、水体淹没范围对比。</p><a class="more" href="solutions.html">查看解决方案 &#8594;</a></div>
+      </div>
     </div>
+
+    <div class="info rv"><b>说明：</b>所有数字指标均为演示口径，待产品部门复核；
+      产品卡媒体区素材（视频封面 / 产品图 / 场景图）待补充，就绪后按首屏前 3 张立即加载、其余滚动到位懒加载。</div>
   </div>
 </section>
 
-<!-- ===== 交付物 ===== -->
-<section class="sec alt">
+<!-- ===== 产品清单 ===== -->
+<section class="sec alt" id="list">
   <div class="wrap">
-    <div class="sec-h left rv"><div class="k">DOCUMENTS</div><h2>交付物 / 文档清单</h2></div>
+    <div class="sec-h left rv"><div class="k">PRODUCT LIST</div><h2>产品清单</h2></div>
     <div class="tbl-wrap rv"><table class="tbl">
-      <thead><tr><th>文档</th><th>形式</th><th>状态</th></tr></thead>
+      <thead><tr><th>序号</th><th>产品名</th><th>层级</th><th>一句话说明</th><th>关键指标</th><th>操作</th></tr></thead>
       <tbody>
-        <tr><td style="color:#0F3D75;font-weight:700">平台白皮书</td><td>PDF · 约 8MB</td>
-          <td><a href="contact.html" style="color:#00608C;text-decoration:underline">待提供</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">产品规格书</td><td>PDF · 约 3MB</td>
-          <td><a href="contact.html" style="color:#00608C;text-decoration:underline">待提供</a></td></tr>
-        <tr><td style="color:#0F3D75;font-weight:700">API 文档</td><td>在线文档</td>
-          <td><a href="contact.html" style="color:#00608C;text-decoration:underline">待提供</a></td></tr>
+        <tr><td>1</td><td style="color:#0F3D75;font-weight:700">天元·智算底座</td><td>基础设施层</td><td>国产化高性能算力与数据存储支持</td><td>算力利用率 +30%</td><td><a class="reg-link" href="#infra" data-target="infra">查看能力 &#8594;</a></td></tr><tr><td>2</td><td style="color:#0F3D75;font-weight:700">天元·灵观</td><td>数据融合层</td><td>天基数据获取，覆盖高、低轨卫星及 44 个全球地面站</td><td>小时级获取</td><td><a class="reg-link" href="#fusion-lingguan" data-target="fusion-lingguan">查看能力 &#8594;</a></td></tr><tr><td>3</td><td style="color:#0F3D75;font-weight:700">天元·灵数</td><td>数据融合层</td><td>数据治理与融合，50+ 自动化管道</td><td>人工干预减少 60%</td><td><a class="reg-link" href="#fusion-lingshu" data-target="fusion-lingshu">查看能力 &#8594;</a></td></tr><tr><td>4</td><td style="color:#0F3D75;font-weight:700">空天地一体化网络</td><td>数据融合层</td><td>星地链路、5G/专网、边缘组网自适应切换</td><td>高带宽低延迟</td><td><a class="reg-link" href="#fusion-network" data-target="fusion-network">查看能力 &#8594;</a></td></tr><tr><td>5</td><td style="color:#0F3D75;font-weight:700">天元·灵语</td><td>认知决策层</td><td>本体建模，支持 200+ AI 动作</td><td>无需编程调用 AI</td><td><a class="reg-link" href="#cognition-lingyu" data-target="cognition-lingyu">查看能力 &#8594;</a></td></tr><tr><td>6</td><td style="color:#0F3D75;font-weight:700">天元·灵炼</td><td>认知决策层</td><td>模型工厂，支持增量训练与联邦学习</td><td>月级→周级</td><td><a class="reg-link" href="#cognition-linglian" data-target="cognition-linglian">查看能力 &#8594;</a></td></tr><tr><td>7</td><td style="color:#0F3D75;font-weight:700">天元·灵智</td><td>认知决策层</td><td>智能体工厂，支持多智能体任务编排</td><td>快速落地</td><td><a class="reg-link" href="#cognition-lingzhi" data-target="cognition-lingzhi">查看能力 &#8594;</a></td></tr><tr><td>8</td><td style="color:#0F3D75;font-weight:700">认知计算引擎</td><td>认知决策层</td><td>自动调度数据、模型、智能体与 Skill</td><td>端到端闭环</td><td><a class="reg-link" href="#cognition-engine" data-target="cognition-engine">查看能力 &#8594;</a></td></tr><tr><td>9</td><td style="color:#0F3D75;font-weight:700">天元·灵动</td><td>行动执行层</td><td>具身智能调度，覆盖无人机、无人车、机器狗</td><td>≤1s 响应 · 厘米级</td><td><a class="reg-link" href="#embodied-lingdong" data-target="embodied-lingdong">查看能力 &#8594;</a></td></tr><tr><td>10</td><td style="color:#0F3D75;font-weight:700">天元·灵集</td><td>数智市集</td><td>数智能力集散与流通平台</td><td>资产/智能体广场</td><td><a class="reg-link" href="#market" data-target="market">查看能力 &#8594;</a></td></tr><tr><td>11</td><td style="color:#0F3D75;font-weight:700">天元·信息服务助手</td><td>数智市集</td><td>行业信息服务统一入口</td><td>智能问答/多轮对话</td><td><a class="reg-link" href="#market-assistant" data-target="market-assistant">查看能力 &#8594;</a></td></tr><tr><td>12</td><td style="color:#0F3D75;font-weight:700">全栈安全合规</td><td>安全合规</td><td>身份、数据、AI、审计全流程安全</td><td>横向贯穿</td><td><a class="reg-link" href="#security" data-target="security">查看能力 &#8594;</a></td></tr>
       </tbody></table></div>
-    <div class="note rv"><b>待补充：</b>官网未标注具体版本号与发布日期，
-      正式发布前需在《产品详情》原稿中补充。</div>
+    <div class="info rv"><b>说明：</b>关键指标为演示口径，待产品部门复核。</div>
   </div>
 </section>
 
@@ -318,7 +556,7 @@
     <p>留下姓名与电话，我们将发送产品资料并与您进一步沟通。</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a class="btn btn-p btn-lg" href="contact.html">获取产品资料</a>
-      <a class="btn btn-o btn-lg" href="product-detail.html">查看平台详情</a></div></div>
+      <a class="btn btn-o btn-lg" href="#list">查看产品清单</a></div></div>
 </section>
 <footer class="ft">
   <div class="wrap">
@@ -334,10 +572,10 @@
       <div>
         <h5>产品与能力</h5>
         <ul>
-          <li><a href="product-detail.html">天元平台总览</a></li>
-          <li><a href="products.html#engine">空天地数据融合引擎</a></li>
-          <li><a href="products.html#engine">认知计算与决策引擎</a></li>
-          <li><a href="products.html#engine">具身智能行动执行引擎</a></li>
+          <li><a href="products.html">天元平台总览</a></li>
+          <li><a href="products.html#fusion">空天地数据融合引擎</a></li>
+          <li><a href="products.html#cognition">认知计算与决策引擎</a></li>
+          <li><a href="products.html#embodied">具身智能行动执行引擎</a></li>
           <li><a href="products.html#market">天元 · 灵集（数智市集）</a></li>
           <li><a href="products.html#security">全栈安全合规</a></li>
         </ul>
@@ -395,6 +633,113 @@
 </div>
 <button class="totop" aria-label="返回顶部">&#8593;</button>
 <script src="assets/main.js"></script>
+
+<script>
+(function(){
+  'use strict';
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(s,c){return (c||document).querySelector(s);}
+  function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));}
+
+  var bar = $('.pfbar');
+  if(!bar) return;
+  var groups  = $$('.pl-group');
+  var chips   = $$('.pfchip', bar);
+  var archEls = $$('[data-f]');           /* 架构图可点层级（行 + 引擎块） */
+  var emptyBox = $('[data-empty]');
+  var KEYS = chips.map(function(c){return c.dataset.k;});
+  var DEFAULT = 'fusion';                 /* 默认数据融合层 */
+
+  function scrollToEl(el, block){
+    if(!el) return;
+    setTimeout(function(){
+      el.scrollIntoView({behavior: REDUCED?'auto':'smooth', block: block||'start'});
+    }, 60);
+  }
+
+  /* 筛选 + 架构图高亮 + 产品卡显隐 */
+  function setFilter(k, scroll){
+    if(KEYS.indexOf(k) < 0) k = DEFAULT;
+    chips.forEach(function(x){ x.classList.toggle('on', x.dataset.k === k); });
+    var shown = 0, target = null;
+    groups.forEach(function(g){
+      var ok = g.dataset.group === k;
+      g.style.display = ok ? '' : 'none';
+      if(ok){ shown++; target = g; }
+    });
+    if(emptyBox) emptyBox.style.display = shown ? 'none' : '';
+    archEls.forEach(function(el){ el.classList.toggle('on', el.dataset.f === k); });
+    if(scroll && target) scrollToEl(target, 'start');
+    return k;
+  }
+
+  /* 筛选器切换 → 架构图 + 产品卡 */
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ setFilter(c.dataset.k, true); });
+  });
+
+  /* 架构图层级点击 → 筛选器选中 + 产品卡滚动定位 */
+  archEls.forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      setFilter(el.dataset.f, true);
+    });
+  });
+
+  /* 入口：?f= 优先，其次页内 hash（导航/页脚锚点），默认数据融合层 */
+  var init = DEFAULT;
+  try{
+    var f = new URLSearchParams(location.search).get('f');
+    if(f && KEYS.indexOf(f) >= 0) init = f;
+    else{
+      var h = location.hash.replace('#','');
+      if(h && KEYS.indexOf(h) >= 0) init = h;
+    }
+  }catch(e){}
+  setFilter(init, false);
+  if(init !== DEFAULT){
+    var g = $('.pl-group[data-group="'+init+'"]');
+    if(g) setTimeout(function(){
+      g.scrollIntoView({behavior: REDUCED?'auto':'smooth', block:'start'});
+    }, 150);
+  }
+
+  /* 同页 hash 变化（导航/页脚锚点点击）联动筛选 */
+  window.addEventListener('hashchange', function(){
+    var h = location.hash.replace('#','');
+    if(h && KEYS.indexOf(h) >= 0) setFilter(h, true);
+  });
+
+  /* 产品清单“查看能力”：滚动到对应产品卡 / 分组并高亮 */
+  $$('.reg-link').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = a.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(!el) return;
+      var g = el.classList.contains('pl-group') ? el : el.closest('.pl-group');
+      if(g && g.style.display === 'none') setFilter(g.dataset.group, false);
+      scrollToEl(el, 'center');
+      el.classList.add('hl');
+      setTimeout(function(){ el.classList.remove('hl'); }, 2200);
+    });
+  });
+
+  /* 媒体懒加载：首屏前 3 张立即加载，其余进入视口（前 200px）再加载 */
+  var medias = $$('[data-media]');
+  medias.slice(0, 3).forEach(function(m){ m.classList.add('ld'); });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('ld'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'200px'});
+    medias.slice(3).forEach(function(m){ io.observe(m); });
+  } else {
+    medias.forEach(function(m){ m.classList.add('ld'); });
+  }
+})();
+</script>
 
 </body>
 </html>
