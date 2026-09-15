@@ -105,6 +105,9 @@ ul,ol{list-style:none}
 .btn-o:hover{border-color:var(--accent);color:var(--accent)}
 .btn-lg{min-height:50px;padding:14px 34px;font-size:15.5px}
 .btn-w{width:100%}
+/* 导航栏“申请演示”按钮：航天蓝，与 banner 底部色系保持一致 */
+.nav-right .btn-p,.drawer-f .btn-p{background:linear-gradient(135deg,var(--primary),var(--pl));color:#fff}
+.nav-right .btn-p:hover,.drawer-f .btn-p:hover{background:linear-gradient(135deg,var(--primary-l10),var(--pl-l20));color:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,61,117,.30)}
 /* 汉堡 */
 .hamburger{display:none;width:44px;height:44px;flex-direction:column;justify-content:center;
   align-items:center;gap:5px;background:transparent;border:0;cursor:pointer}
