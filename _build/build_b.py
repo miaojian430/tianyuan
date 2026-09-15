@@ -293,10 +293,11 @@ def list_card(c):
         cover_media = ('<video src="%s" muted loop playsinline preload="metadata"></video>'
                        % esc(m["video"]))
         zoom = ('<button class="cs-zoom" type="button" data-zsrc="%s" aria-label="放大播放" '
-                'title="放大播放">&#10530;</button>' % esc(m["video"]))
+                'title="放大播放">&#9654;</button>' % esc(m["video"]))
     elif m.get("img"):
         cover_media = '<img src="%s" alt="%s" loading="lazy">' % (esc(m["img"]), esc(c["title"]))
-        zoom = ""
+        zoom = ('<button class="cs-zoom cs-zoom-img" type="button" data-zsrc="%s" '
+                'aria-label="放大查看" title="放大查看">&#128269;</button>' % esc(m["img"]))
     else:
         cover_media = ('<div class="cs-cover-ph"><b>&#9654;</b><small>%s</small></div>'
                        % esc(m.get("note", "")))
@@ -333,8 +334,6 @@ cso = """
           <p>自然资源 · 智慧农业 · 交通物流 · 城市治理……</p></div>
       </div>
     </div>
-    <div class="note rv"><b>合规要求：</b>客户名称、影像与成果数据须经客户书面授权后方可公开展示，
-      客户与地域信息已按脱敏规范处理；成果数据需注明对比基准与数据来源。</div>
   </div>
 </section>
 
@@ -378,7 +377,8 @@ CASES_CSS = """
 .cs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .cs-tag{background:#DCE9F5;color:#0F3D75;font-size:11px;font-weight:700;
   padding:2px 8px;border-radius:4px}
-.cs-pb h3{font-size:17.5px;color:#0F3D75;margin:0 0 8px;line-height:1.5}
+.cs-pb h3{font-size:15.5px;color:#0F3D75;margin:0 0 8px;line-height:1.4;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cs-pb p{font-size:13px;color:#33414E;line-height:1.8;margin:0;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .cs-stats{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 12px;
@@ -568,7 +568,9 @@ CASES_JS = """
            +'<button class="cm-play" type="button" data-zsrc="'+esc(m.video)+'" aria-label="放大播放">'
            +'<span class="ico">&#9654;</span><small>放大播放</small></button>';
     }
-    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">';}
+    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">'
+           +'<button class="cm-play cm-play-img" type="button" data-zsrc="'+esc(m.img)+'" aria-label="放大查看">'
+           +'<span class="ico">&#10530;</span><small>放大查看</small></button>';}
     var chal = (d.challenges||[]).map(function(x){
       return '<div class="cm-chal"><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p></div>';}).join('');
     var caps = (d.capabilities||[]).map(function(x){
@@ -604,7 +606,9 @@ CASES_JS = """
            +'<button class="cm-play" type="button" data-zsrc="'+esc(m.video)+'" aria-label="放大播放">'
            +'<span class="ico">&#9654;</span><small>放大播放</small></button>';
     }
-    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">';}
+    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">'
+           +'<button class="cm-play cm-play-img" type="button" data-zsrc="'+esc(m.img)+'" aria-label="放大查看">'
+           +'<span class="ico">&#10530;</span><small>放大查看</small></button>';}
     var chal = (d.challenges||[]).map(function(x){
       return '<div class="cm-chal"><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p></div>';}).join('');
     var sol = (d.solution||[]).map(function(x){
@@ -691,12 +695,13 @@ CASES_JS = """
   fromHash();
 })();
 </script>
-<!-- 视频放大播放灯箱 -->
+<!-- 图片/视频放大播放灯箱 -->
 <div id="videoLightbox" class="vlb" hidden aria-hidden="true">
   <div class="vlb-mask"></div>
   <div class="vlb-inner">
     <button class="vlb-close" type="button" aria-label="关闭播放">✕</button>
     <video id="vlbVideo" controls></video>
+    <img id="vlbImg" alt="" >
   </div>
 </div>
 <script>
@@ -704,16 +709,26 @@ CASES_JS = """
   var lb = document.getElementById('videoLightbox');
   if(!lb) return;
   var v  = document.getElementById('vlbVideo');
+  var im = document.getElementById('vlbImg');
+  function isVideo(s){return /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(s||'');}
   function close(){
     lb.hidden = true;
     lb.setAttribute('aria-hidden','true');
     try{v.pause(); v.removeAttribute('src'); v.load();}catch(e){}
+    im.removeAttribute('src');
+    v.style.display='none'; im.style.display='none';
   }
   function open(src){
-    v.src = src;
+    if(isVideo(src)){
+      v.src = src; im.removeAttribute('src');
+      v.style.display=''; im.style.display='none';
+    }else{
+      im.src = src; v.removeAttribute('src');
+      im.style.display=''; v.style.display='none';
+    }
     lb.hidden = false;
     lb.setAttribute('aria-hidden','false');
-    v.play().catch(function(){});
+    if(isVideo(src)) v.play().catch(function(){});
   }
   lb.querySelector('.vlb-close').addEventListener('click', close);
   lb.querySelector('.vlb-mask').addEventListener('click', close);
@@ -788,8 +803,6 @@ cd = """
       <div class="cm-cta"><p>__CTA__</p>
         <a class="btn-wt" href="contact.html">联系我们获取方案 &#8594;</a></div>
     </div>
-    <div class="note rv" style="margin-top:26px"><b>合规要求：</b>成果数据须注明对比基准与数据来源，
-      客户名称与影像资料须经客户书面授权后方可公开展示；评价须真实可追溯。</div>
   </div>
 </section>
 
@@ -808,12 +821,13 @@ cd = """
   </div>
 </section>
 
-<!-- 视频放大播放灯箱 -->
+<!-- 图片/视频放大播放灯箱 -->
 <div id="videoLightbox" class="vlb" hidden aria-hidden="true">
   <div class="vlb-mask"></div>
   <div class="vlb-inner">
     <button class="vlb-close" type="button" aria-label="关闭播放">✕</button>
     <video id="vlbVideo" controls></video>
+    <img id="vlbImg" alt="" >
   </div>
 </div>
 <script>
@@ -821,16 +835,26 @@ cd = """
   var lb = document.getElementById('videoLightbox');
   if(!lb) return;
   var v  = document.getElementById('vlbVideo');
+  var im = document.getElementById('vlbImg');
+  function isVideo(s){return /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(s||'');}
   function close(){
     lb.hidden = true;
     lb.setAttribute('aria-hidden','true');
     try{v.pause(); v.removeAttribute('src'); v.load();}catch(e){}
+    im.removeAttribute('src');
+    v.style.display='none'; im.style.display='none';
   }
   function open(src){
-    v.src = src;
+    if(isVideo(src)){
+      v.src = src; im.removeAttribute('src');
+      v.style.display=''; im.style.display='none';
+    }else{
+      im.src = src; v.removeAttribute('src');
+      im.style.display=''; v.style.display='none';
+    }
     lb.hidden = false;
     lb.setAttribute('aria-hidden','false');
-    v.play().catch(function(){});
+    if(isVideo(src)) v.play().catch(function(){});
   }
   lb.querySelector('.vlb-close').addEventListener('click', close);
   lb.querySelector('.vlb-mask').addEventListener('click', close);

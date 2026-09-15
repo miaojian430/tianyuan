@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """产品与能力页 —— 唯一产品能力目录页（依据 update.md 重构，2026-09-14）
 结构：Banner / 分层能力一览（交互式架构图 + 层级筛选器 + 产品卡）/ 产品清单 / 页尾 CTA
 - Banner：三关键词小字 + 行业数智化全链路产品体系，不出现 1+3+1+1+N
@@ -28,9 +28,9 @@ MEDIA = {
  "cognition-lingzhi":{"img":"data/产品与能力/天元灵智/dify截图.jpg"},
  "cognition-engine":{"video":"data/产品与能力/天元认知计算/天元认知计算_行业应用_开源情报+海洋油污+应急信息服务_有字幕.mp4"},
  "embodied-lingdong":{"img":"data/产品与能力/天元灵动/天元灵动.png"},
- "market-assets":   {"img":"data/产品与能力/数智集市/一套多元数据融合资源池.png"},
- "market-agents":   {"img":"data/产品与能力/数智集市/一套行业智能组件库.png"},
- "market-assistant":{"img":"data/产品与能力/数智集市/一套数智服务工具链.png"},
+ "market-assets":   {"img":"data/产品与能力/智能体市场/数智资产广场/数智资产广场.png"},
+ "market-agents":   {"img":"data/产品与能力/智能体市场/智能体及技能库/智能体及技能库.png"},
+ "market-assistant":{"img":"data/产品与能力/智能体市场/天元信息服务助手/天元信息服务助手.png"},
 }
 # 顶部标签对照：基础支撑 / 数据获取·数据治理·通信保障 / 本体建模·模型工厂·
 # 智能体工厂·编排调度 / 具身智能调度 / 资产流通·技能流通·信息服务 /
@@ -77,17 +77,17 @@ LAYERS = [
     "统一调度无人机、无人车、机器狗，调度响应 ≤1s，作业精度厘米级。",
     "协同效率 +50% · 人力成本 −70%"),
  ]),
- ("market","market","数智市集 · 天元·灵集",None,[
+ ("market","market","智能体市场 · 天元·灵集",None,[
    ("market-assets","数智资产广场","资产流通",
     "汇聚数据集、本体、算法、模型等数字资产，支持上架、检索与复用。",
     "数字资产一站式流通"),
-   ("market-agents","智能体及技能广场","技能流通",
-    "汇聚智能体、Skill、Workflow 等，支持按需调用。",
+   ("market-agents","智能体及技能库","技能流通",
+    "汇聚智能体、Skill、Workflow 等，支持按需调用、即取即用。",
     "技能按需即取即用"),
-   ("market-assistant","天元·信息服务助手","信息服务",
-    "行业信息服务统一入口，提供智能问答、记忆、多轮对话等能力。",
+   ("market-assistant","天元信息服务助手","信息服务",
+    "行业信息服务统一入口，智能问答、记忆、多轮对话能力。",
     "数智资产在线交互"),
- ]),
+  ]),
  ("security","security","安全支撑体系 · 全栈安全合规",None,[
    ("security-iam","身份与访问控制","身份安全",
     "统一身份，分级授权。",
@@ -106,7 +106,7 @@ LAYERS = [
 
 # 筛选器：无“全部”，默认数据融合（fusion）
 FILTERS = [("infra","智算底座"),("fusion","数据融合"),("cognition","认知决策"),
-           ("embodied","行动执行"),("market","数智市集"),("security","安全合规")]
+           ("embodied","行动执行"),("market","智能体市场"),("security","安全合规")]
 DEFAULT_F = "fusion"
 
 # ---------- 数据：产品清单（12 项）----------
@@ -121,8 +121,8 @@ REG = [
  ("天元·灵智", "认知决策层", "智能体工厂，支持多智能体任务编排", "快速落地", "#cognition-lingzhi"),
  ("认知计算引擎", "认知决策层", "自动调度数据、模型、智能体与 Skill", "端到端闭环", "#cognition-engine"),
  ("天元·灵动", "行动执行层", "具身智能调度，覆盖无人机、无人车、机器狗", "≤1s 响应 · 厘米级", "#embodied-lingdong"),
- ("天元·灵集", "数智市集", "数智能力集散与流通平台", "资产/智能体广场", "#market"),
- ("天元·信息服务助手", "数智市集", "行业信息服务统一入口", "智能问答/多轮对话", "#market-assistant"),
+ ("天元·灵集", "智能体市场", "智能体市场能力集散与流通平台", "资产/智能体广场", "#market"),
+ ("天元信息服务助手", "智能体市场", "行业信息服务统一入口", "智能问答/多轮对话", "#market-assistant"),
  ("全栈安全合规", "安全合规", "身份、数据、AI、审计全流程安全", "横向贯穿", "#security"),
 ]
 
@@ -136,10 +136,12 @@ def card_html(card):
     if m and m.get("video"):
         media = ('\n          <video src="%s" controls muted loop playsinline preload="metadata"></video>'
                  % m["video"])
-        play = '<span class="pcv-play">&#9654;</span>'
+        play = ('<button class="pcv-play" type="button" data-zsrc="%s" '
+                'aria-label="放大播放" title="放大播放">&#9654;</button>' % m["video"])
     elif m and m.get("img"):
         media = '\n          <img src="%s" alt="%s" loading="lazy">' % (m["img"], name)
-        play = ""
+        play = ('<button class="pcv-play pcv-zoom" type="button" data-zsrc="%s" '
+                'aria-label="放大查看" title="放大查看">&#10530;</button>' % m["img"])
     else:
         media = ('\n          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>')
         play = '<span class="pcv-play">&#9654;</span>'
@@ -186,10 +188,10 @@ ARCH = """
         </div>
       </div>
       <div class="arch-row" data-f="market">
-        <div class="arch-lb">数智市集</div>
+        <div class="arch-lb">智能体市场</div>
         <div class="arch-body">
           <span class="arch-chip">天元·灵集</span>
-          <span class="arch-chip ghost">数智资产广场 · 智能体及技能广场 · 天元·信息服务助手</span>
+          <span class="arch-chip ghost">数智资产广场 · 智能体及技能库 · 天元信息服务助手</span>
         </div>
       </div>
       <div class="arch-row">
@@ -239,7 +241,7 @@ prod = """
   <span style="display:inline-block;background:#00A0E9;color:#1A1A1A;font-size:12px;font-weight:700;
     padding:4px 12px;border-radius:3px;letter-spacing:1px;margin-bottom:12px">数据融合 · 认知决策 · 行动执行</span>
   <h1>行业数智化全链路产品体系</h1>
-  <p class="lead">12 项核心产品，覆盖智算底座、数据融合、认知决策、行动执行、数智市集、安全合规六大能力层级，<br>
+  <p class="lead">12 项核心产品，覆盖智算底座、数据融合、认知决策、行动执行、智能体市场、安全合规六大能力层级，<br>
     提供从数据获取到行动执行的闭环能力。</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
     <a class="btn btn-p btn-lg" href="#layers">查看产品能力</a>
@@ -268,10 +270,6 @@ __ARCH__
         <a href="contact.html" style="color:#00608C;text-decoration:underline">联系销售获取最新方案</a>。
       </div>
     </div>
-
-    <div class="info rv"><b>说明：</b>所有数字指标均为演示口径，待产品部门复核；
-      产品卡媒体区已接入 data/产品与能力/ 素材（视频静音循环，右上角图标标示），
-      智算底座与安全合规层素材待补充，接入后自动替换占位。</div>
   </div>
 </section>
 
@@ -284,7 +282,6 @@ __ARCH__
       <tbody>
         __REG__
       </tbody></table></div>
-    <div class="info rv"><b>说明：</b>关键指标为演示口径，待产品部门复核。</div>
   </div>
 </section>
 
@@ -359,7 +356,10 @@ EXTRA_CSS = """
 .pcv-media:not(.ld) .pcv-ph{opacity:.3}
 .pcv-play{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;
   background:rgba(15,61,117,.72);color:#fff;display:flex;align-items:center;
-  justify-content:center;font-size:11px;pointer-events:none}
+  justify-content:center;font-size:11px;border:0;cursor:pointer;z-index:2;
+  font-family:inherit;transition:background .2s,transform .2s}
+.pcv-play:hover{background:rgba(0,160,233,.92);transform:scale(1.06)}
+.pcv-play.pcv-zoom{font-size:13px}
 .pcv-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
 .pcv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .pcv-tags span{background:#DCE9F5;color:#0F3D75;font-size:11px;font-weight:700;
@@ -382,6 +382,52 @@ EXTRA_CSS = """
 """
 
 EXTRA_JS = """
+<!-- 图片/视频放大播放灯箱 -->
+<div id="videoLightbox" class="vlb" hidden aria-hidden="true">
+  <div class="vlb-mask"></div>
+  <div class="vlb-inner">
+    <button class="vlb-close" type="button" aria-label="关闭播放">✕</button>
+    <video id="vlbVideo" controls></video>
+    <img id="vlbImg" alt="" >
+  </div>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('videoLightbox');
+  if(!lb) return;
+  var v  = document.getElementById('vlbVideo');
+  var im = document.getElementById('vlbImg');
+  function isVideo(s){return /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(s||'');}
+  function close(){
+    lb.hidden = true; lb.setAttribute('aria-hidden','true');
+    try{v.pause(); v.removeAttribute('src'); v.load();}catch(e){}
+    im.removeAttribute('src');
+    v.style.display='none'; im.style.display='none';
+  }
+  function open(src){
+    if(isVideo(src)){
+      v.src=src; im.removeAttribute('src');
+      v.style.display=''; im.style.display='none';
+    }else{
+      im.src=src; v.removeAttribute('src');
+      im.style.display=''; v.style.display='none';
+    }
+    lb.hidden=false; lb.setAttribute('aria-hidden','false');
+    if(isVideo(src)) v.play().catch(function(){});
+  }
+  lb.querySelector('.vlb-close').addEventListener('click', close);
+  lb.querySelector('.vlb-mask').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && !lb.hidden) close();
+  });
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-zsrc]');
+    if(!t) return;
+    e.preventDefault(); e.stopPropagation();
+    open(t.getAttribute('data-zsrc'));
+  });
+})();
+</script>
 <script>
 (function(){
   'use strict';
@@ -491,5 +537,5 @@ EXTRA_JS = """
 """
 
 w("products.html", page("产品与能力 | 天元平台",
-  "天元平台产品体系：12 项核心产品，覆盖智算底座、数据融合、认知决策、行动执行、数智市集、安全合规六大能力层级，提供从数据获取到行动执行的闭环能力。",
+  "天元平台产品体系：12 项核心产品，覆盖智算底座、数据融合、认知决策、行动执行、智能体市场、安全合规六大能力层级，提供从数据获取到行动执行的闭环能力。",
   "products", prod, extra_head=EXTRA_CSS, extra_js=EXTRA_JS))

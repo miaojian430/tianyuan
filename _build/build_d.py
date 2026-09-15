@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import io, sys
 sys.path.insert(0, '.')
 from common import page
@@ -9,7 +9,7 @@ IDX = """
 <script>
 window.SITE_INDEX=[
  {t:"天元平台",d:"一站式场景化数智平台，感通算用一体化全链路闭环。",k:"产品",u:"products.html"},
- {t:"产品与能力",d:"1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用。",k:"产品",u:"products.html"},
+ {t:"产品与能力",d:"1 个底座 + 3 大核心引擎 + 1 个智能体市场 + 1 个安全体系 + N 个行业应用。",k:"产品",u:"products.html"},
  {t:"空天地数据融合引擎",d:"获取、治理与融合卫星遥感、无人机、物联网等多源数据，让天基数据直达业务。",k:"引擎",u:"products.html#fusion"},
  {t:"认知计算与决策引擎",d:"本体建模读懂业务，模型工厂与智能体工厂持续生产，认知计算引擎统一调度。",k:"引擎",u:"products.html#cognition"},
  {t:"具身智能行动执行引擎",d:"面向无人机、无人车、机器狗等多类具身设备，统一调度与厘米级精准作业。",k:"引擎",u:"products.html#embodied"},
@@ -21,7 +21,7 @@ window.SITE_INDEX=[
  {t:"天元·灵智",d:"智能体工厂，支持多智能体任务编排与自我进化。",k:"产品",u:"products.html#cognition"},
  {t:"认知计算引擎",d:"智能体编排框架，自动调度数据、模型、智能体与 Skill。",k:"产品",u:"products.html#cognition"},
  {t:"天元·灵动",d:"具身智能调度，覆盖无人机、无人车、机器狗，作业精度厘米级。",k:"产品",u:"products.html#embodied"},
- {t:"天元·灵集",d:"数智市集，数智资产广场 + 智能体及技能广场 + 天元·信息服务助手。",k:"产品",u:"products.html#market"},
+ {t:"天元·灵集",d:"智能体市场：数智资产广场 + 智能体及技能库 + 天元信息服务助手。",k:"产品",u:"products.html#market"},
  {t:"天元·智算底座",d:"智算集群 / 高速互联 / 边云协同，国产化全栈适配。",k:"产品",u:"products.html#infra"},
  {t:"全栈安全合规",d:"身份与访问控制、数据安全与隐私、AI 安全治理、行为审计与溯源。",k:"产品",u:"products.html#security"},
  {t:"解决方案",d:"应急管理、自然资源监测、智慧农业、交通物流、城市治理。",k:"解决方案",u:"solutions.html"},

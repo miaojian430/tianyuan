@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import io, sys
 sys.path.insert(0, '.')
 from common import page
@@ -8,7 +8,7 @@ ARCH = """
 <section class="sec alt">
   <div class="wrap">
     <div class="sec-h rv"><div class="k">ARCHITECTURE</div><h2>1 + 3 + 1 + 1 + N　产品体系</h2>
-      <p>1 个底座 + 3 大核心引擎 + 1 个数智市集 + 1 个安全体系 + N 个行业应用，
+      <p>1 个底座 + 3 大核心引擎 + 1 个智能体市场 + 1 个安全体系 + N 个行业应用，
         构建从卫星原始数据获取到行动指令下达的全链路闭环系统。</p></div>
     <div class="arch rv">
       <div class="arch-row">
@@ -20,10 +20,10 @@ ARCH = """
         </div>
       </div>
       <div class="arch-row">
-        <div class="arch-lb">数智市集</div>
+        <div class="arch-lb">智能体市场</div>
         <div class="arch-body">
           <a class="arch-chip" href="products.html#market">天元·灵集</a>
-          <span class="arch-chip ghost">数智资产广场 · 智能体及技能广场 · 天元·信息服务助手</span>
+          <span class="arch-chip ghost">数智资产广场 · 智能体及技能库 · 天元信息服务助手</span>
         </div>
       </div>
       <div class="arch-row">
@@ -55,7 +55,7 @@ ARCH = """
         </div>
       </div>
     </div>
-    <div class="info rv"><b>说明：</b>安全体系不是独立层级，而是横向贯穿应用层、数智市集、
+    <div class="info rv"><b>说明：</b>安全体系不是独立层级，而是横向贯穿应用层、智能体市场、
       三大核心引擎与基础设施层的支撑体系。点击各层可跳转至产品与能力页对应详解。</div>
   </div>
 </section>

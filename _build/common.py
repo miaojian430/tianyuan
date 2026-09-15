@@ -9,7 +9,7 @@ NAV = [
         ("数据融合层 · 空天地数据融合引擎", "products.html#fusion"),
         ("认知决策层 · 认知计算与决策引擎", "products.html#cognition"),
         ("行动执行层 · 具身智能行动执行引擎", "products.html#embodied"),
-        ("数智市集 · 天元·灵集", "products.html#market"),
+        ("智能体市场 · 天元·灵集", "products.html#market"),
         ("安全合规 · 全栈安全合规", "products.html#security"),
     ]),
     ("solutions", "解决方案",    "solutions.html", [
@@ -133,7 +133,7 @@ def footer():
           <li><a href="products.html#fusion">空天地数据融合引擎</a></li>
           <li><a href="products.html#cognition">认知计算与决策引擎</a></li>
           <li><a href="products.html#embodied">具身智能行动执行引擎</a></li>
-          <li><a href="products.html#market">天元 · 灵集（数智市集）</a></li>
+          <li><a href="products.html#market">天元 · 灵集（智能体市场）</a></li>
           <li><a href="products.html#security">全栈安全合规</a></li>
         </ul>
       </div>
