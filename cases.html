@@ -57,14 +57,11 @@
 /* 占位卡 */
 .cs-more{border-style:dashed;background:#FBFCFE;cursor:default}
 .cs-more:hover{transform:none;box-shadow:0 2px 8px rgba(15,61,117,.06);border-color:#B4C7E7}
-.cs-cover-more{background:#0C315E url(data/客户案例/more-cases-bg.png) center/cover no-repeat;
-  display:flex;align-items:center;justify-content:center;position:relative}
-.cs-cover-more::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(12,49,94,.22),rgba(0,160,233,.18));}
-.cs-cover-more::after{background:linear-gradient(to top,rgba(9,37,70,.62),transparent 55%)}
-.cs-plus{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:56px;height:56px;
-  border-radius:50%;background:rgba(255,255,255,.92);border:1.5px dashed #0F3D75;color:#0F3D75;
-  font-size:28px;font-weight:300;line-height:1;box-shadow:0 4px 14px rgba(0,0,0,.18);
-  backdrop-filter:blur(2px)}
+.cs-cover-more{background:#F0F5FB;display:flex;align-items:center;justify-content:center}
+.cs-cover-more::after{display:none}
+.cs-plus{display:flex;align-items:center;justify-content:center;width:52px;height:52px;
+  border-radius:50%;background:#fff;border:1px dashed #9FB6CF;color:#0F3D75;
+  font-size:26px;font-weight:400;line-height:1}
 .cs-more .cs-pb h3{color:#5C6670}
 .cs-more .cs-pb p{display:block;color:#8894A0}
 /* ===== 案例详情弹窗（CSS 变量主题化；智慧边防默认军绿） ===== */
@@ -86,7 +83,9 @@
 .cm-cover{position:relative;min-height:280px;display:flex;flex-direction:column;
   justify-content:flex-end;padding:26px 30px;
   background:var(--cover,linear-gradient(135deg,#232D18,#3E4A2B 55%,#55663A))}
-.cm-cover video,.cm-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cm-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cm-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  background:var(--cover,linear-gradient(135deg,#232D18,#3E4A2B 55%,#55663A))}
 .cm-cover .cm-shade{position:absolute;inset:0;
   background:linear-gradient(to top,rgba(18,24,10,.88),rgba(18,24,10,.25) 60%,transparent)}
 .cm-cover .cm-in{position:relative}
@@ -115,7 +114,7 @@
 .cm-arch{background:var(--archbg,#F7F9EE);border:1.5px dashed var(--arch,#9DAA84);border-radius:12px;
   display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;
   color:#7C8894;overflow:hidden}
-.cm-arch img{width:100%;height:100%;object-fit:cover;border:0}
+.cm-arch img{width:100%;height:100%;object-fit:contain;border:0}
 .cm-arch b{font-size:14px;color:var(--p,#5A6B3F)}
 .cm-arch small{font-size:11.5px}
 /* 方案能力列表：竖线用案例主色 */
@@ -181,7 +180,8 @@
 .vlb-mask{position:absolute;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(4px)}
 .vlb-inner{position:relative;max-width:1100px;width:92vw;max-height:88vh;background:#000;
   border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.vlb-inner video,.vlb-inner img{width:auto;height:auto;max-width:100%;max-height:88vh;display:block;background:#000}
+.vlb-inner video{width:100%;max-height:88vh;display:block;background:#000}
+.vlb-inner img{max-width:100%;max-height:88vh;display:block;margin:auto;background:#fff}
 .vlb-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;
   background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.4);
   font-size:16px;cursor:pointer;backdrop-filter:blur(6px);transition:.2s}
@@ -256,9 +256,9 @@
   <div class="nav-in">
     <a class="logo" href="index.html">
       <div class="logo-m"></div>
-      <div><div class="logo-t">天元</div><div class="logo-s">TIANYUAN · 数智化信息服务平台</div></div>
+      <div><div class="logo-t">天元</div><div class="logo-s">TIANYUAN</div></div>
     </a>
-    <ul class="menu"><li class=""><a href="index.html">首页</a></li><li class=""><a href="products.html">产品与能力</a><div class="sub"><a href="products.html#layers">分层能力一览</a><a href="products.html#infra">基础设施层 · 智算底座</a><a href="products.html#fusion">数据融合层 · 空天地数据融合引擎</a><a href="products.html#cognition">认知决策层 · 认知计算与决策引擎</a><a href="products.html#embodied">行动执行层 · 具身智能行动执行引擎</a><a href="products.html#market">智能体市场 · 天元·灵集</a><a href="products.html#security">安全合规 · 全栈安全合规</a></div></li><li class=""><a href="solutions.html">解决方案</a><div class="sub"><a href="solutions.html">方案总览</a><a href="solutions.html#intel">开源情报分析</a><a href="solutions.html#oil">海洋石油污染</a><a href="solutions.html#emergency">应急信息服务</a><a href="solutions.html#border">智慧边防应用</a><a href="solutions.html#more">更多行业场景</a></div></li><li class="on"><a href="cases.html">客户案例</a><div class="sub"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class=""><a href="about.html">关于我们</a><div class="sub"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li class=""><a href="contact.html">联系我们</a></li></ul>
+    <ul class="menu"><li class=""><a href="index.html">首页</a></li><li class=""><a href="products.html">产品与能力</a><div class="sub"><a href="products.html#layers">分层能力一览</a><a href="products.html#infra">基础设施层 · 智算底座</a><a href="products.html#fusion">数据融合层 · 空天地数据融合引擎</a><a href="products.html#cognition">认知决策层 · 认知计算与决策引擎</a><a href="products.html#embodied">行动执行层 · 具身智能行动执行引擎</a><a href="products.html#market">智能体市场 · 天元·灵集</a><a href="products.html#security">安全合规 · 全栈安全合规</a></div></li><li class=""><a href="solutions.html">解决方案</a><div class="sub"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class="on"><a href="cases.html">客户案例</a><div class="sub"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class=""><a href="about.html">关于我们</a><div class="sub"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li class=""><a href="contact.html">联系我们</a></li></ul>
     <div class="nav-right">
       <a class="icon-btn" href="search.html" title="搜索" aria-label="搜索">&#128269;</a>
       <a class="btn btn-p" href="contact.html">申请演示</a>
@@ -268,7 +268,7 @@
 </nav>
 <div class="drawer">
   <div class="drawer-h"><b>导航菜单</b><button class="drawer-close" aria-label="关闭菜单">&times;</button></div>
-  <ul><li><a href="index.html" class="">首页</a></li><li class="has-sub"><a href="products.html" class="">产品与能力 &#8250;</a><div class="sub-m" style="display:none"><a href="products.html#layers">分层能力一览</a><a href="products.html#infra">基础设施层 · 智算底座</a><a href="products.html#fusion">数据融合层 · 空天地数据融合引擎</a><a href="products.html#cognition">认知决策层 · 认知计算与决策引擎</a><a href="products.html#embodied">行动执行层 · 具身智能行动执行引擎</a><a href="products.html#market">智能体市场 · 天元·灵集</a><a href="products.html#security">安全合规 · 全栈安全合规</a></div></li><li class="has-sub"><a href="solutions.html" class="">解决方案 &#8250;</a><div class="sub-m" style="display:none"><a href="solutions.html">方案总览</a><a href="solutions.html#intel">开源情报分析</a><a href="solutions.html#oil">海洋石油污染</a><a href="solutions.html#emergency">应急信息服务</a><a href="solutions.html#border">智慧边防应用</a><a href="solutions.html#more">更多行业场景</a></div></li><li class="has-sub"><a href="cases.html" class="on">客户案例 &#8250;</a><div class="sub-m" style="display:none"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class="has-sub"><a href="about.html" class="">关于我们 &#8250;</a><div class="sub-m" style="display:none"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li><a href="contact.html" class="">联系我们</a></li></ul>
+  <ul><li><a href="index.html" class="">首页</a></li><li class="has-sub"><a href="products.html" class="">产品与能力 &#8250;</a><div class="sub-m" style="display:none"><a href="products.html#layers">分层能力一览</a><a href="products.html#infra">基础设施层 · 智算底座</a><a href="products.html#fusion">数据融合层 · 空天地数据融合引擎</a><a href="products.html#cognition">认知决策层 · 认知计算与决策引擎</a><a href="products.html#embodied">行动执行层 · 具身智能行动执行引擎</a><a href="products.html#market">智能体市场 · 天元·灵集</a><a href="products.html#security">安全合规 · 全栈安全合规</a></div></li><li class="has-sub"><a href="solutions.html" class="">解决方案 &#8250;</a><div class="sub-m" style="display:none"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class="has-sub"><a href="cases.html" class="on">客户案例 &#8250;</a><div class="sub-m" style="display:none"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class="has-sub"><a href="about.html" class="">关于我们 &#8250;</a><div class="sub-m" style="display:none"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li><a href="contact.html" class="">联系我们</a></li></ul>
   <div class="drawer-f">
     <button class="drawer-back" type="button">&#8249; 返回上一级</button>
     <a class="btn btn-p btn-w" href="contact.html">申请演示</a>
@@ -286,7 +286,7 @@
     <div class="cs-grid">
       
       <a class="cs-card rv" href="case-detail.html" data-case="smart-border">
-        <div class="cs-cover"><video src="data/客户案例/智慧边防_有字幕%20.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>实战案例</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/智慧边防_有字幕%20.mp4" aria-label="放大播放" title="放大播放">&#10530;</button></div>
+        <div class="cs-cover"><video src="data/客户案例/智慧边防_有字幕%20.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>实战案例</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/智慧边防_有字幕%20.mp4" aria-label="放大播放" title="放大播放">&#9654;</button></div>
         <div class="cs-pb">
           <div class="cs-tags"><span class="cs-tag">智慧边防</span><span class="cs-tag">AI预警</span><span class="cs-tag">无人装备协同</span></div>
           <h3>智慧边防，从“看得见”到“看得准”</h3>
@@ -296,7 +296,7 @@
         </div>
       </a>
       <a class="cs-card rv" href="cases.html#case=smart-water" data-case="smart-water">
-        <div class="cs-cover"><video src="data/客户案例/智慧水利.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>实战案例</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/智慧水利.mp4" aria-label="放大播放" title="放大播放">&#10530;</button></div>
+        <div class="cs-cover"><video src="data/客户案例/智慧水利.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>实战案例</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/智慧水利.mp4" aria-label="放大播放" title="放大播放">&#9654;</button></div>
         <div class="cs-pb">
           <div class="cs-tags"><span class="cs-tag">智慧水利</span><span class="cs-tag">具身智能</span><span class="cs-tag">无人清污</span></div>
           <h3>智慧水利，从“人巡人清”到“机巡智清”</h3>
@@ -306,7 +306,7 @@
         </div>
       </a>
       <a class="cs-card rv" href="cases.html#case=coast-defense" data-case="coast-defense">
-        <div class="cs-cover"><video src="data/客户案例/智慧边海防_有字幕.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>实战案例</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/智慧边海防_有字幕.mp4" aria-label="放大播放" title="放大播放">&#10530;</button></div>
+        <div class="cs-cover"><video src="data/客户案例/智慧边海防_有字幕.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>实战案例</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/智慧边海防_有字幕.mp4" aria-label="放大播放" title="放大播放">&#9654;</button></div>
         <div class="cs-pb">
           <div class="cs-tags"><span class="cs-tag">边海防一体化</span><span class="cs-tag">空天地海</span><span class="cs-tag">一网统管</span></div>
           <h3>边海防一体化，从“分散试点”到“一网统管”</h3>
@@ -326,7 +326,7 @@
         </div>
       </a>
       <a class="cs-card rv" href="cases.html#case=emergency-monitor" data-case="emergency-monitor">
-        <div class="cs-cover"><video src="data/客户案例/应急监测_冰川监测.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>创新应用</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/应急监测_冰川监测.mp4" aria-label="放大播放" title="放大播放">&#10530;</button></div>
+        <div class="cs-cover"><video src="data/客户案例/应急监测_冰川监测.mp4" muted loop playsinline preload="metadata"></video><span class="cs-badge"><i class="dot"></i>创新应用</span><button class="cs-zoom" type="button" data-zsrc="data/客户案例/应急监测_冰川监测.mp4" aria-label="放大播放" title="放大播放">&#9654;</button></div>
         <div class="cs-pb">
           <div class="cs-tags"><span class="cs-tag">应急监测</span><span class="cs-tag">感通算用</span><span class="cs-tag">天基数据</span></div>
           <h3>应急监测，从“事后处置”到“事前预判”</h3>
@@ -341,7 +341,6 @@
           <p>自然资源 · 智慧农业 · 交通物流 · 城市治理……</p></div>
       </div>
     </div>
-    
   </div>
 </section>
 
@@ -357,7 +356,7 @@
   <div class="wrap">
     <div class="ft-g">
       <div>
-        <h5>天元数智化信息服务平台</h5>
+        <h5>天元平台</h5>
         <p class="ab">“感通算用”一体化综合信息服务平台<br>
         依托天地一体化资源，面向行业智能升级<br>
         提供一站式信息服务。<br>
@@ -470,7 +469,9 @@
            +'<button class="cm-play" type="button" data-zsrc="'+esc(m.video)+'" aria-label="放大播放">'
            +'<span class="ico">&#9654;</span><small>放大播放</small></button>';
     }
-    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">';}
+    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">'
+           +'<button class="cm-play cm-play-img" type="button" data-zsrc="'+esc(m.img)+'" aria-label="放大查看">'
+           +'<span class="ico">&#10530;</span><small>放大查看</small></button>';}
     var chal = (d.challenges||[]).map(function(x){
       return '<div class="cm-chal"><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p></div>';}).join('');
     var caps = (d.capabilities||[]).map(function(x){
@@ -506,7 +507,9 @@
            +'<button class="cm-play" type="button" data-zsrc="'+esc(m.video)+'" aria-label="放大播放">'
            +'<span class="ico">&#9654;</span><small>放大播放</small></button>';
     }
-    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">';}
+    else if(m.img){media='<img src="'+esc(m.img)+'" alt="'+esc(c.title)+'">'
+           +'<button class="cm-play cm-play-img" type="button" data-zsrc="'+esc(m.img)+'" aria-label="放大查看">'
+           +'<span class="ico">&#10530;</span><small>放大查看</small></button>';}
     var chal = (d.challenges||[]).map(function(x){
       return '<div class="cm-chal"><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p></div>';}).join('');
     var sol = (d.solution||[]).map(function(x){
@@ -593,7 +596,7 @@
   fromHash();
 })();
 </script>
-<!-- 图片/视频放大播放灯箱（支持图片 + 视频） -->
+<!-- 图片/视频放大播放灯箱 -->
 <div id="videoLightbox" class="vlb" hidden aria-hidden="true">
   <div class="vlb-mask"></div>
   <div class="vlb-inner">

@@ -420,7 +420,9 @@ CASES_CSS = """
 .cm-cover{position:relative;min-height:280px;display:flex;flex-direction:column;
   justify-content:flex-end;padding:26px 30px;
   background:var(--cover,linear-gradient(135deg,#232D18,#3E4A2B 55%,#55663A))}
-.cm-cover video,.cm-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cm-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cm-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  background:var(--cover,linear-gradient(135deg,#232D18,#3E4A2B 55%,#55663A))}
 .cm-cover .cm-shade{position:absolute;inset:0;
   background:linear-gradient(to top,rgba(18,24,10,.88),rgba(18,24,10,.25) 60%,transparent)}
 .cm-cover .cm-in{position:relative}
@@ -449,7 +451,7 @@ CASES_CSS = """
 .cm-arch{background:var(--archbg,#F7F9EE);border:1.5px dashed var(--arch,#9DAA84);border-radius:12px;
   display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;
   color:#7C8894;overflow:hidden}
-.cm-arch img{width:100%;height:100%;object-fit:cover;border:0}
+.cm-arch img{width:100%;height:100%;object-fit:contain;border:0}
 .cm-arch b{font-size:14px;color:var(--p,#5A6B3F)}
 .cm-arch small{font-size:11.5px}
 /* 方案能力列表：竖线用案例主色 */
@@ -516,6 +518,7 @@ CASES_CSS = """
 .vlb-inner{position:relative;max-width:1100px;width:92vw;max-height:88vh;background:#000;
   border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .vlb-inner video{width:100%;max-height:88vh;display:block;background:#000}
+.vlb-inner img{max-width:100%;max-height:88vh;display:block;margin:auto;background:#fff}
 .vlb-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;
   background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.4);
   font-size:16px;cursor:pointer;backdrop-filter:blur(6px);transition:.2s}
