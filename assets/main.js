@@ -237,4 +237,53 @@
     var sortSel = $('#sortSel');
     if(sortSel) sortSel.addEventListener('change', doSearch);
   }
+
+  /* 12. 首屏 Banner 图片轮播（自动播放 + 圆点切换 + 悬停暂停） */
+  $$('.bcarousel').forEach(function(car){
+    var slides = $$('.bslide', car);
+    if(slides.length < 2) return;
+    var dotsWrap = car.parentElement.querySelector('.bdots');
+    var dots = dotsWrap ? $$('.bdot', dotsWrap) : [];
+    var idx = 0, timer = null;
+    function show(n){
+      idx = (n + slides.length) % slides.length;
+      slides.forEach(function(s,i){ s.classList.toggle('on', i === idx); });
+      dots.forEach(function(d,i){ d.classList.toggle('on', i === idx); });
+    }
+    function next(){ show(idx + 1); }
+    function play(){ if(REDUCED) return; stop(); timer = setInterval(next, 4500); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+    dots.forEach(function(d,i){
+      d.addEventListener('click', function(){ show(i); play(); });
+    });
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', play);
+    show(0); play();
+  });
+
+  /* 13. 轮播图片点击放大（Lightbox，点击图片或背景/关闭按钮恢复） */
+  var lbImgs = $$('.bcarousel .bslide img');
+  if(lbImgs.length){
+    var lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.setAttribute('role','dialog');
+    lb.setAttribute('aria-modal','true');
+    lb.innerHTML = '<button class="lb-close" type="button" aria-label="关闭">&times;</button>'+
+                   '<img class="lb-img" alt="">';
+    var lbImg = $('.lb-img', lb), lbClose = $('.lb-close', lb), lbAdded = false;
+    function openLb(src, alt){
+      if(!lbAdded){ document.body.appendChild(lb); lbAdded = true; }
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.classList.add('on'); document.body.style.overflow = 'hidden';
+    }
+    function closeLb(){ lb.classList.remove('on'); document.body.style.overflow = ''; }
+    lbImgs.forEach(function(img){
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(){ openLb(img.currentSrc || img.src, img.alt); });
+    });
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){ if(e.target === lb || e.target === lbImg) closeLb(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && lb.classList.contains('on')) closeLb(); });
+  }
 })();

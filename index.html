@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>天元 · 一站式场景化数智平台 | 首页</title>
-<meta name="description" content="天元平台基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到行动指令下达的全链路闭环。">
-<meta property="og:title" content="天元 · 一站式场景化数智平台 | 首页">
-<meta property="og:description" content="天元平台基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到行动指令下达的全链路闭环。">
+<title>天元数智化信息服务平台 | 首页</title>
+<meta name="description" content="天元数智化信息服务平台：星辰入局，赋能千行百业；硬核技术，重塑产业底座。把中国航天的系统工程能力、可靠性工程传统与天基信息获取能力，转化为千行百业用得起、用得上的数智化能力，实现“感通算用”一体化全链路闭环。">
+<meta property="og:title" content="天元数智化信息服务平台 | 首页">
+<meta property="og:description" content="天元数智化信息服务平台：星辰入局，赋能千行百业；硬核技术，重塑产业底座。把中国航天的系统工程能力、可靠性工程传统与天基信息获取能力，转化为千行百业用得起、用得上的数智化能力，实现“感通算用”一体化全链路闭环。">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
@@ -35,6 +35,77 @@ a.arch-chip:hover{background:#C7DCF2}
   .arch-lb{flex:none;width:100%;padding:9px}
   .arch-3{grid-template-columns:1fr}
 }
+
+/* ===== 首屏 Banner：左文右图 + 图片轮播 ===== */
+.banner-split{display:flex;align-items:center;gap:52px}
+.banner-txt{flex:1 1 54%;min-width:0}
+.banner-media{flex:0 0 42%;min-width:0}
+.bcarousel{position:relative;border-radius:10px;overflow:hidden;background:#fff;
+  border:1px solid rgba(255,255,255,.22);box-shadow:0 18px 44px rgba(6,24,47,.45)}
+.bslide{display:none}
+.bslide.on{display:block;animation:bfade .6s ease}
+.bslide img{width:100%;display:block}
+@keyframes bfade{from{opacity:0}to{opacity:1}}
+.bdots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.bdot{width:9px;height:9px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.42);transition:.25s}
+.bdot.on{width:26px;border-radius:5px;background:var(--accent)}
+@media(max-width:960px){
+  .banner-split{flex-direction:column;gap:34px}
+  .banner-txt,.banner-media{flex:1 1 auto;width:100%}
+}
+
+/* ===== 轮播图片点击放大 Lightbox ===== */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+  background:rgba(6,24,47,.9);padding:40px;cursor:zoom-out}
+.lightbox.on{display:flex;animation:bfade .25s ease}
+.lb-img{max-width:92vw;max-height:88vh;border-radius:8px;background:#fff;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);cursor:zoom-out}
+.lb-close{position:absolute;top:22px;right:28px;width:46px;height:46px;border:0;border-radius:50%;
+  background:rgba(255,255,255,.16);color:#fff;font-size:28px;line-height:1;cursor:pointer;transition:.2s}
+.lb-close:hover{background:var(--accent);color:var(--ink)}
+
+/* ===== 感通算用 ===== */
+.sc-flow{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px 26px}
+.sc-line{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:22px;flex-wrap:wrap}
+.sc-line span{width:56px;height:56px;border-radius:10px;background:var(--primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700}
+.sc-line i{width:60px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));
+  opacity:.45;display:block}
+.sc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.sc-card{display:flex;gap:15px;background:var(--surface);border:1px solid var(--line-soft);
+  border-radius:8px;padding:16px 18px;transition:.22s}
+.sc-card:hover{background:#fff;border-color:var(--accent);transform:translateY(-2px)}
+.sc-n{flex:0 0 42px;height:42px;border-radius:8px;
+  background:linear-gradient(135deg,var(--primary-d40),var(--primary) 55%,var(--pl));
+  color:#fff;font-size:19px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.sc-b{flex:1;min-width:0}
+.sc-b h4{font-size:15.5px;color:var(--primary);font-weight:700;margin-bottom:6px}
+.sc-i{font-size:11px;color:var(--accent-d20);background:var(--accent-l90);
+  padding:2px 8px;border-radius:3px;margin-left:8px;font-weight:700;vertical-align:2px}
+.sc-b p{font-size:13.5px;color:var(--mute);line-height:1.85;margin-bottom:9px}
+.sc-m{font-size:12px;color:var(--primary);font-weight:700;
+  border-top:1px dashed var(--line);padding-top:8px}
+@media(max-width:860px){.sc-grid{grid-template-columns:1fr}.sc-line i{width:26px}}
+
+/* ===== 航天传承 ===== */
+.hr-lead{background:#fff;border:1px solid var(--line);border-left:4px solid var(--primary);
+  border-radius:8px;padding:22px 26px;margin-bottom:20px}
+.hr-lead p{font-size:14.5px;color:var(--ink-l30);line-height:2}
+.hr-lead b{color:var(--primary)}
+.hr-why{margin-top:26px;background:var(--primary-d40);color:#fff;border-radius:10px;padding:28px 30px}
+.hr-why h3{font-size:20px;margin-bottom:20px;color:#fff;font-weight:700}
+.hr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.hr-grid>div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  border-radius:8px;padding:17px 19px}
+.hr-grid b{display:inline-block;font-size:13px;color:var(--accent);font-weight:700;letter-spacing:1px}
+.hr-grid span{font-size:15px;font-weight:700;margin-left:9px;color:#fff}
+.hr-grid p{font-size:13px;color:#BBCEE2;line-height:1.9;margin-top:9px}
+.hr-grid p b{color:#fff}
+.hr-out{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);
+  font-size:15px;color:#CFDCEA;line-height:1.95}
+.hr-out b{color:#fff}
+@media(max-width:860px){.hr-grid{grid-template-columns:1fr}}
 </style>
 
 </head>
@@ -54,7 +125,7 @@ a.arch-chip:hover{background:#C7DCF2}
   <div class="nav-in">
     <a class="logo" href="index.html">
       <div class="logo-m"></div>
-      <div><div class="logo-t">天元</div><div class="logo-s">TIANYUAN</div></div>
+      <div><div class="logo-t">天元</div><div class="logo-s">TIANYUAN · 数智化信息服务平台</div></div>
     </a>
     <ul class="menu"><li class="on"><a href="index.html">首页</a></li><li class=""><a href="products.html">产品与能力</a><div class="sub"><a href="products.html#layers">分层能力一览</a><a href="products.html#infra">基础设施层 · 智算底座</a><a href="products.html#fusion">数据融合层 · 空天地数据融合引擎</a><a href="products.html#cognition">认知决策层 · 认知计算与决策引擎</a><a href="products.html#embodied">行动执行层 · 具身智能行动执行引擎</a><a href="products.html#market">数智市集 · 天元·灵集</a><a href="products.html#security">安全合规 · 全栈安全合规</a></div></li><li class=""><a href="solutions.html">解决方案</a><div class="sub"><a href="solutions.html#emergency">应急管理</a><a href="solutions.html#resource">自然资源监测</a><a href="solutions.html#agri">智慧农业</a><a href="solutions.html#logistics">交通物流</a></div></li><li class=""><a href="cases.html">客户案例</a><div class="sub"><a href="cases.html">案例总览</a><a href="case-detail.html">标杆案例</a></div></li><li class=""><a href="about.html">关于我们</a><div class="sub"><a href="about.html#intro">研究院简介</a><a href="about.html#history">发展历程</a><a href="about.html#honor">资质荣誉</a></div></li><li class=""><a href="contact.html">联系我们</a></li></ul>
     <div class="nav-right">
@@ -73,42 +144,143 @@ a.arch-chip:hover{background:#C7DCF2}
   </div>
 </div>
 
-<header class="banner">
-  <div class="banner-in" style="padding:96px 24px 88px">
-    <span style="display:inline-block;background:#00A0E9;color:#1A1A1A;font-size:12.5px;
-      font-weight:700;padding:5px 14px;border-radius:3px;letter-spacing:1px;margin-bottom:20px">
-      空天地一体化 · 全链路闭环</span>
-    <h1>天元<br>一站式场景化<br><em>数智平台</em></h1>
-    <p class="lead">基于空天地一体化数据，融合人工智能与智能体技术，实现从卫星原始数据获取到
-      行动指令下达的全链路闭环，为客户提供“感、通、算、用”一体化的数智化解决方案。</p>
-    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px">
-      <a class="btn btn-p btn-lg" href="products.html">了解平台能力</a>
-      <a class="btn btn-o btn-lg" href="contact.html">预约演示</a>
+<header class="banner banner-sat">
+  <div class="banner-in banner-split" style="padding:100px 24px 92px">
+    <div class="banner-txt">
+      <h1 style="font-size:44px;line-height:1.34;letter-spacing:2px;margin-bottom:10px">
+        星辰入局，赋能千行百业；<br>硬核技术，重塑产业底座。</h1>
+      <p style="font-size:20px;color:#CFDCEA;letter-spacing:3px;margin-bottom:20px;font-weight:700">
+        天元数智化信息服务平台</p>
+      <p class="lead">把中国航天近七十年的系统工程能力、可靠性工程传统与天基信息获取能力，
+        转化为千行百业用得起、用得上的数智化能力。<br>
+        以“感、通、算、用”一体化架构，实现从卫星原始数据获取到行动指令下达的全链路闭环。</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:30px">
+        <a class="btn btn-p btn-lg" href="products.html">了解平台能力</a>
+        <a class="btn btn-o btn-lg" href="contact.html">预约演示</a>
+      </div>
+      <div class="spec">
+        <div><span>45+</span><small>全球地面站</small></div>
+        <div><span>1+3+1+1+N</span><small>产品体系架构</small></div>
+        <div><span>5</span><small>大核心场景</small></div>
+        <div><span>国产全栈</span><small>自主可控适配</small></div>
+      </div>
     </div>
-    <div class="spec">
-      <div><span>45+</span><small>全球地面站</small></div>
-      <div><span>1+3+1+1+N</span><small>产品体系架构</small></div>
-      <div><span>5</span><small>大核心场景</small></div>
-      <div><span>国产全栈</span><small>自主可控适配</small></div>
+    <div class="banner-media">
+      <div class="bcarousel">
+        <div class="bslide on"><img src="assets/img/banner-arch.png" alt="天地一体化架构示意图"></div>
+        <div class="bslide"><img src="assets/img/banner-ai.png" alt="跨越 AI 落地的最后一公里"></div>
+      </div>
+      <div class="bdots">
+        <button class="bdot on" type="button" aria-label="第 1 张图片"></button>
+        <button class="bdot" type="button" aria-label="第 2 张图片"></button>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- 差异化优势 -->
+<!-- ===== 航天技术：我们做天元的底气 ===== -->
+<section class="sec alt" id="heritage">
+  <div class="wrap">
+    <div class="sec-h rv"><div class="k">AEROSPACE HERITAGE</div>
+      <h2>航天技术，是我们做天元的底气</h2>
+      <p>天元不是凭空搭建的 AI 平台。它站在中国航天近七十年的系统工程能力、
+        可靠性工程传统与天基信息获取能力之上。</p></div>
+
+    <div class="hr-lead rv">
+      <p><b>钱学森同志</b>作为中国航天事业的奠基人，把<b>系统工程</b>思想引入中国航天实践，
+        建立起“总体设计部”这一大规模工程协同范式：复杂系统不靠单点突破，
+        而靠<b>分解、协同、验证、闭环</b>。同一时期形成的
+        <b>“严肃认真、周到细致、稳妥可靠、万无一失”</b>工作要求，
+        沉淀为中国航天独特的<b>可靠性工程传统</b>——
+        产品要扛住发射过载、真空、温差与强辐射，且不可现场维修，
+        因而把“可靠”写进了每一个环节的基因。</p>
+      <p style="margin-top:14px">这套方法论，今天被完整地用于天元。
+        <b>不同的是：过去它把卫星送上天，现在它把卫星的能力送到千行百业。</b></p>
+    </div>
+
+    <div class="grid4 rv">
+      <div class="card rv"><h3>全域覆盖</h3><p style="font-size:12.5px;color:#00A0E9;font-weight:700;margin-bottom:8px">不受地面条件约束</p><p>沙漠、海洋、高原、极地、跨境区域——地面网络建不了或建不起的地方，卫星从天上往下看没有边界。对这些场景，天基手段不是“更好”，而是唯一解。</p></div>
+      <div class="card rv"><h3>时空基准统一</h3><p style="font-size:12.5px;color:#00A0E9;font-weight:700;margin-bottom:8px">多源融合的底层框架</p><p>卫星数据天生带高精度时间戳与地理坐标，所有观测自动落在同一时空框架内。这让我们不只提供数据，更提供“让其他数据变得可用”的基准——多源融合因此成立。</p></div>
+      <div class="card rv"><h3>极端可靠</h3><p style="font-size:12.5px;color:#00A0E9;font-weight:700;margin-bottom:8px">最坏时刻仍然在线</p><p>航天产品要扛住发射过载、真空、±150℃ 温差与强辐射，且不可现场维修。地震断网、洪水毁基站时，卫星仍在。客户买的是“关键时刻不掉链子”的确定性。</p></div>
+      <div class="card rv"><h3>边际成本递减</h3><p style="font-size:12.5px;color:#00A0E9;font-weight:700;margin-bottom:8px">天然的平台型结构</p><p>一颗卫星上天后，给一个行业用和给一百个行业用成本几乎不变。这决定了航天技术天然适合做平台，也解释了天元为什么能覆盖 N 个行业。</p></div>
+    </div>
+
+    <div class="hr-why rv">
+      <h3>为什么这给了我们把航天技术赋能千行百业的底气</h3>
+      <div class="hr-grid">
+        <div><b>01</b><span>能力是现成的</span>
+          <p>天基信息获取、时空基准、极端环境可靠性——这些不是需要新建的能力，
+            而是中国航天已经积累数十年、经过无数次任务验证的成熟资产。
+            我们做的是转化，不是从零起步。</p></div>
+        <div><b>02</b><span>工程方法是可迁移的</span>
+          <p>系统工程解决的是“复杂系统如何做成”的问题。这个问题在航天存在，
+            在应急指挥、城市治理、多源数据融合中同样存在。
+            <b>方法论层面的可迁移性，远高于技术细节的可迁移性。</b></p></div>
+        <div><b>03</b><span>可靠性是可验证的信任</span>
+          <p>对 toG 与关键基础设施客户，参数表上的 99% 不如“最坏时刻仍在”来得重要。
+            航天可靠性传统提供的正是这种可验证的信任——
+            这也是天元<b>安全价值</b>的来源。</p></div>
+        <div><b>04</b><span>一次建设，边际成本递减</span>
+          <p>天基能力的成本主要在建设期，服务第二个行业的边际成本极低。
+            这决定了航天技术天然是<b>平台型能力</b>——
+            只有服务足够多的行业，才能把这份投入摊薄、把价值做大。</p></div>
+      </div>
+      <p class="hr-out"><b>一句话：</b>
+        航天技术给了我们从太空看地球的能力，而客户买的从来不是“看”，
+        而是“看清之后能做什么”。天元要做的，就是把前者转化为后者。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 感通算用 ===== -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-h rv"><div class="k">WHY TIANYUAN</div><h2>四大差异化优势</h2>
-      <p>与通用云平台不同，天元的核心差异在于数据源、闭环能力、国产化与智能体驱动。</p></div>
-    <div class="grid4">
-      <div class="card rv"><div class="ico">源</div><h3>空天地一体化数据源</h3>
-        <p>覆盖高、低轨卫星及 45+ 全球地面站，实现天基数据直达业务。</p></div>
-      <div class="card rv"><div class="ico">链</div><h3>全链路闭环</h3>
-        <p>从数据获取、治理、认知决策到终端执行，无需拼接多家供应商。</p></div>
-      <div class="card rv"><div class="ico">国</div><h3>国产化全栈适配</h3>
-        <p>从算力底座到 AI 模型，满足自主可控要求。</p></div>
-      <div class="card rv"><div class="ico">智</div><h3>智能体驱动</h3>
-        <p>多智能体任务编排与自我进化，让系统越用越聪明。</p></div>
+    <div class="sec-h rv"><div class="k">SENSE · LINK · COMPUTE · ACT</div>
+      <h2>“感通算用”一体化</h2>
+      <p>从物理世界的感知观测，到信息传输贯通，再到认知计算决策，最终落地为具身行动——
+        四层贯通，构成天元平台的完整技术闭环。</p></div>
+    <div class="sc-flow rv">
+      <div class="sc-line">
+        <span>感</span><i></i><span>通</span><i></i><span>算</span><i></i><span>用</span>
+      </div>
+      <div class="sc-grid">
+      <div class="sc-card rv">
+        <div class="sc-n">感</div>
+        <div class="sc-b">
+          <h4>物理感知与观测<span class="sc-i">第 1 层</span></h4>
+          <p>天基卫星、空基无人机、地基物联网协同观测，形成覆盖全域的多源感知网络，把物理世界的运行态势映射为可计算的数据。</p>
+          <div class="sc-m">天元·灵观 · 天元·灵数</div>
+        </div>
+      </div>
+      <div class="sc-card rv">
+        <div class="sc-n">通</div>
+        <div class="sc-b">
+          <h4>信息传输与贯通<span class="sc-i">第 2 层</span></h4>
+          <p>星地链路、5G / 专网、边缘组网自适应切换，保障数据高带宽、低时延回传，打通从太空到地面的数据通道。</p>
+          <div class="sc-m">空天地一体化网络</div>
+        </div>
+      </div>
+      <div class="sc-card rv">
+        <div class="sc-n">算</div>
+        <div class="sc-b">
+          <h4>认知计算与决策<span class="sc-i">第 3 层</span></h4>
+          <p>依托天玄大模型底座，接入市场主流各家大模型系统，按需调度最优模型资源；以本体建模读懂业务，由认知计算引擎统一调度数据、模型、智能体与 Skill，形成从数据到决策的闭环，为客户提供灵活高效的 AI 辅助能力。</p>
+          <div class="sc-m">天元·灵语 · 天元·灵炼 · 天元·灵智 · 认知计算引擎</div>
+        </div>
+      </div>
+      <div class="sc-card rv">
+        <div class="sc-n">用</div>
+        <div class="sc-b">
+          <h4>具身应用与赋能<span class="sc-i">第 4 层</span></h4>
+          <p>与具身智能行业深度融合，为无人机、无人车、机器狗等设备提供决策辅助、路径规划、行动轨迹、动态调谐等综合调度能力，结合视觉增强实现厘米级精准作业，把决策直接转化为可执行、可核查的行动指令。</p>
+          <div class="sc-m">天元·灵动</div>
+        </div>
+      </div>
+      </div>
     </div>
+    <div class="info rv"><b>为什么必须是四层贯通：</b>
+      只做“感”，得到的是一堆影像；补上“通”，数据才能回得来；加上“算”，数据才能变成结论；
+      落到“用”，结论才能变成行动。<b>客户买的从来不是“看”，而是“看清之后能做什么”。</b></div>
   </div>
 </section>
 
@@ -177,7 +349,7 @@ a.arch-chip:hover{background:#C7DCF2}
         <div class="ph" style="background:linear-gradient(135deg,#0F3D75,#1B5A9E)">
           <span class="ph-tag">数据从哪来</span>空天地数据融合引擎</div>
         <div class="pb"><h3>空天地数据融合引擎</h3>
-          <p>以空天地一体化数据源为核心，快速获取、治理与融合卫星遥感、无人机、物联网等多源数据，
+          <p>以天基数据为核心，快速获取、治理卫星遥感数据，融合无人机与物联网等多源数据，
             并通过星地链路、5G/专网、边缘组网自适应切换保障传输，让天基数据直达业务。</p>
           <ul style="margin-top:10px;font-size:12.5px;color:#5C6670">
             <li>天元·灵观 · 天元·灵数 · 空天地一体化网络</li>
@@ -187,8 +359,8 @@ a.arch-chip:hover{background:#C7DCF2}
         <div class="ph" style="background:linear-gradient(135deg,#1B5A9E,#3F6491)">
           <span class="ph-tag">数据怎么用</span>认知计算与决策引擎</div>
         <div class="pb"><h3>认知计算与决策引擎</h3>
-          <p>以本体建模读懂业务，以模型工厂和智能体工厂持续生产模型与智能体，
-            并由认知计算引擎统一调度数据、模型、智能体与 Skill，形成从数据到决策的流程闭环。</p>
+          <p>依托航天科技天玄大模型并接入市场主流各家大模型系统，按需调度最优模型资源；
+            以本体建模读懂业务，由认知计算引擎统一调度模型、智能体与 Skill，形成从数据到决策的流程闭环，为客户提供灵活高效的 AI 辅助能力。</p>
           <ul style="margin-top:10px;font-size:12.5px;color:#5C6670">
             <li>天元·灵语 · 天元·灵炼 · 天元·灵智 · 认知计算引擎</li>
             <li>模型迭代：月级 → 周级</li></ul>
@@ -197,8 +369,8 @@ a.arch-chip:hover{background:#C7DCF2}
         <div class="ph" style="background:linear-gradient(135deg,#0C315E,#16487E)">
           <span class="ph-tag">指令怎么执行</span>具身智能行动执行引擎</div>
         <div class="pb"><h3>具身智能行动执行引擎</h3>
-          <p>面向无人机、无人车、机器狗等多类具身设备，实现统一调度与链路自适应下发，
-            结合视觉增强完成厘米级精准作业，打通从决策到行动的最后一公里。</p>
+          <p>与具身智能行业深度融合，为无人机、无人车、机器狗等设备提供决策辅助、路径规划、行动轨迹、动态调谐等综合调度能力，
+            结合视觉增强实现厘米级精准作业，打通从决策到行动的最后一公里。</p>
           <ul style="margin-top:10px;font-size:12.5px;color:#5C6670">
             <li>天元·灵动</li>
             <li>多设备协同效率提升 50%，作业精度厘米级</li></ul>
@@ -315,7 +487,7 @@ a.arch-chip:hover{background:#C7DCF2}
 
 <section class="cta">
   <div class="wrap">
-    <h2>从卫星原始数据，到可直接下达的行动指令</h2>
+    <h2>星辰入局，赋能千行百业</h2>
     <p>欢迎行业客户与合作伙伴联系我们，留下姓名与电话，我们将在工作日内与您联系。</p>
     <a class="btn btn-p btn-lg" href="contact.html">获取行业解决方案</a>
   </div>
@@ -324,7 +496,7 @@ a.arch-chip:hover{background:#C7DCF2}
   <div class="wrap">
     <div class="ft-g">
       <div>
-        <h5>天元平台</h5>
+        <h5>天元数智化信息服务平台</h5>
         <p class="ab">“感通算用”一体化综合信息服务平台<br>
         依托天地一体化资源，面向行业智能升级<br>
         提供一站式信息服务。<br>
