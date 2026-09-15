@@ -20,17 +20,20 @@ def w(n,s): io.open("../"+n,"w",encoding="utf-8").write(s); print("  ->",n)
 #   卡片[锚点, 产品名, 能力分类标签, 功能介绍, 关键指标(·分隔), 媒体 dict or None])
 # 媒体素材取自 data/产品与能力/：{"video":..} 自动播放入口在媒体区，{"img":..} 为产品图
 MEDIA = {
- "fusion-lingguan": {"img":"data/产品与能力/天元灵观/天基信息服务系统.png"},
- "fusion-lingshu":  {"video":"data/产品与能力/天元灵数/天元·灵数_加字幕.mp4"},
+ "infra-cluster":  {"img":"data/产品与能力/智算集群.png"},
+ "infra-network":  {"img":"data/产品与能力/高速互联.png"},
+ "infra-edge":     {"img":"data/产品与能力/边云协同.png"},
+ "fusion-lingguan":{"video":"data/产品与能力/天元灵观/天元灵观_有片头.mp4"},
+ "fusion-lingshu": {"video":"data/产品与能力/天元灵数/天元·灵数_加字幕.mp4"},
  "fusion-network":  None,
  "cognition-lingyu":{"video":"data/产品与能力/天元灵语/天元·灵语_加字幕.mp4"},
  "cognition-linglian":{"video":"data/产品与能力/天元灵炼/天元·灵炼_加字幕.mp4"},
- "cognition-lingzhi":{"img":"data/产品与能力/天元灵智/dify截图.jpg"},
+ "cognition-lingzhi":{"img":"data/产品与能力/天元灵智/天元·灵智.png"},
  "cognition-engine":{"video":"data/产品与能力/天元认知计算/天元认知计算_行业应用_开源情报+海洋油污+应急信息服务_有字幕.mp4"},
- "embodied-lingdong":{"img":"data/产品与能力/天元灵动/天元灵动.png"},
- "market-assets":   {"img":"data/产品与能力/智能体市场/数智资产广场/数智资产广场.png"},
- "market-agents":   {"img":"data/产品与能力/智能体市场/智能体及技能库/智能体及技能库.png"},
- "market-assistant":{"img":"data/产品与能力/智能体市场/天元信息服务助手/天元信息服务助手.png"},
+ "embodied-lingdong":{"video":"data/产品与能力/天元灵动/天元灵动_有片头.mp4"},
+ "market-assets":   {"img":"data/产品与能力/智能体市场/数智资产广场/数智资产市场.png"},
+ "market-agents":   {"video":"data/产品与能力/智能体市场/智能体及技能库/智能体及技能库.mp4"},
+ "market-assistant":{"video":"data/产品与能力/智能体市场/天元信息服务助手/天元认知计算.mp4"},
 }
 # 顶部标签对照：基础支撑 / 数据获取·数据治理·通信保障 / 本体建模·模型工厂·
 # 智能体工厂·编排调度 / 具身智能调度 / 资产流通·技能流通·信息服务 /
