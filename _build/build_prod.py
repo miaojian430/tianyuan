@@ -474,9 +474,9 @@ EXTRA_JS = """
     return k;
   }
 
-  /* 筛选器切换 → 架构图 + 产品卡 */
+  /* 筛选器切换 → 架构图 + 产品卡（保持当前滚动位置，不自动下滑） */
   chips.forEach(function(c){
-    c.addEventListener('click', function(){ setFilter(c.dataset.k, true); });
+    c.addEventListener('click', function(){ setFilter(c.dataset.k, false); });
   });
 
   /* 架构图层级点击 → 筛选器选中 + 产品卡滚动定位 */
