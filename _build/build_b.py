@@ -147,7 +147,7 @@ CASES = [
 },
 {
  "id":"low-altitude",
- "media":{"type":"placeholder","note":"城市低空无人机巡航 + 察打一体设备"},
+ "media":{"type":"video","video":"data/客户案例/低空安全.mp4","note":"城市低空无人机巡航 + 察打一体设备"},
  "badge":"实战案例",
  "title":"低空安全，从“被动应对”到“察打一体”",
  "desc":"构建情指行一体+平峰一体+察打一体三位一体管控体系，实现核心区禁飞筑铁壁、"
