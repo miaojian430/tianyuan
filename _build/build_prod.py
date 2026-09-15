@@ -17,7 +17,21 @@ def w(n,s): io.open("../"+n,"w",encoding="utf-8").write(s); print("  ->",n)
 
 # ---------- 数据：六层产品卡 ----------
 # (层级key, 分组锚点, 层级 · 引擎, 灵魂问题 or None,
-#   卡片[锚点, 产品名, 能力分类标签, 功能介绍, 关键指标(·分隔) or None])
+#   卡片[锚点, 产品名, 能力分类标签, 功能介绍, 关键指标(·分隔), 媒体 dict or None])
+# 媒体素材取自 data/产品与能力/：{"video":..} 自动播放入口在媒体区，{"img":..} 为产品图
+MEDIA = {
+ "fusion-lingguan": {"img":"data/产品与能力/天元灵观/天基信息服务系统.png"},
+ "fusion-lingshu":  {"video":"data/产品与能力/天元灵数/天元·灵数_加字幕.mp4"},
+ "fusion-network":  None,
+ "cognition-lingyu":{"video":"data/产品与能力/天元灵语/天元·灵语_加字幕.mp4"},
+ "cognition-linglian":{"video":"data/产品与能力/天元灵炼/天元·灵炼_加字幕.mp4"},
+ "cognition-lingzhi":{"img":"data/产品与能力/天元灵智/dify截图.jpg"},
+ "cognition-engine":{"video":"data/产品与能力/天元认知计算/天元认知计算_行业应用_开源情报+海洋油污+应急信息服务_有字幕.mp4"},
+ "embodied-lingdong":{"img":"data/产品与能力/天元灵动/天元灵动.png"},
+ "market-assets":   {"img":"data/产品与能力/数智集市/一套多元数据融合资源池.png"},
+ "market-agents":   {"img":"data/产品与能力/数智集市/一套行业智能组件库.png"},
+ "market-assistant":{"img":"data/产品与能力/数智集市/一套数智服务工具链.png"},
+}
 # 顶部标签对照：基础支撑 / 数据获取·数据治理·通信保障 / 本体建模·模型工厂·
 # 智能体工厂·编排调度 / 具身智能调度 / 资产流通·技能流通·信息服务 /
 # 身份安全·数据安全·AI 安全·审计溯源
@@ -114,15 +128,25 @@ REG = [
 
 
 def card_html(card):
-    anchor, name, tag, desc, kpi = card
+    anchor, name, tag, desc, kpi = card[:5]
+    m = MEDIA.get(anchor)
     kpis = [x.strip() for x in (kpi or "").split("·") if x.strip()]
     kpi_html = ('\n          <ul class="pcv-kpi">%s</ul>'
                 % "".join('<li>%s</li>' % k for k in kpis)) if kpis else ""
+    if m and m.get("video"):
+        media = ('\n          <video src="%s" controls muted loop playsinline preload="metadata"></video>'
+                 % m["video"])
+        play = '<span class="pcv-play">&#9654;</span>'
+    elif m and m.get("img"):
+        media = '\n          <img src="%s" alt="%s" loading="lazy">' % (m["img"], name)
+        play = ""
+    else:
+        media = ('\n          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>')
+        play = '<span class="pcv-play">&#9654;</span>'
     return """
       <div class="pcv rv" id="%s">
-        <div class="pcv-media" data-media>
-          <div class="pcv-ph"><b>&#9654;</b><small>视频封面 / 产品图 / 场景图占位</small></div>
-          <span class="pcv-play">&#9654;</span>
+        <div class="pcv-media" data-media>%s
+          %s
         </div>
         <div class="pcv-body">
           <div class="pcv-tags"><span>%s</span></div>
@@ -133,7 +157,7 @@ def card_html(card):
             <a class="btn btn-o" href="#list">查看详情 &#8594;</a>
           </div>
         </div>
-      </div>""" % (anchor, tag, name, desc, kpi_html)
+      </div>""" % (anchor, media, play, tag, name, desc, kpi_html)
 
 
 def layers_html():
@@ -246,7 +270,8 @@ __ARCH__
     </div>
 
     <div class="info rv"><b>说明：</b>所有数字指标均为演示口径，待产品部门复核；
-      产品卡媒体区素材（视频封面 / 产品图 / 场景图）待补充，就绪后按首屏前 3 张立即加载、其余滚动到位懒加载。</div>
+      产品卡媒体区已接入 data/产品与能力/ 素材（视频静音循环，右上角图标标示），
+      智算底座与安全合规层素材待补充，接入后自动替换占位。</div>
   </div>
 </section>
 
@@ -324,6 +349,7 @@ EXTRA_CSS = """
 /* 媒体区：16:9，视频封面/产品图/场景图，右上角播放图标 */
 .pcv-media{position:relative;width:100%;padding-top:56.25%;background:#EEF4FA;overflow:hidden}
 .pcv-media video,.pcv-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.pcv-media video{background:#0C1524}
 .pcv-ph{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;
   align-items:center;justify-content:center;color:#7C8894;
   border-bottom:1px dashed #B4C7E7;transition:opacity .4s}

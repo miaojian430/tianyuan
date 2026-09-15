@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="assets/theme.css">
 
 <style>
-/* 独立详情页：复用弹窗军绿组件样式 */
-/* ===== 案例列表卡片（与主平台配色一致） ===== */
+/* 独立详情页：复用弹窗组件样式（军绿默认值），仅智慧边防，不含其他案例主题 */
+/* ===== 案例列表卡片（默认配色与主平台一致） ===== */
 .cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .cs-card{display:flex;flex-direction:column;background:#fff;border:1px solid #B4C7E7;
   border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;
@@ -48,7 +48,11 @@
   padding-top:12px;border-top:1px dashed #D6DEE9}
 .cs-stat b{display:block;font-size:20px;font-weight:700;color:#0F3D75}
 .cs-stat small{display:block;font-size:11.5px;color:#5C6670;margin-top:2px}
-.cs-go{margin-top:auto;font-size:13px;font-weight:700;color:#00608C}
+.cs-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
+.cs-place{display:flex;align-items:center;gap:4px;font-size:11.5px;color:#7A8694;
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:1}
+.cs-place svg{flex:none}
+.cs-go{font-size:13px;font-weight:700;color:#00608C;flex:none}
 .cs-card:hover .cs-go{color:#00A0E9}
 /* 占位卡 */
 .cs-more{border-style:dashed;background:#FBFCFE;cursor:default}
@@ -60,13 +64,13 @@
   font-size:26px;font-weight:400;line-height:1}
 .cs-more .cs-pb h3{color:#5C6670}
 .cs-more .cs-pb p{display:block;color:#8894A0}
-/* ===== 案例详情弹窗（军绿主题） ===== */
+/* ===== 案例详情弹窗（CSS 变量主题化；智慧边防默认军绿） ===== */
 .cmd{position:fixed;inset:0;z-index:1200;display:none}
 .cmd.open{display:flex;align-items:center;justify-content:center;padding:22px}
 .cmd-mask{position:absolute;inset:0;background:rgba(10,22,40,.55);
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .cmd-panel{position:relative;width:100%;max-width:880px;max-height:92vh;
-  background:#F1F3E6;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;
+  background:var(--panel,#F1F3E6);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;
   transform:translateY(48px);opacity:0;transition:transform .35s ease,opacity .35s ease;
   box-shadow:0 24px 70px rgba(15,25,8,.35)}
 .cmd.open .cmd-panel{transform:none;opacity:1}
@@ -75,9 +79,10 @@
   display:flex;align-items:center;justify-content:center;transition:background .2s}
 .cmd-x:hover{background:rgba(255,255,255,.32)}
 .cmd-scroll{overflow-y:auto;overscroll-behavior:contain}
-/* 封面：军绿渐变 + 底部遮罩 */
+/* 封面：案例主色渐变 + 底部遮罩 */
 .cm-cover{position:relative;min-height:280px;display:flex;flex-direction:column;
-  justify-content:flex-end;padding:26px 30px;background:linear-gradient(135deg,#232D18,#3E4A2B 55%,#55663A)}
+  justify-content:flex-end;padding:26px 30px;
+  background:var(--cover,linear-gradient(135deg,#232D18,#3E4A2B 55%,#55663A))}
 .cm-cover video,.cm-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cm-cover .cm-shade{position:absolute;inset:0;
   background:linear-gradient(to top,rgba(18,24,10,.88),rgba(18,24,10,.25) 60%,transparent)}
@@ -87,46 +92,61 @@
   color:#EAF0DC;font-size:12px;padding:3px 10px;border-radius:4px}
 .cm-cover h2{color:#fff;font-size:26px;line-height:1.45;margin:0 0 8px}
 .cm-sub{color:#C9D6A8;font-size:14px;margin:0}
-/* 正文（浅军绿底） */
+/* 正文 */
 .cm-body{padding:24px 30px 30px}
 .cm-h{display:flex;align-items:center;gap:8px;margin:26px 0 14px;font-size:17px;
-  color:#2F3B22;font-weight:700}
+  color:var(--deep,#2F3B22);font-weight:700}
 .cm-h:first-child{margin-top:0}
-.cm-h::before{content:"";width:4px;height:18px;border-radius:2px;background:#5A6B3F}
+.cm-h::before{content:"";width:4px;height:18px;border-radius:2px;
+  background:linear-gradient(180deg,var(--p,#5A6B3F),var(--s,#5A6B3F))}
 /* 客户原声 */
-.cm-quote{background:#fff;border-radius:10px;padding:16px 18px;border-left:4px solid #5A6B3F}
+.cm-quote{background:#fff;border-radius:10px;padding:16px 18px;border-left:4px solid var(--p,#5A6B3F)}
 .cm-quote p{margin:0;font-size:15px;line-height:1.95;color:#2E3A20}
 .cm-quote small{display:block;margin-top:8px;font-size:12.5px;color:#7C8894}
-/* 挑战 2×2：橙色竖线 */
+/* 挑战 2×2：竖线统一橙色系 */
 .cm-grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.cm-chal{background:#fff;border-radius:10px;padding:14px 16px;border-left:4px solid #D9632C}
-.cm-chal b{display:block;font-size:14.5px;color:#2F3B22;margin-bottom:5px}
+.cm-chal{background:#fff;border-radius:10px;padding:14px 16px;border-left:4px solid var(--chal,#D9632C)}
+.cm-chal b{display:block;font-size:14.5px;color:var(--deep,#2F3B22);margin-bottom:5px}
 .cm-chal p{margin:0;font-size:13px;line-height:1.8;color:#5C6670}
-/* 架构图占位：可替换为真实图片 */
-.cm-arch{background:#F7F9EE;border:1.5px dashed #9DAA84;border-radius:10px;
+/* 架构图占位：主色虚线，支持替换真实图片 */
+.cm-arch{background:var(--archbg,#F7F9EE);border:1.5px dashed var(--arch,#9DAA84);border-radius:12px;
   display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;
   color:#7C8894;overflow:hidden}
 .cm-arch img{width:100%;height:100%;object-fit:cover;border:0}
-.cm-arch b{font-size:14px;color:#5A6B3F}
+.cm-arch b{font-size:14px;color:var(--p,#5A6B3F)}
 .cm-arch small{font-size:11.5px}
-/* 能力列表 */
-.cm-cap b{display:block;font-size:14.5px;color:#2F3B22;margin-bottom:5px}
+/* 方案能力列表：竖线用案例主色 */
+.cm-cap{background:#fff;border-radius:10px;padding:14px 16px;border-left:4px solid var(--p,#5A6B3F)}
+.cm-cap b{display:block;font-size:14.5px;color:var(--deep,#2F3B22);margin-bottom:5px}
 .cm-cap p{margin:0;font-size:13px;line-height:1.8;color:#5C6670}
-/* 突破卡：白底 + 军绿顶条 */
-.cm-brk{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #DDE2CB}
-.cm-brk-h{background:#3E4A2B;color:#fff;font-size:14.5px;font-weight:700;padding:10px 16px}
+.cm-type{display:inline-block;font-size:11px;font-weight:700;color:var(--p,#5A6B3F);
+  background:var(--chipbg,#EDF0E0);border-radius:4px;padding:2px 8px;margin-bottom:7px}
+/* 成效卡片：竖线用辅助色 */
+.cm-res{background:#fff;border-radius:10px;padding:14px 16px;border-left:4px solid var(--s,#5A6B3F)}
+.cm-res b{display:block;font-size:14.5px;color:var(--deep,#2F3B22);margin-bottom:5px}
+.cm-res p{margin:0;font-size:13.5px;line-height:1.8;color:#33414E;font-weight:700}
+/* 推广展望 */
+.cm-outlook{background:#fff;border-radius:10px;padding:14px 18px;margin:0;list-style:none}
+.cm-outlook li{position:relative;padding:8px 0 8px 22px;font-size:13.5px;color:#33414E;line-height:1.8}
+.cm-outlook li::before{content:"";position:absolute;left:2px;top:17px;width:9px;height:9px;
+  border-radius:2px;background:linear-gradient(135deg,var(--p,#5A6B3F),var(--s,#5A6B3F))}
+/* 突破卡（智慧边防） */
+.cm-brk{background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--chipline,#DDE2CB)}
+.cm-brk-h{background:var(--brk,#3E4A2B);color:#fff;font-size:14.5px;font-weight:700;padding:10px 16px}
 .cm-brk-b{padding:14px 16px}
 .cm-brk-b p{margin:0 0 12px;font-size:13px;line-height:1.85;color:#33414E}
 .cm-brk-stats{display:flex;flex-wrap:wrap;gap:6px}
-.cm-brk-stats span{font-size:11.5px;color:#3E4A2B;background:#EDF0E0;
-  border:1px solid #C4CDA8;border-radius:4px;padding:2px 8px;font-weight:700}
-/* 底部 CTA：深军绿 */
-.cm-cta{margin-top:26px;background:#2F3B22;border-radius:12px;padding:20px 24px;
+.cm-brk-stats span{font-size:11.5px;color:var(--brk,#3E4A2B);background:var(--chipbg,#EDF0E0);
+  border:1px solid var(--chipline,#C4CDA8);border-radius:4px;padding:2px 8px;font-weight:700}
+/* 底部 CTA：深主色底 + 主色→辅助色渐变按钮 */
+.cm-cta{margin-top:26px;background:var(--deep,#2F3B22);border-radius:12px;padding:20px 24px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .cm-cta p{margin:0;color:#EAF0DC;font-size:14px;line-height:1.8}
-.cm-cta .btn-wt{display:inline-block;background:#fff;color:#2F3B22;font-size:14px;font-weight:700;
-  padding:11px 22px;border-radius:6px;text-decoration:none;white-space:nowrap;transition:background .2s}
-.cm-cta .btn-wt:hover{background:#DDE8C4}
+.cm-cta .btn-wt{display:inline-block;background:var(--btn,#fff);color:var(--btnc,#2F3B22);
+  font-size:14px;font-weight:700;padding:11px 22px;border-radius:6px;text-decoration:none;
+  white-space:nowrap;transition:opacity .2s}
+.cm-cta .btn-wt:hover{opacity:.88}
+.cm-mask-note{margin:10px 0 0;font-size:11.5px;color:#98A4AD}
 /* 响应式 */
 @media(max-width:960px){.cs-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.cm-grid2{grid-template-columns:1fr}
@@ -139,6 +159,34 @@
 @media(prefers-reduced-motion:reduce){.cmd-panel{transition:none}
   .cs-badge .dot{animation:none}
   .cs-card,.cs-card:hover{transition:none}}
+/* ===== 视频放大播放（卡片角标 + 弹窗播放按钮 + 灯箱） ===== */
+.cs-zoom{position:absolute;top:10px;right:10px;z-index:3;width:30px;height:30px;border-radius:50%;
+  background:rgba(0,0,0,.55);color:#fff;border:0;cursor:pointer;font-size:15px;
+  display:flex;align-items:center;justify-content:center;backdrop-filter:blur(2px);transition:.2s}
+.cs-zoom:hover{background:rgba(0,0,0,.78);transform:scale(1.06)}
+.cm-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:10px;background:rgba(0,0,0,.18);color:#fff;border:0;cursor:pointer;z-index:3;transition:.2s}
+.cm-play:hover{background:rgba(0,0,0,.32)}
+.cm-play .ico{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.18);
+  border:2px solid rgba(255,255,255,.78);display:flex;align-items:center;justify-content:center;
+  font-size:24px;backdrop-filter:blur(3px);box-shadow:0 6px 20px rgba(0,0,0,.4);transition:.2s}
+.cm-play:hover .ico{transform:scale(1.08);background:rgba(255,255,255,.28)}
+.cm-play small{font-size:13px;font-weight:700;letter-spacing:2px;
+  text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.vlb{position:fixed;inset:0;z-index:1400;display:flex;align-items:center;justify-content:center}
+.vlb[hidden]{display:none}
+.vlb-mask{position:absolute;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(4px)}
+.vlb-inner{position:relative;max-width:1100px;width:92vw;max-height:88vh;background:#000;
+  border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.vlb-inner video{width:100%;max-height:88vh;display:block;background:#000}
+.vlb-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.4);
+  font-size:16px;cursor:pointer;backdrop-filter:blur(6px);transition:.2s}
+.vlb-close:hover{background:rgba(255,255,255,.28)}
+@media(max-width:640px){.cm-play .ico{width:54px;height:54px;font-size:20px}
+  .cm-play small{font-size:12px;letter-spacing:1px}}
+
+
 </style>
 
 </head>
@@ -179,7 +227,7 @@
 
 <div class="banner pad" style="background:linear-gradient(135deg,#232D18,#3E4A2B 55%,#55663A)">
 <div class="banner-in">
-  <div class="cm-ctags" style="margin-bottom:14px"><span>#智慧边防</span><span>#AI预警</span><span>#无人装备协同</span><span>#无电无网覆盖</span></div>
+  <div class="cm-ctags" style="margin-bottom:14px"><span>智慧边防</span><span>AI预警</span><span>无人装备协同</span><span>无电无网覆盖</span></div>
   <h1>智慧边防，从“看得见”到“看得准”</h1>
   <p class="lead">天元平台赋能边境管控智能化实践</p>
   <div class="spec"><div><span>400m</span><small>白天发现距离</small></div><div><span>↓80%</span><small>误报降低</small></div><div><span>95%+</span><small>有效报警率</small></div></div>
@@ -195,10 +243,10 @@
       <div class="cm-h">面临挑战</div>
       <div class="cm-grid2"><div class="cm-chal"><b>看不远</b><p>老旧枪机白天仅能识别 100–200 米，夜间几乎失效</p></div><div class="cm-chal"><b>辨不准</b><p>移动旗帜、树枝等频繁误报，有效报警率低</p></div><div class="cm-chal"><b>覆盖难</b><p>无电无网区域存在感知盲区，数据回传困难</p></div><div class="cm-chal"><b>协同弱</b><p>装备各自为战，缺乏统一调度与联动</p></div></div>
       <div class="cm-h">四大核心能力</div>
-      <div class="cm-arch" style="height:300px"><b>四大核心能力架构图</b><small>架构图占位 · 支持替换为真实图片</small></div>
-      <div class="cm-grid2" style="margin-top:12px"><div class="cm-cap cm-chal" style="border-left-color:#5A6B3F"><b>防控态势一图展示</b><p>人防、物防、技防力量一张图汇聚，设备一键巡检</p></div><div class="cm-cap cm-chal" style="border-left-color:#5A6B3F"><b>同屏联动一图预警</b><p>智能预警 + 持续定位 + 轨迹回溯，推送一线护边员</p></div><div class="cm-cap cm-chal" style="border-left-color:#5A6B3F"><b>全域态势一图指挥</b><p>智能情报助手，问答式查询，辅助生成分析报告</p></div><div class="cm-cap cm-chal" style="border-left-color:#5A6B3F"><b>技防量化一图规划</b><p>GIS + 遥感三维建模，可视化评估覆盖盲区与补点效能</p></div></div>
+      <div class="cm-arch" style="height:300px"><img src="data/客户案例/智慧边防-解决方案架构图.png" alt="四大核心能力架构图"></div>
+      <div class="cm-grid2" style="margin-top:12px"><div class="cm-cap"><b>防控态势一图展示</b><p>人防、物防、技防力量一张图汇聚，设备一键巡检</p></div><div class="cm-cap"><b>同屏联动一图预警</b><p>智能预警 + 持续定位 + 轨迹回溯，推送一线护边员</p></div><div class="cm-cap"><b>全域态势一图指挥</b><p>智能情报助手，问答式查询，辅助生成分析报告</p></div><div class="cm-cap"><b>技防量化一图规划</b><p>GIS + 遥感三维建模，可视化评估覆盖盲区与补点效能</p></div></div>
       <div class="cm-h">两大关键突破</div>
-      <div class="cm-arch" style="height:260px"><b>两大关键突破架构图</b><small>架构图占位 · 支持替换为真实图片</small></div>
+      <div class="cm-arch" style="height:260px"><img src="data/客户案例/智慧边防-关键成效图.png" alt="两大关键突破架构图"></div>
       <div class="cm-grid2" style="margin-top:12px"><div class="cm-brk"><div class="cm-brk-h">突破一 · AI 赋能存量设备</div><div class="cm-brk-b"><p>老旧枪机不变焦条件下，白天发现距离由 100–200 米提升至 400 米，夜间无辅助照明条件下提升至 200 米。</p><div class="cm-brk-stats"><span>400m</span><span>200m</span><span>↓80%</span></div></div></div><div class="cm-brk"><div class="cm-brk-h">突破二 · 新型装备智能调度</div><div class="cm-brk-b"><p>卫星链路补盲无电无网区域，机器狗联动抵近侦察，破解复杂地形管控难题。</p><div class="cm-brk-stats"><span>95%+</span><span>卫星链路补盲</span><span>机器狗联动侦察</span></div></div></div></div>
       <div class="cm-cta"><p>目前已在新疆生产建设兵团开展应用实践</p>
         <a class="btn-wt" href="contact.html">联系我们获取方案 &#8594;</a></div>
@@ -222,6 +270,45 @@
     </div>
   </div>
 </section>
+
+<!-- 视频放大播放灯箱 -->
+<div id="videoLightbox" class="vlb" hidden aria-hidden="true">
+  <div class="vlb-mask"></div>
+  <div class="vlb-inner">
+    <button class="vlb-close" type="button" aria-label="关闭播放">✕</button>
+    <video id="vlbVideo" controls></video>
+  </div>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('videoLightbox');
+  if(!lb) return;
+  var v  = document.getElementById('vlbVideo');
+  function close(){
+    lb.hidden = true;
+    lb.setAttribute('aria-hidden','true');
+    try{v.pause(); v.removeAttribute('src'); v.load();}catch(e){}
+  }
+  function open(src){
+    v.src = src;
+    lb.hidden = false;
+    lb.setAttribute('aria-hidden','false');
+    v.play().catch(function(){});
+  }
+  lb.querySelector('.vlb-close').addEventListener('click', close);
+  lb.querySelector('.vlb-mask').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !lb.hidden) close();
+  });
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-zsrc]');
+    if(!t) return;
+    e.preventDefault();
+    e.stopPropagation();
+    open(t.getAttribute('data-zsrc'));
+  });
+})();
+</script>
 <footer class="ft">
   <div class="wrap">
     <div class="ft-g">
