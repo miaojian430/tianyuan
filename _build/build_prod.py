@@ -25,7 +25,7 @@ MEDIA = {
  "infra-edge":     {"img":"data/产品与能力/边云协同.png"},
  "fusion-lingguan":{"video":"data/产品与能力/天元灵观/天元灵观_有片头.mp4"},
  "fusion-lingshu": {"video":"data/产品与能力/天元灵数/天元·灵数_加字幕.mp4"},
- "fusion-network":  None,
+ "fusion-network": {"img":"data/产品与能力/空天地一体化网络.png"},
  "cognition-lingyu":{"video":"data/产品与能力/天元灵语/天元·灵语_加字幕.mp4"},
  "cognition-linglian":{"video":"data/产品与能力/天元灵炼/天元·灵炼_加字幕.mp4"},
  "cognition-lingzhi":{"img":"data/产品与能力/天元灵智/天元·灵智.png"},
@@ -34,6 +34,10 @@ MEDIA = {
  "market-assets":   {"img":"data/产品与能力/智能体市场/数智资产广场/数智资产市场.png"},
  "market-agents":   {"video":"data/产品与能力/智能体市场/智能体及技能库/智能体及技能库.mp4"},
  "market-assistant":{"video":"data/产品与能力/智能体市场/天元信息服务助手/天元认知计算.mp4"},
+ "security-iam":   {"img":"data/产品与能力/身份与访问控制.png"},
+ "security-data":  {"img":"data/产品与能力/数据安全与隐私.png"},
+ "security-ai":    {"img":"data/产品与能力/AI 安全治理.png"},
+ "security-audit": {"img":"data/产品与能力/行为审计与溯源.png"},
 }
 # 顶部标签对照：基础支撑 / 数据获取·数据治理·通信保障 / 本体建模·模型工厂·
 # 智能体工厂·编排调度 / 具身智能调度 / 资产流通·技能流通·信息服务 /
