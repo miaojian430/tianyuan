@@ -2,7 +2,7 @@
 """产品与能力页 —— 唯一产品能力目录页（依据 update.md 重构，2026-09-14）
 结构：Banner / 分层能力一览（交互式架构图 + 层级筛选器 + 产品卡）/ 产品清单 / 页尾 CTA
 - Banner：三关键词小字 + 行业数智化全链路产品体系，不出现 1+3+1+1+N
-- 架构图五横行，层级可点，与筛选器、产品卡联动高亮
+- 架构图与首页“行业数智化全链路产品体系”同版（竖排侧栏 + 四横行），层级可点，与筛选器、产品卡联动高亮
 - 筛选器无“全部”，单选，默认数据融合层，支持 ?f= 与页内 hash 联动
 - 产品卡（依据《产品卡信息精简 PRD》，2026-09-14）：
   媒体区 16:9 / 顶部标签（仅能力分类，2–6 字）/ 产品名 / 功能介绍 /
@@ -183,51 +183,51 @@ def layers_html():
     return "".join(out)
 
 
-# 交互式架构图：五横行；层级可点（data-f），与筛选器联动高亮
+# 交互式架构图：与首页“行业数智化全链路产品体系”架构图同版（竖排侧栏 + 四横行）；
+# 层级可点（data-f），与筛选器联动高亮；右侧“安全体系”侧栏亦可用于筛选
 ARCH = """
     <div class="arch rv" data-arch>
-      <div class="arch-row">
-        <div class="arch-lb">应用层（N）</div>
-        <div class="arch-body">
-          <span class="arch-chip">应急减灾</span><span class="arch-chip">边防管控</span>
-          <span class="arch-chip">海洋应用</span><span class="arch-chip">开源情报</span>
-          <span class="arch-chip ghost">更多行业：能源 / 低空 / 林草 / 电网</span>
+      <div class="arch-main">
+        <div class="arch-rail gov">自主可控</div>
+        <div class="arch-center">
+          <div class="arch-row">
+            <div class="arch-lb">场景应用（N）</div>
+            <div class="arch-body">
+              <span class="arch-chip">应急减灾</span><span class="arch-chip">边防管控</span>
+              <span class="arch-chip">海洋应用</span><span class="arch-chip">开源情报</span>
+              <span class="arch-chip ghost">更多行业：能源 / 低空 / 林草 / 电网</span>
+            </div>
+          </div>
+          <div class="arch-row" data-f="market">
+            <div class="arch-lb">智能体市场</div>
+            <div class="arch-body">
+              <a class="arch-chip" href="#market">天元·灵集</a>
+              <span class="arch-chip ghost">数智资产广场 · 智能体及技能库 · 天元·信息服务助手</span>
+            </div>
+          </div>
+          <div class="arch-row">
+            <div class="arch-lb">三大核心引擎</div>
+            <div class="arch-body arch-3">
+              <a class="arch-e" data-f="fusion" href="#fusion">
+                <b>空天地数据融合引擎</b>
+                <span>天元·灵观 · 天元·灵数 · 空天地一体化网络</span></a>
+              <a class="arch-e" data-f="cognition" href="#cognition">
+                <b>认知计算与决策引擎</b>
+                <span>天元·灵语 · 天元·灵炼 · 天元·灵智 · 认知计算引擎</span></a>
+              <a class="arch-e" data-f="embodied" href="#embodied">
+                <b>具身智能行动执行引擎</b>
+                <span>天元·灵动</span></a>
+            </div>
+          </div>
+          <div class="arch-row" data-f="infra">
+            <div class="arch-lb">基础设施层</div>
+            <div class="arch-body">
+              <a class="arch-chip" href="#infra">天元·智算底座</a>
+              <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，信创全栈适配</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="arch-row" data-f="market">
-        <div class="arch-lb">智能体市场</div>
-        <div class="arch-body">
-          <span class="arch-chip">天元·灵集</span>
-          <span class="arch-chip ghost">数智资产广场 · 智能体及技能库 · 天元信息服务助手</span>
-        </div>
-      </div>
-      <div class="arch-row">
-        <div class="arch-lb">三大核心引擎</div>
-        <div class="arch-body arch-3">
-          <a class="arch-e" data-f="fusion" href="#fusion">
-            <b>空天地数据融合引擎</b>
-            <span>天元·灵观 · 天元·灵数 · 空天地一体化网络</span></a>
-          <a class="arch-e" data-f="cognition" href="#cognition">
-            <b>认知计算与决策引擎</b>
-            <span>天元·灵语 · 天元·灵炼 · 天元·灵智 · 认知计算引擎</span></a>
-          <a class="arch-e" data-f="embodied" href="#embodied">
-            <b>具身智能行动执行引擎</b>
-            <span>天元·灵动</span></a>
-        </div>
-      </div>
-      <div class="arch-row" data-f="infra">
-        <div class="arch-lb">基础设施层</div>
-        <div class="arch-body">
-          <span class="arch-chip">天元·智算底座</span>
-          <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，国产化全栈适配</span>
-        </div>
-      </div>
-      <div class="arch-row arch-sec" data-f="security">
-        <div class="arch-lb">安全体系（横向贯穿）</div>
-        <div class="arch-body">
-          <span class="arch-chip">全栈安全合规体系</span>
-          <span class="arch-chip ghost">身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源</span>
-        </div>
+        <div class="arch-rail sec" data-f="security" title="安全体系：身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源">安全体系</div>
       </div>
     </div>
 """
@@ -308,18 +308,27 @@ prod = prod.replace("__REG__", reg_rows)
 
 EXTRA_CSS = """
 <style>
-/* 交互式架构图：五横行，层级可点 */
+/* 交互式架构图：与首页同版（竖排侧栏 + 四横行），层级可点 */
 .arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff;margin-bottom:18px}
-.arch-row{display:flex;border-bottom:1px solid #DCE9F5;align-items:stretch}
+.arch-main{display:flex;align-items:stretch}
+.arch-rail{flex:0 0 48px;display:flex;align-items:center;justify-content:center;
+  writing-mode:vertical-rl;text-orientation:upright;letter-spacing:6px;
+  font-size:15px;font-weight:700;color:#fff;padding:18px 0}
+.arch-rail.gov{background:linear-gradient(180deg,#092546,#0F3D75)}
+.arch-rail.sec{background:linear-gradient(180deg,#0F3D75,#1B5A9E)}
+.arch-rail[data-f]{cursor:pointer}
+.arch-center{flex:1;min-width:0}
+.arch-row{display:flex;flex-direction:column;border-bottom:1px solid #DCE9F5}
 .arch-row:last-child{border-bottom:0}
 .arch-row[data-f]{cursor:pointer}
-.arch-lb{flex:0 0 150px;background:#0F3D75;color:#fff;font-size:13.5px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;padding:14px 10px;text-align:center}
-.arch-sec .arch-lb{background:#0C315E}
-.arch-body{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.arch-lb{background:linear-gradient(90deg,#EEF4FA,#F7FAFD);color:#0F3D75;font-size:14px;
+  font-weight:700;letter-spacing:.5px;padding:11px 16px;border-left:3px solid #00A0E9}
+.arch-body{padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .arch-chip{background:#DCE9F5;color:#0F3D75;font-size:12.5px;font-weight:700;
-  padding:5px 12px;border-radius:3px}
-.arch-chip.ghost{background:#fff;color:#5C6670;font-weight:400;border:1px dashed #B4C7E7}
+  padding:5px 12px;border-radius:3px;text-decoration:none}
+a.arch-chip:hover{background:#C7DCF2}
+.arch-chip.ghost{background:#fff;color:#5C6670;font-weight:400;
+  border:1px dashed #B4C7E7}
 .arch-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 16px}
 .arch-e{display:block;background:#F5F8FB;border:1px solid #B4C7E7;border-left:3px solid #00A0E9;
   border-radius:6px;padding:13px 14px;transition:.2s;text-decoration:none;cursor:pointer}
@@ -327,9 +336,15 @@ EXTRA_CSS = """
 .arch-e b{display:block;font-size:14px;color:#0F3D75;margin-bottom:4px}
 .arch-e span{display:block;font-size:11.5px;color:#5C6670;line-height:1.6}
 /* 架构图选中态：与筛选器联动 */
-.arch-row.on .arch-lb{background:#00A0E9}
+.arch-row.on .arch-lb{background:#C7DCF2;color:#0A2E5C}
 .arch-row.on .arch-body{background:#F1F8FD}
 .arch-e.on{background:#DCE9F5;border-color:#00A0E9}
+.arch-rail.on{background:#00A0E9}
+@media(max-width:860px){
+  .arch-3{grid-template-columns:1fr}
+  .arch-lb{font-size:13px;padding:9px 14px}
+  .arch-rail{flex:0 0 34px;font-size:13px;letter-spacing:3px;padding:12px 0}
+}
 /* 层级筛选器（单选，无“全部”） */
 .pfbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;
   padding:14px 16px;background:#fff;border:1px solid #BEC3C8;border-radius:8px}
