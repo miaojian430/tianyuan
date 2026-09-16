@@ -1,0 +1,199 @@
+<svg width="575" height="490.67" viewBox="0 0 575 490.67" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#e2ecf5"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4e6f1"/>
+      <stop offset="100%" stop-color="#b8d4e8"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#1e3a5f" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="575" height="490.67" fill="url(#bgGrad)"/>
+
+  <!-- 细网格 -->
+  <g stroke="#c5d5e6" stroke-width="0.5" opacity="0.5">
+    <line x1="0" y1="60" x2="575" y2="60"/>
+    <line x1="0" y1="120" x2="575" y2="120"/>
+    <line x1="0" y1="180" x2="575" y2="180"/>
+    <line x1="0" y1="240" x2="575" y2="240"/>
+    <line x1="0" y1="300" x2="575" y2="300"/>
+    <line x1="0" y1="360" x2="575" y2="360"/>
+    <line x1="0" y1="420" x2="575" y2="420"/>
+    <line x1="60" y1="0" x2="60" y2="490.67"/>
+    <line x1="120" y1="0" x2="120" y2="490.67"/>
+    <line x1="180" y1="0" x2="180" y2="490.67"/>
+    <line x1="240" y1="0" x2="240" y2="490.67"/>
+    <line x1="300" y1="0" x2="300" y2="490.67"/>
+    <line x1="360" y1="0" x2="360" y2="490.67"/>
+    <line x1="420" y1="0" x2="420" y2="490.67"/>
+    <line x1="480" y1="0" x2="480" y2="490.67"/>
+    <line x1="540" y1="0" x2="540" y2="490.67"/>
+  </g>
+
+  <!-- 顶部认知计算引擎 -->
+  <g transform="translate(160, 15)">
+    <rect x="0" y="0" width="255" height="36" rx="18" fill="#1e3a5f" filter="url(#cardShadow)"/>
+    <text x="127.5" y="23" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="13" fill="#ffffff" font-weight="bold">认知计算引擎 · 理解自然语言意图</text>
+  </g>
+
+  <!-- 主地图卡片：态势图 -->
+  <g transform="translate(100, 65)">
+    <rect x="0" y="0" width="360" height="310" rx="10" fill="#ffffff" opacity="0.9" filter="url(#cardShadow)"/>
+    <clipPath id="mapClip">
+      <rect x="0" y="0" width="360" height="310" rx="10"/>
+    </clipPath>
+    <g clip-path="url(#mapClip)">
+      <!-- 海洋 -->
+      <path d="M 0 30 Q 90 10 180 40 T 360 30 L 360 310 L 0 310 Z" fill="url(#seaGrad)"/>
+      <!-- 陆地 -->
+      <path d="M 0 30 Q 90 10 180 40 T 360 30 L 360 80 Q 280 100 200 90 T 60 100 Q 20 95 0 80 Z" fill="#f5f0e1" stroke="#c0b090" stroke-width="1.5"/>
+      <path d="M 360 30 L 360 80 Q 340 75 320 70 T 280 60 Q 320 40 360 30 Z" fill="#f5f0e1" stroke="#c0b090" stroke-width="1.5"/>
+
+      <!-- 海图网格 -->
+      <g stroke="#a8c4dc" stroke-width="0.6" opacity="0.4">
+        <line x1="0" y1="80" x2="360" y2="80"/>
+        <line x1="0" y1="130" x2="360" y2="130"/>
+        <line x1="0" y1="180" x2="360" y2="180"/>
+        <line x1="0" y1="230" x2="360" y2="230"/>
+        <line x1="0" y1="280" x2="360" y2="280"/>
+        <line x1="80" y1="0" x2="80" y2="310"/>
+        <line x1="160" y1="0" x2="160" y2="310"/>
+        <line x1="240" y1="0" x2="240" y2="310"/>
+        <line x1="320" y1="0" x2="320" y2="310"/>
+      </g>
+
+      <!-- 船舶AIS航线 -->
+      <path d="M 30 250 Q 110 220 190 240 T 340 210" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8 5"/>
+      <g fill="#c0392b">
+        <polygon points="30,250 38,246 36,254"/>
+        <polygon points="190,240 198,236 196,244"/>
+        <polygon points="340,210 348,206 346,214"/>
+      </g>
+
+      <!-- 飞机航线 -->
+      <path d="M 50 120 Q 140 90 230 110 T 340 100" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-dasharray="8 5"/>
+      <g fill="#2a9d8f">
+        <path d="M 50 120 l 8 -4 l -2 5 l 7 1 l -8 4 l 2 -5 z"/>
+        <path d="M 230 110 l 8 -4 l -2 5 l 7 1 l -8 4 l 2 -5 z"/>
+        <path d="M 340 100 l 8 -4 l -2 5 l 7 1 l -8 4 l 2 -5 z"/>
+      </g>
+
+      <!-- 灾害点 -->
+      <g stroke="#e67e22" stroke-width="2" fill="none">
+        <circle cx="260" cy="230" r="9"/>
+        <line x1="254" y1="224" x2="266" y2="236"/>
+        <line x1="266" y1="224" x2="254" y2="236"/>
+      </g>
+      <text x="242" y="255" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#a04000">灾害通报</text>
+
+      <!-- 时空坐标 -->
+      <g stroke="#16a085" stroke-width="1.8">
+        <line x1="310" y1="200" x2="338" y2="200"/>
+        <line x1="324" y1="186" x2="324" y2="214"/>
+        <circle cx="324" cy="200" r="5" fill="none"/>
+      </g>
+      <text x="300" y="230" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#0e6655">时空坐标</text>
+
+      <!-- 态势汇聚 -->
+      <circle cx="200" cy="170" r="16" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="4 3"/>
+      <circle cx="200" cy="170" r="4" fill="#1e3a5f"/>
+      <text x="172" y="148" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#1e3a5f">态势汇聚</text>
+
+      <!-- 智能检索 / 空间可视化标签 -->
+      <g transform="translate(120, 270)">
+        <rect x="0" y="0" width="70" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
+        <text x="35" y="14" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#1e3a5f">智能检索</text>
+      </g>
+      <g transform="translate(200, 270)">
+        <rect x="0" y="0" width="80" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
+        <text x="40" y="14" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#1e3a5f">空间可视化</text>
+      </g>
+      <g transform="translate(290, 270)">
+        <rect x="0" y="0" width="70" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
+        <text x="35" y="14" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#1e3a5f">时空关联</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 左侧数据源卡片 -->
+  <g transform="translate(10, 90)">
+    <!-- 船舶AIS -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="80" height="52" rx="6" fill="#ffffff" filter="url(#cardShadow)" opacity="0.95"/>
+      <rect x="0" y="0" width="4" height="52" rx="2" fill="#c0392b"/>
+      <text x="12" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#1e3a5f" font-weight="bold">船舶AIS</text>
+      <text x="12" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">航迹/位置</text>
+      <text x="12" y="48" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">动态</text>
+    </g>
+    <!-- 飞机航线 -->
+    <g transform="translate(0, 62)">
+      <rect x="0" y="0" width="80" height="52" rx="6" fill="#ffffff" filter="url(#cardShadow)" opacity="0.95"/>
+      <rect x="0" y="0" width="4" height="52" rx="2" fill="#2a9d8f"/>
+      <text x="12" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#1e3a5f" font-weight="bold">飞机航线</text>
+      <text x="12" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">航班/航路</text>
+      <text x="12" y="48" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">轨迹</text>
+    </g>
+    <!-- 灾害通报 -->
+    <g transform="translate(0, 124)">
+      <rect x="0" y="0" width="80" height="52" rx="6" fill="#ffffff" filter="url(#cardShadow)" opacity="0.95"/>
+      <rect x="0" y="0" width="4" height="52" rx="2" fill="#e67e22"/>
+      <text x="12" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#1e3a5f" font-weight="bold">灾害通报</text>
+      <text x="12" y="36" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">预警/事件</text>
+      <text x="12" y="48" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">影响</text>
+    </g>
+  </g>
+
+  <!-- 右侧输出卡片 -->
+  <g transform="translate(470, 90)">
+    <rect x="0" y="0" width="95" height="190" rx="8" fill="#ffffff" filter="url(#cardShadow)" opacity="0.95"/>
+    <rect x="0" y="0" width="95" height="32" rx="8" fill="#1e3a5f"/>
+    <text x="47.5" y="21" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="11" fill="#ffffff" font-weight="bold">态势图输出</text>
+    <text x="12" y="52" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#1e3a5f" font-weight="bold">智能检索</text>
+    <text x="12" y="68" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">自然语言理解</text>
+    <line x1="12" y1="76" x2="83" y2="76" stroke="#d0dbe8" stroke-width="0.8"/>
+    <text x="12" y="92" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#1e3a5f" font-weight="bold">空间可视化</text>
+    <text x="12" y="108" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">时空坐标关联</text>
+    <line x1="12" y1="116" x2="83" y2="116" stroke="#d0dbe8" stroke-width="0.8"/>
+    <text x="12" y="132" font-family="'Microsoft YaHei', sans-serif" font-size="10" fill="#1e3a5f" font-weight="bold">碎片聚合</text>
+    <text x="12" y="148" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">一张态势图</text>
+    <line x1="12" y1="156" x2="83" y2="156" stroke="#d0dbe8" stroke-width="0.8"/>
+    <text x="47.5" y="178" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#2a9d8f">情报分析手段</text>
+  </g>
+
+  <!-- 底部自然语言情报卡片 -->
+  <g transform="translate(160, 385)">
+    <rect x="0" y="0" width="255" height="42" rx="8" fill="#ffffff" filter="url(#cardShadow)" opacity="0.95"/>
+    <rect x="0" y="0" width="4" height="42" rx="2" fill="#8e44ad"/>
+    <text x="14" y="18" font-family="'Microsoft YaHei', sans-serif" font-size="11" fill="#1e3a5f" font-weight="bold">自然语言情报 · 意图理解</text>
+    <text x="14" y="34" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#5d6d7e">理解自然语言意图 · 智能检索 · 空间可视化</text>
+  </g>
+
+  <!-- 连接线：数据源到中枢 -->
+  <g stroke="#2a9d8f" stroke-width="1.2" fill="none" stroke-dasharray="4 3" opacity="0.6">
+    <path d="M 90 116 Q 130 116 170 50"/>
+    <path d="M 90 178 Q 130 150 170 60"/>
+    <path d="M 90 240 Q 140 200 180 70"/>
+  </g>
+  <!-- 中枢到地图 -->
+  <g stroke="#2a9d8f" stroke-width="1.2" fill="none" stroke-dasharray="4 3" opacity="0.6">
+    <path d="M 280 51 Q 300 70 320 90"/>
+    <path d="M 260 51 Q 260 70 250 90"/>
+  </g>
+  <!-- 地图到输出 -->
+  <g stroke="#2a9d8f" stroke-width="1.2" fill="none" stroke-dasharray="4 3" opacity="0.6">
+    <path d="M 460 200 Q 465 200 470 200"/>
+  </g>
+  <!-- 自然语言情报到地图 -->
+  <g stroke="#8e44ad" stroke-width="1.2" fill="none" stroke-dasharray="4 3" opacity="0.6">
+    <path d="M 287 385 Q 287 380 287 375"/>
+  </g>
+
+  <!-- 底部标题 -->
+  <text x="287.5" y="470" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="14" fill="#1e3a5f" font-weight="bold">开源情报分析 · 多源信息融合与态势聚合</text>
+</svg>
