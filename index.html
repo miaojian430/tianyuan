@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -12,34 +12,39 @@
 <link rel="stylesheet" href="assets/theme.css">
 
 <style>
-.arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff}
-.arch-main{display:flex;align-items:stretch}
-.arch-rail{flex:0 0 48px;display:flex;align-items:center;justify-content:center;
-  writing-mode:vertical-rl;text-orientation:upright;letter-spacing:6px;
-  font-size:15px;font-weight:700;color:#fff;padding:18px 0}
-.arch-rail.gov{background:linear-gradient(180deg,#092546,#0F3D75)}
-.arch-rail.sec{background:linear-gradient(180deg,#0F3D75,#1B5A9E)}
-.arch-center{flex:1;min-width:0}
-.arch-row{display:flex;flex-direction:column;border-bottom:1px solid #DCE9F5}
-.arch-row:last-child{border-bottom:0}
-.arch-lb{background:linear-gradient(90deg,#EEF4FA,#F7FAFD);color:#0F3D75;font-size:14px;
-  font-weight:700;letter-spacing:.5px;padding:11px 16px;border-left:3px solid #00A0E9}
-.arch-body{padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff;display:flex}
+.a2-main{flex:1;min-width:0}
+.a2-row{display:flex;border-bottom:1px solid #DCE9F5}
+.a2-row:last-child{border-bottom:0}
+.a2-lb{flex:0 0 150px;background:linear-gradient(160deg,#0F3D75,#1B5A9E);color:#fff;
+  font-size:16px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;
+  justify-content:center;padding:20px 12px;text-align:center}
+.a2-bd{flex:1;min-width:0;padding:14px 16px}
+.a2-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.a2-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .arch-chip{background:#DCE9F5;color:#0F3D75;font-size:12.5px;font-weight:700;
   padding:5px 12px;border-radius:3px;text-decoration:none}
 a.arch-chip:hover{background:#C7DCF2}
 .arch-chip.ghost{background:#fff;color:#5C6670;font-weight:400;
   border:1px dashed #B4C7E7}
-.arch-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 16px}
 .arch-e{display:block;background:#F5F8FB;border:1px solid #B4C7E7;border-left:3px solid #00A0E9;
   border-radius:6px;padding:13px 14px;transition:.2s;text-decoration:none}
 .arch-e:hover{background:#DCE9F5;transform:translateY(-2px)}
 .arch-e b{display:block;font-size:14px;color:#0F3D75;margin-bottom:4px}
 .arch-e span{display:block;font-size:11.5px;color:#5C6670;line-height:1.6}
+.a2-rails{flex:0 0 auto;display:flex;gap:6px;padding-left:6px}
+.a2-rail{flex:0 0 40px;display:flex;align-items:center;justify-content:center;
+  writing-mode:vertical-rl;text-orientation:upright;letter-spacing:5px;
+  font-size:13px;font-weight:700;color:#fff}
+.a2-rail.rail-a{background:linear-gradient(160deg,#0F3D75,#1B5A9E)}
+.a2-rail.rail-b{background:linear-gradient(160deg,#1B5A9E,#0F3D75)}
 @media(max-width:860px){
-  .arch-3{grid-template-columns:1fr}
-  .arch-lb{font-size:13px;padding:9px 14px}
-  .arch-rail{flex:0 0 34px;font-size:13px;letter-spacing:3px;padding:12px 0}
+  .arch{flex-direction:column}
+  .a2-row{flex-direction:column}
+  .a2-lb{flex:none;width:100%;padding:10px}
+  .a2-3{grid-template-columns:1fr}
+  .a2-rails{flex-direction:row;padding:6px 0 0}
+  .a2-rail{writing-mode:horizontal-tb;flex:1;letter-spacing:2px;padding:8px 0}
 }
 
 /* ===== 首屏 Banner：左文右图 + 图片轮播 ===== */
@@ -84,10 +89,10 @@ a.arch-chip:hover{background:#C7DCF2}
 .sc-card{display:flex;gap:15px;background:var(--surface);border:1px solid var(--line-soft);
   border-radius:8px;padding:16px 18px;transition:.22s}
 .sc-card:hover{background:#fff;border-color:var(--accent);transform:translateY(-2px)}
-.sc-n{flex:0 0 60px;height:60px;border-radius:14px;
-  background:linear-gradient(135deg,#E6F6FD,#CCECFB);border:2px solid var(--accent);
-  color:#0070A3;font-size:34px;font-weight:800;line-height:1;
-  display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,160,233,.28)}
+.sc-n{flex:0 0 56px;height:56px;border-radius:8px;
+  background:var(--pl-l90);border:1px solid var(--pl-l80);
+  color:var(--primary);font-size:30px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
 .sc-b{flex:1;min-width:0}
 .sc-b h4{font-size:15.5px;color:var(--primary);font-weight:700;margin-bottom:6px}
 .sc-i{font-size:11px;color:var(--accent-d20);background:var(--accent-l90);
@@ -107,29 +112,20 @@ a.arch-chip:hover{background:#C7DCF2}
 #engines .pb p{text-align:justify;text-justify:inter-ideograph}
 @media(max-width:860px){#engines .pcard .ph{font-size:17px}}
 
-/* ===== 重点行业：平铺展示，痛点/方案/价值合并一框 ===== */
-.scn{display:flex;background:#fff;border:1px solid var(--line-soft);border-radius:8px;
-  overflow:hidden;margin-bottom:16px;transition:.22s}
-.scn:last-child{margin-bottom:0}
-.scn:hover{box-shadow:var(--shadow);border-color:var(--pl-l80)}
-.scn-t{flex:0 0 132px;background:linear-gradient(160deg,#0F3D75,#1B5A9E);color:#fff;
-  font-size:17px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;
-  justify-content:center;padding:18px 12px;text-align:center}
-.scn-c{flex:1;min-width:0;display:grid;grid-template-columns:1fr 1.5fr 1fr}
-.scn-i{padding:18px 20px;border-left:1px solid var(--surface)}
-.scn-i:first-child{border-left:0}
-.scn-lb{display:inline-block;font-size:12px;font-weight:700;color:var(--accent-d40);
-  background:var(--accent-l90);padding:2px 10px;border-radius:3px;margin-bottom:9px}
-.scn-i p{font-size:13.5px;color:var(--mute);line-height:1.85}
-.scn-i.val{background:var(--surface)}
-.scn-i.val p{font-size:15px;font-weight:700;color:var(--primary);line-height:1.7}
-@media(max-width:860px){
-  .scn{flex-direction:column}
-  .scn-t{flex:none;width:100%;padding:12px}
-  .scn-c{grid-template-columns:1fr}
-  .scn-i{border-left:0;border-top:1px solid var(--surface)}
-  .scn-i:first-child{border-top:0}
-}
+/* ===== 重点行业：五卡并列同一水平线 ===== */
+.ind-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch}
+.ind{background:#fff;border:1px solid var(--line-soft);border-radius:8px;
+  padding:18px 16px;display:flex;flex-direction:column;transition:.22s}
+.ind:hover{box-shadow:var(--shadow);border-color:var(--pl-l80);transform:translateY(-2px)}
+.ind h3{font-size:20px;color:var(--primary);font-weight:700;letter-spacing:.5px;
+  line-height:1.3;padding-bottom:10px;margin-bottom:12px;border-bottom:2px solid var(--accent)}
+.ind-i{margin-bottom:10px}
+.ind-i:last-child{margin-bottom:0}
+.ind-lb{display:block;font-size:11px;font-weight:700;color:var(--accent-d40);margin-bottom:3px}
+.ind-i p{font-size:12px;color:var(--mute);line-height:1.7}
+.ind-i.val p{font-size:13px;font-weight:700;color:var(--primary);line-height:1.6}
+@media(max-width:1000px){.ind-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.ind-row{grid-template-columns:1fr}}
 </style>
 
 </head>
@@ -205,7 +201,7 @@ a.arch-chip:hover{background:#C7DCF2}
 <section class="sec alt" id="heritage">
   <div class="wrap">
     <div class="sec-h rv"><div class="k">AEROSPACE HERITAGE</div>
-      <h2>天元平台依托航天科技全站技术能力</h2>
+      <h2>天元平台依托航天科技全栈技术能力</h2>
       <p>天元不是凭空搭建的 AI 平台。它站在中国航天七十年的系统工程能力、
         可靠性工程传统与天基信息获取能力之上。</p></div>
 
@@ -273,27 +269,30 @@ a.arch-chip:hover{background:#C7DCF2}
     <div class="sec-h rv"><div class="k">ARCHITECTURE</div><h2>行业数智化全链路产品体系</h2>
       <p>通过数据聚合和 AI 赋能，实现行业全流程从数据感知到应用落地的链路闭环。</p></div>
     <div class="arch rv">
-      <div class="arch-main">
-        <div class="arch-rail gov">自主可控</div>
-        <div class="arch-center">
-          <div class="arch-row">
-            <div class="arch-lb">场景应用（N）</div>
-            <div class="arch-body">
+      <div class="a2-main">
+        <div class="a2-row">
+          <div class="a2-lb">产品应用</div>
+          <div class="a2-bd">
+            <div class="a2-chips">
               <span class="arch-chip">应急减灾</span><span class="arch-chip">边防管控</span>
               <span class="arch-chip">海洋应用</span><span class="arch-chip">开源情报</span>
               <span class="arch-chip ghost">更多行业：能源 / 低空 / 林草 / 电网</span>
             </div>
           </div>
-          <div class="arch-row">
-            <div class="arch-lb">智能体市场</div>
-            <div class="arch-body">
+        </div>
+        <div class="a2-row">
+          <div class="a2-lb">智能体市场</div>
+          <div class="a2-bd">
+            <div class="a2-chips">
               <a class="arch-chip" href="products.html#market">天元·灵集</a>
               <span class="arch-chip ghost">数智资产广场 · 智能体及技能库 · 天元·信息服务助手</span>
             </div>
           </div>
-          <div class="arch-row">
-            <div class="arch-lb">三大核心引擎</div>
-            <div class="arch-body arch-3">
+        </div>
+        <div class="a2-row">
+          <div class="a2-lb">三大核心引擎</div>
+          <div class="a2-bd">
+            <div class="a2-3">
               <a class="arch-e" href="products.html#fusion">
                 <b>空天地数据融合引擎</b>
                 <span>天元·灵观 · 天元·灵数 · 空天地一体化网络</span></a>
@@ -305,15 +304,20 @@ a.arch-chip:hover{background:#C7DCF2}
                 <span>天元·灵动</span></a>
             </div>
           </div>
-          <div class="arch-row">
-            <div class="arch-lb">基础设施层</div>
-            <div class="arch-body">
+        </div>
+        <div class="a2-row">
+          <div class="a2-lb">基础设施层</div>
+          <div class="a2-bd">
+            <div class="a2-chips">
               <a class="arch-chip" href="products.html#infra">天元·智算底座</a>
-              <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，信创全栈适配</span>
+              <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，国产化全栈适配</span>
             </div>
           </div>
         </div>
-        <div class="arch-rail sec">安全体系</div>
+      </div>
+      <div class="a2-rails">
+        <div class="a2-rail rail-a">自主可控</div>
+        <div class="a2-rail rail-b">安全可信</div>
       </div>
     </div>
   </div>
@@ -368,46 +372,36 @@ a.arch-chip:hover{background:#C7DCF2}
   <div class="wrap">
     <div class="sec-h rv"><div class="k">SCENARIOS</div><h2>重点行业</h2>
       <p>从卫星数据到行动指令，一个平台跑完全流程。</p></div>
-    <div class="scn-list">
-      <div class="scn rv">
-        <div class="scn-t">应急管理</div>
-        <div class="scn-c">
-          <div class="scn-i"><span class="scn-lb">典型痛点</span><p>灾害发生后，卫星数据获取慢、多源数据融合难、指挥调度依赖人工。</p></div>
-          <div class="scn-i"><span class="scn-lb">天元方案</span><p>灵观快速获取灾区卫星影像 → 灵数融合无人机与物联网数据 → 认知计算与决策引擎进行灾情研判 → 天元·灵动调度无人机 / 无人车执行救援。</p></div>
-          <div class="scn-i val"><span class="scn-lb">客户价值</span><p>应急响应时间从“小时级”缩短至“分钟级”</p></div>
-        </div>
+    <div class="ind-row">
+      <div class="ind rv">
+        <h3>应急管理</h3>
+        <div class="ind-i"><span class="ind-lb">典型痛点</span><p>数据获取慢、融合难、调度靠人工</p></div>
+        <div class="ind-i"><span class="ind-lb">天元方案</span><p>灵观灾情研判 + 灵动调度无人机救援</p></div>
+        <div class="ind-i val"><span class="ind-lb">客户价值</span><p>响应小时级 → 分钟级</p></div>
       </div>
-      <div class="scn rv">
-        <div class="scn-t">自然资源</div>
-        <div class="scn-c">
-          <div class="scn-i"><span class="scn-lb">典型痛点</span><p>国土、林业、水利等监测范围大，人工巡查成本高，变化发现滞后。</p></div>
-          <div class="scn-i"><span class="scn-lb">天元方案</span><p>灵观定期获取遥感影像 → 灵炼训练变化检测模型 → 认知计算与决策引擎自动识别违建 / 毁林 / 污染 → 天元·灵动调度无人机核查。</p></div>
-          <div class="scn-i val"><span class="scn-lb">客户价值</span><p>监测覆盖率提升至 100%，人工巡查成本降低 60%</p></div>
-        </div>
+      <div class="ind rv">
+        <h3>自然资源</h3>
+        <div class="ind-i"><span class="ind-lb">典型痛点</span><p>监测范围大、巡查成本高</p></div>
+        <div class="ind-i"><span class="ind-lb">天元方案</span><p>遥感变化检测自动识别违建毁林</p></div>
+        <div class="ind-i val"><span class="ind-lb">客户价值</span><p>覆盖率 100%、成本降 60%</p></div>
       </div>
-      <div class="scn rv">
-        <div class="scn-t">智慧农业</div>
-        <div class="scn-c">
-          <div class="scn-i"><span class="scn-lb">典型痛点</span><p>农情监测靠经验，病虫害发现晚，精准作业能力弱。</p></div>
-          <div class="scn-i"><span class="scn-lb">天元方案</span><p>天元·灵观获取多光谱遥感 → 天元·灵数融合气象与土壤数据 → 认知计算与决策引擎进行长势分析与病虫害预警 → 天元·灵动调度无人机精准施药。</p></div>
-          <div class="scn-i val"><span class="scn-lb">客户价值</span><p>农药使用量减少 30%，产量提升 10–15%</p></div>
-        </div>
+      <div class="ind rv">
+        <h3>智慧农业</h3>
+        <div class="ind-i"><span class="ind-lb">典型痛点</span><p>靠经验、病虫害发现晚</p></div>
+        <div class="ind-i"><span class="ind-lb">天元方案</span><p>多光谱长势分析 + 精准施药</p></div>
+        <div class="ind-i val"><span class="ind-lb">客户价值</span><p>减药 30%、增产 10–15%</p></div>
       </div>
-      <div class="scn rv">
-        <div class="scn-t">交通物流</div>
-        <div class="scn-c">
-          <div class="scn-i"><span class="scn-lb">典型痛点</span><p>偏远地区配送难，路况监测不及时，多式联运协同弱。</p></div>
-          <div class="scn-i"><span class="scn-lb">天元方案</span><p>天元·灵观获取路网遥感 → 天元·灵数融合交通流数据 → 认知计算与决策引擎进行路径规划与风险预警 → 天元·灵动调度无人车 / 无人机配送。</p></div>
-          <div class="scn-i val"><span class="scn-lb">客户价值</span><p>偏远地区配送时效提升 50%，物流成本降低 25%</p></div>
-        </div>
+      <div class="ind rv">
+        <h3>交通物流</h3>
+        <div class="ind-i"><span class="ind-lb">典型痛点</span><p>偏远配送难、路况监测慢</p></div>
+        <div class="ind-i"><span class="ind-lb">天元方案</span><p>路网感知 + 无人车 / 机配送</p></div>
+        <div class="ind-i val"><span class="ind-lb">客户价值</span><p>时效升 50%、成本降 25%</p></div>
       </div>
-      <div class="scn rv">
-        <div class="scn-t">城市治理</div>
-        <div class="scn-c">
-          <div class="scn-i"><span class="scn-lb">典型痛点</span><p>城市管理事项多，发现靠举报，处置靠人工。</p></div>
-          <div class="scn-i"><span class="scn-lb">天元方案</span><p>天元·灵观获取城市遥感 → 天元·灵数融合摄像头与 IoT 数据 → 认知计算与决策引擎自动识别违建 / 垃圾 / 积水 → 天元·灵动调度网格员 / 无人设备处置。</p></div>
-          <div class="scn-i val"><span class="scn-lb">客户价值</span><p>问题发现率提升 80%，处置周期缩短 50%</p></div>
-        </div>
+      <div class="ind rv">
+        <h3>城市治理</h3>
+        <div class="ind-i"><span class="ind-lb">典型痛点</span><p>事项多、发现靠举报</p></div>
+        <div class="ind-i"><span class="ind-lb">天元方案</span><p>城市事件自动识别 + 调度处置</p></div>
+        <div class="ind-i val"><span class="ind-lb">客户价值</span><p>发现率升 80%、周期降 50%</p></div>
       </div>
     </div>
     <div style="text-align:center;margin-top:30px">
