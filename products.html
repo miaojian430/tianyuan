@@ -12,42 +12,47 @@
 <link rel="stylesheet" href="assets/theme.css">
 
 <style>
-/* 交互式架构图：与首页同版（竖排侧栏 + 四横行），层级可点 */
-.arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff;margin-bottom:18px}
-.arch-main{display:flex;align-items:stretch}
-.arch-rail{flex:0 0 48px;display:flex;align-items:center;justify-content:center;
-  writing-mode:vertical-rl;text-orientation:upright;letter-spacing:6px;
-  font-size:15px;font-weight:700;color:#fff;padding:18px 0}
-.arch-rail.gov{background:linear-gradient(180deg,#092546,#0F3D75)}
-.arch-rail.sec{background:linear-gradient(180deg,#0F3D75,#1B5A9E)}
-.arch-rail[data-f]{cursor:pointer}
-.arch-center{flex:1;min-width:0}
-.arch-row{display:flex;flex-direction:column;border-bottom:1px solid #DCE9F5}
-.arch-row:last-child{border-bottom:0}
-.arch-row[data-f]{cursor:pointer}
-.arch-lb{background:linear-gradient(90deg,#EEF4FA,#F7FAFD);color:#0F3D75;font-size:14px;
-  font-weight:700;letter-spacing:.5px;padding:11px 16px;border-left:3px solid #00A0E9}
-.arch-body{padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+/* 交互式架构图：与首页同版（左层标签 + 右双窄轨），层级可点 */
+.arch{border:1px solid #B4C7E7;border-radius:8px;overflow:hidden;background:#fff;display:flex;margin-bottom:18px}
+.a2-main{flex:1;min-width:0}
+.a2-row{display:flex;border-bottom:1px solid #DCE9F5}
+.a2-row:last-child{border-bottom:0}
+.a2-row[data-f]{cursor:pointer}
+.a2-lb{flex:0 0 150px;background:linear-gradient(160deg,#0F3D75,#1B5A9E);color:#fff;
+  font-size:16px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;
+  justify-content:center;padding:20px 12px;text-align:center}
+.a2-bd{flex:1;min-width:0;padding:14px 16px}
+.a2-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.a2-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .arch-chip{background:#DCE9F5;color:#0F3D75;font-size:12.5px;font-weight:700;
   padding:5px 12px;border-radius:3px;text-decoration:none}
 a.arch-chip:hover{background:#C7DCF2}
 .arch-chip.ghost{background:#fff;color:#5C6670;font-weight:400;
   border:1px dashed #B4C7E7}
-.arch-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 16px}
 .arch-e{display:block;background:#F5F8FB;border:1px solid #B4C7E7;border-left:3px solid #00A0E9;
   border-radius:6px;padding:13px 14px;transition:.2s;text-decoration:none;cursor:pointer}
 .arch-e:hover{background:#DCE9F5;transform:translateY(-2px)}
 .arch-e b{display:block;font-size:14px;color:#0F3D75;margin-bottom:4px}
 .arch-e span{display:block;font-size:11.5px;color:#5C6670;line-height:1.6}
+.a2-rails{flex:0 0 auto;display:flex;gap:6px;padding-left:6px}
+.a2-rail{flex:0 0 40px;display:flex;align-items:center;justify-content:center;
+  writing-mode:vertical-rl;text-orientation:upright;letter-spacing:5px;
+  font-size:13px;font-weight:700;color:#fff}
+.a2-rail[data-f]{cursor:pointer}
+.a2-rail.rail-a{background:linear-gradient(160deg,#0F3D75,#1B5A9E)}
+.a2-rail.rail-b{background:linear-gradient(160deg,#1B5A9E,#0F3D75)}
 /* 架构图选中态：与筛选器联动 */
-.arch-row.on .arch-lb{background:#C7DCF2;color:#0A2E5C}
-.arch-row.on .arch-body{background:#F1F8FD}
+.a2-row.on .a2-lb{background:linear-gradient(160deg,#00A0E9,#0070A3)}
+.a2-row.on .a2-bd{background:#F1F8FD}
 .arch-e.on{background:#DCE9F5;border-color:#00A0E9}
-.arch-rail.on{background:#00A0E9}
+.a2-rail.on{background:#00A0E9}
 @media(max-width:860px){
-  .arch-3{grid-template-columns:1fr}
-  .arch-lb{font-size:13px;padding:9px 14px}
-  .arch-rail{flex:0 0 34px;font-size:13px;letter-spacing:3px;padding:12px 0}
+  .arch{flex-direction:column}
+  .a2-row{flex-direction:column}
+  .a2-lb{flex:none;width:100%;padding:10px}
+  .a2-3{grid-template-columns:1fr}
+  .a2-rails{flex-direction:row;padding:6px 0 0}
+  .a2-rail{writing-mode:horizontal-tb;flex:1;letter-spacing:2px;padding:8px 0}
 }
 /* 层级筛选器（单选，无“全部”） */
 .pfbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;
@@ -99,9 +104,6 @@ a.arch-chip:hover{background:#C7DCF2}
 .reg-link{color:#00608C;font-weight:700;text-decoration:none;white-space:nowrap}
 .reg-link:hover{color:#0F3D75;text-decoration:underline}
 @media(max-width:1024px){.pcv-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:860px){.arch-row{flex-direction:column}
-  .arch-lb{flex:none;width:100%;padding:9px}
-  .arch-3{grid-template-columns:1fr}}
 @media(max-width:680px){.pcv-grid{grid-template-columns:1fr}
   .pfbar .lb{width:100%;margin-bottom:2px}}
 </style>
@@ -161,27 +163,30 @@ a.arch-chip:hover{background:#C7DCF2}
 
 
     <div class="arch rv" data-arch>
-      <div class="arch-main">
-        <div class="arch-rail gov">自主可控</div>
-        <div class="arch-center">
-          <div class="arch-row">
-            <div class="arch-lb">场景应用（N）</div>
-            <div class="arch-body">
+      <div class="a2-main">
+        <div class="a2-row">
+          <div class="a2-lb">产品应用</div>
+          <div class="a2-bd">
+            <div class="a2-chips">
               <span class="arch-chip">应急减灾</span><span class="arch-chip">边防管控</span>
               <span class="arch-chip">海洋应用</span><span class="arch-chip">开源情报</span>
               <span class="arch-chip ghost">更多行业：能源 / 低空 / 林草 / 电网</span>
             </div>
           </div>
-          <div class="arch-row" data-f="market">
-            <div class="arch-lb">智能体市场</div>
-            <div class="arch-body">
+        </div>
+        <div class="a2-row" data-f="market">
+          <div class="a2-lb">智能体市场</div>
+          <div class="a2-bd">
+            <div class="a2-chips">
               <a class="arch-chip" href="#market">天元·灵集</a>
               <span class="arch-chip ghost">数智资产广场 · 智能体及技能库 · 天元·信息服务助手</span>
             </div>
           </div>
-          <div class="arch-row">
-            <div class="arch-lb">三大核心引擎</div>
-            <div class="arch-body arch-3">
+        </div>
+        <div class="a2-row">
+          <div class="a2-lb">三大核心引擎</div>
+          <div class="a2-bd">
+            <div class="a2-3">
               <a class="arch-e" data-f="fusion" href="#fusion">
                 <b>空天地数据融合引擎</b>
                 <span>天元·灵观 · 天元·灵数 · 空天地一体化网络</span></a>
@@ -193,15 +198,20 @@ a.arch-chip:hover{background:#C7DCF2}
                 <span>天元·灵动</span></a>
             </div>
           </div>
-          <div class="arch-row" data-f="infra">
-            <div class="arch-lb">基础设施层</div>
-            <div class="arch-body">
+        </div>
+        <div class="a2-row" data-f="infra">
+          <div class="a2-lb">基础设施层</div>
+          <div class="a2-bd">
+            <div class="a2-chips">
               <a class="arch-chip" href="#infra">天元·智算底座</a>
-              <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，信创全栈适配</span>
+              <span class="arch-chip ghost">智算集群 / 高速互联 / 边云协同，国产化全栈适配</span>
             </div>
           </div>
         </div>
-        <div class="arch-rail sec" data-f="security" title="安全体系：身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源">安全体系</div>
+      </div>
+      <div class="a2-rails">
+        <div class="a2-rail rail-a">自主可控</div>
+        <div class="a2-rail rail-b" data-f="security" title="安全可信：身份与访问控制 · 数据安全与隐私 · AI 安全治理 · 行为审计与溯源">安全可信</div>
       </div>
     </div>
 
