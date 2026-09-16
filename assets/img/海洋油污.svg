@@ -104,18 +104,18 @@
         <text x="235" y="223" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#922b21">嫌疑船B</text>
       </g>
 
-      <!-- 专用算法小标签 -->
-      <g transform="translate(140, 260)">
-        <rect x="0" y="0" width="68" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
-        <text x="34" y="14" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#1e3a5f">油膜识别</text>
+      <!-- 专用算法小标签（已修复坐标越界与遮挡问题） -->
+      <g transform="translate(30, 260)">
+        <rect x="0" y="0" width="72" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
+        <text x="36" y="14" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="9" fill="#1e3a5f">油膜识别</text>
       </g>
-      <g transform="translate(215, 260)">
-        <rect x="0" y="0" width="78" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
-        <text x="39" y="14" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#1e3a5f">起始点反演</text>
+      <g transform="translate(132, 260)">
+        <rect x="0" y="0" width="82" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
+        <text x="41" y="14" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="9" fill="#1e3a5f">起始点反演</text>
       </g>
-      <g transform="translate(300, 260)">
-        <rect x="0" y="0" width="78" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
-        <text x="39" y="14" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="9" fill="#1e3a5f">船舶特征分析</text>
+      <g transform="translate(244, 260)">
+        <rect x="0" y="0" width="86" height="20" rx="10" fill="#e8f4f8" stroke="#2a9d8f" stroke-width="1"/>
+        <text x="43" y="14" text-anchor="middle" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="9" fill="#1e3a5f">船舶特征分析</text>
       </g>
     </g>
   </g>
